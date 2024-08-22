@@ -1,4 +1,6 @@
 {
   "item.yafa.baguette": "Baguette",
+  "item.yafa.baguette.tooltip.summary": "Allows you to attack from an _extended range_. Can be eaten _4 times_, each time taking _1/4th_ of the _durability_",
+
   "item.yafa.ice_cube": "Ice Cube"
 }
