@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ii",
+    "ii"
+  ],
+  "key": {
+    "i": {
+      "item": "yafa:ice_cube"
+    }
+  },
+  "result": {
+    "item": "minecraft:ice",
+    "count": 1
+  }
+}

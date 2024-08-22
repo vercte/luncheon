@@ -1,0 +1,19 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "B": {
+      "item": "minecraft:bread"
+    }
+  },
+  "pattern": [
+    "B",
+    "B",
+    "B",
+    "B",
+    "B"
+  ],
+  "result": {
+    "item": "yafa:baguette"
+  }
+}
