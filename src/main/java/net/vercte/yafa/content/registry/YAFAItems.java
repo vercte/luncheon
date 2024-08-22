@@ -12,7 +12,7 @@ public class YAFAItems {
 
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
             .properties(p -> p.food(
-                    makeFood(5, 0.2F, false)
+                    makeFood(6, 0.7F, false)
             ))
             .register();
 

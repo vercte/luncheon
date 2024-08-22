@@ -6,6 +6,9 @@ import com.simibubi.create.content.equipment.extendoGrip.ExtendoGripInteractionP
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -184,7 +187,12 @@ public class BaguetteItem extends SwordItem {
         itemStack.hurtAndBreak(8, livingEntity, (LivingEntity using) -> {
                 using.broadcastBreakEvent(livingEntity.getUsedItemHand());
         });
-        ((LivingEntityInvoker) livingEntity).addEatEffect(itemStack, level, livingEntity);
+        ((LivingEntityInvoker) livingEntity).callAddEatEffect(itemStack, level, livingEntity);
+        if(livingEntity instanceof Player player) {
+            player.getFoodData().eat(itemStack.getItem(), itemStack, player);
+            player.awardStat(Stats.ITEM_USED.get(itemStack.getItem()));
+            level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.PLAYER_BURP, SoundSource.PLAYERS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+        }
         livingEntity.gameEvent(GameEvent.EAT);
         return itemStack;
     }

@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 @Mixin(LivingEntity.class)
 public interface LivingEntityInvoker {
     @Invoker("addEatEffect")
-    public void addEatEffect(ItemStack itemStack, Level level, LivingEntity livingEntity);
+    void callAddEatEffect(ItemStack itemStack, Level level, LivingEntity livingEntity);
 }
