@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "luncheon:ice_cube"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "heatRequirement": "heated"
+}

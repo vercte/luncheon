@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.vercte.luncheon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "luncheon.refmap.json",
+  "mixins": [
+    "CowMixin",
+    "IceBlockMixin",
+    "LivingEntityInvoker"
+  ],
+  "client": [
+  ],
+  "minVersion": "0.8"
+}

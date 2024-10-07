@@ -1,0 +1,18 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "luncheon:ice_cube"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball",
+      "chance": 0.75
+    }
+  ],
+  "processingTime": 50
+}

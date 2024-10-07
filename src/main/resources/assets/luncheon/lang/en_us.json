@@ -1,0 +1,8 @@
+{
+  "item.luncheon.glass_jar": "Glass Jar",
+
+  "item.luncheon.baguette": "Baguette",
+  "item.luncheon.baguette.tooltip.summary": "Allows you to attack from an _extended range_. Can be eaten _4 times_, each time taking _1/4th_ of the _durability_",
+
+  "item.luncheon.ice_cube": "Ice Cube"
+}

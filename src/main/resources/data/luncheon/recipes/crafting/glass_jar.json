@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "_",
+    "0"
+  ],
+  "key": {
+    "_": {
+      "item": "create:iron_sheet"
+    },
+    "0": {
+      "item": "minecraft:glass_bottle"
+    }
+  },
+  "result": {
+    "item": "luncheon:glass_jar",
+    "count": 1
+  }
+}
