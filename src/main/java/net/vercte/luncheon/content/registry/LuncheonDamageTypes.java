@@ -1,0 +1,22 @@
+package net.vercte.luncheon.content.registry;
+
+import com.simibubi.create.foundation.damageTypes.DamageTypeBuilder;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.damagesource.DamageEffects;
+import net.minecraft.world.damagesource.DamageType;
+import net.vercte.luncheon.Luncheon;
+
+public class LuncheonDamageTypes {
+    public static final ResourceKey<DamageType>
+        TOO_SPICY = key("too_spicy");
+
+    private static ResourceKey<DamageType> key(String name) {
+        return ResourceKey.create(Registries.DAMAGE_TYPE, Luncheon.asResource(name));
+    }
+
+    public static void bootstrap(BootstapContext<DamageType> ctx) {
+        new DamageTypeBuilder(TOO_SPICY).effects(DamageEffects.BURNING).register(ctx);
+    }
+}
