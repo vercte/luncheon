@@ -1,0 +1,276 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "create:block/large_wheels",
+	"render_type": "minecraft:cutout_mipped",
+	"textures": {
+		"0": "luncheon:block/stirrer_base_side",
+		"1": "block/spruce_log_top",
+		"2": "create:block/mechanical_press_top",
+		"4": "luncheon:block/stirrer_base_top",
+		"5": "luncheon:block/stirrer_shaft_top",
+		"6": "create:block/waterwheel_metal",
+		"7": "create:block/mixer_head",
+        "1_2": "create:block/cogwheel",
+		"particle": "luncheon:block/stirrer_base_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 6, 16],
+			"faces": {
+				"north": {"uv": [0, 10, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 10, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 10, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 10, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"from": [0, 10, 0],
+			"to": [16, 13, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 10, 0]},
+			"faces": {
+				"north": {"uv": [0, 3, 16, 6], "texture": "#0"},
+				"east": {"uv": [0, 3, 16, 6], "texture": "#0"},
+				"south": {"uv": [0, 3, 16, 6], "texture": "#0"},
+				"west": {"uv": [0, 3, 16, 6], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#4"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Side4",
+			"from": [0, 6, 0],
+			"to": [16, 10, 0.1],
+			"faces": {
+				"north": {"uv": [0, 6, 16, 10], "texture": "#0"},
+				"south": {"uv": [0, 6, 16, 10], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Side3",
+			"from": [0, 6, 15.9],
+			"to": [16, 10, 16],
+			"faces": {
+				"north": {"uv": [0, 6, 16, 10], "texture": "#0"},
+				"south": {"uv": [0, 6, 16, 10], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Side2",
+			"from": [15.9, 6, 0],
+			"to": [16, 10, 16],
+			"faces": {
+				"east": {"uv": [0, 6, 16, 10], "texture": "#0"},
+				"west": {"uv": [0, 6, 16, 10], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Side1",
+			"from": [0, 6, 0],
+			"to": [0.1, 10, 16],
+			"faces": {
+				"east": {"uv": [0, 6, 16, 10], "texture": "#0"},
+				"west": {"uv": [0, 6, 16, 10], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Shaft",
+			"from": [2, 13, 2],
+			"to": [14, 15, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 13, 2]},
+			"faces": {
+				"north": {"uv": [2, 1, 14, 3], "texture": "#0"},
+				"east": {"uv": [2, 1, 14, 3], "texture": "#0"},
+				"south": {"uv": [2, 1, 14, 3], "texture": "#0"},
+				"west": {"uv": [2, 1, 14, 3], "texture": "#0"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#5"}
+			}
+		},
+		{
+			"name": "ShaftSide1",
+			"from": [4, 13, 12],
+			"to": [12, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 12]},
+			"faces": {
+				"north": {"uv": [4, 1, 12, 3], "texture": "#0"}
+			}
+		},
+		{
+			"name": "ShaftSide2",
+			"from": [4, 13, 4],
+			"to": [12, 15, 4],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 14, 4]},
+			"faces": {
+				"south": {"uv": [4, 1, 12, 3], "texture": "#0"}
+			}
+		},
+		{
+			"name": "ShaftSide3",
+			"from": [4, 13, 4],
+			"to": [4, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 13, 4]},
+			"faces": {
+				"east": {"uv": [4, 1, 12, 3], "texture": "#0"}
+			}
+		},
+		{
+			"name": "ShaftSide4",
+			"from": [12, 13, 4],
+			"to": [12, 15, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [10, 13, 4]},
+			"faces": {
+				"west": {"uv": [4, 1, 12, 3], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5, -2, 5],
+			"to": [11, 0, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, -1, 8]},
+			"faces": {
+				"north": {"uv": [10, 6, 16, 8], "texture": "#6"},
+				"east": {"uv": [10, 6, 16, 8], "texture": "#6"},
+				"south": {"uv": [10, 6, 16, 8], "texture": "#6"},
+				"west": {"uv": [10, 6, 16, 8], "texture": "#6"},
+				"down": {"uv": [16, 0, 10, 6], "texture": "#6"}
+			}
+		},
+		{
+			"name": "Mixer wire 1",
+			"from": [2.5, -13, 8],
+			"to": [13.5, -3, 8],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, -7.75, 8]},
+			"faces": {
+				"north": {"uv": [0, 0, 11, 10], "texture": "#7"},
+				"south": {"uv": [0, 0, 11, 10], "texture": "#7"}
+			}
+		},
+		{
+			"name": "MixerCenter",
+			"from": [7, -13, 7],
+			"to": [9, -1, 9],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, -7.75, 8]},
+			"faces": {
+				"north": {"uv": [12, 0, 14, 12], "texture": "#7"},
+				"east": {"uv": [12, 0, 14, 12], "texture": "#7"},
+				"south": {"uv": [12, 0, 14, 12], "texture": "#7"},
+				"west": {"uv": [12, 0, 14, 12], "texture": "#7"},
+				"down": {"uv": [12, 12, 14, 14], "texture": "#7"}
+			}
+		},
+		{
+			"name": "Mixer wire 2",
+			"from": [8, -13, 2.5],
+			"to": [8, -3, 13.5],
+			"rotation": {"angle": 22.5, "axis": "y", "origin": [8, -7.75, 8]},
+			"faces": {
+				"east": {"uv": [0, 0, 11, 10], "texture": "#7"},
+				"west": {"uv": [0, 0, 11, 10], "texture": "#7"}
+			}
+		},
+		{
+			"name": "Gear",
+			"from": [-1, 6.5, 6.5],
+			"to": [17, 9.5, 9.5],
+			"faces": {
+				"north": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"east": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"south": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"west": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"up": {"uv": [14, 12, 32, 15], "texture": "#1_2"},
+				"down": {"uv": [14, 12, 32, 15], "texture": "#1_2"}
+			}
+		},
+		{
+			"name": "Gear2",
+			"from": [-1, 6.5, 6.5],
+			"to": [17, 9.5, 9.5],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"east": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"south": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"west": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"up": {"uv": [14, 12, 32, 15], "texture": "#1_2"},
+				"down": {"uv": [14, 12, 32, 15], "texture": "#1_2"}
+			}
+		},
+		{
+			"name": "Gear3",
+			"from": [-1, 6.5, 6.5],
+			"to": [17, 9.5, 9.5],
+			"rotation": {"angle": -45, "axis": "y", "origin": [8, 8, 8]},
+			"faces": {
+				"north": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"east": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"south": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"west": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"up": {"uv": [14, 12, 32, 15], "texture": "#1_2"},
+				"down": {"uv": [14, 12, 32, 15], "texture": "#1_2"}
+			}
+		},
+		{
+			"name": "Gear4",
+			"from": [6.5, 6.5, -1],
+			"to": [9.5, 9.5, 17],
+			"faces": {
+				"north": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"east": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"south": {"uv": [10, 16, 13, 19], "texture": "#1_2"},
+				"west": {"uv": [14, 16, 32, 19], "texture": "#1_2"},
+				"up": {"uv": [14, 12, 32, 15], "rotation": 90, "texture": "#1_2"},
+				"down": {"uv": [14, 12, 32, 15], "rotation": 90, "texture": "#1_2"}
+			}
+		},
+		{
+			"name": "GearCaseInner",
+			"from": [2, 6.55, 2],
+			"to": [14, 9.45, 14],
+			"faces": {
+				"north": {"uv": [0, 12, 12, 15], "texture": "#1_2"},
+				"east": {"uv": [0, 12, 12, 15], "texture": "#1_2"},
+				"south": {"uv": [0, 12, 12, 15], "texture": "#1_2"},
+				"west": {"uv": [0, 12, 12, 15], "texture": "#1_2"},
+				"up": {"uv": [8, 0, 20, 12], "texture": "#1_2"},
+				"down": {"uv": [8, 0, 20, 12], "texture": "#1_2"}
+			}
+		},
+		{
+			"name": "GearCaseOuter",
+			"from": [4, 6, 4],
+			"to": [12, 10, 12],
+			"faces": {
+				"north": {"uv": [0, 8, 8, 12], "texture": "#1_2"},
+				"east": {"uv": [0, 8, 8, 12], "texture": "#1_2"},
+				"south": {"uv": [0, 8, 8, 12], "texture": "#1_2"},
+				"west": {"uv": [0, 8, 8, 12], "texture": "#1_2"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#1_2"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#1_2"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		1,
+		2,
+		3,
+		4,
+		5,
+		6,
+		7,
+		8,
+		9,
+		10,
+		11,
+		12,
+		13,
+		14,
+		{
+			"name": "cogwheel_shaftless",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [15, 16, 17, 18, 19, 20]
+		}
+	]
+}
