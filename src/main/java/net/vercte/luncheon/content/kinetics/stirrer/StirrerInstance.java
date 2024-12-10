@@ -8,7 +8,6 @@ import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.foundation.render.AllMaterialSpecs;
 import net.minecraft.core.Direction;
-import net.vercte.luncheon.Luncheon;
 
 public class StirrerInstance extends EncasedCogInstance implements DynamicInstance {
     private final RotatingData stirrerHead;

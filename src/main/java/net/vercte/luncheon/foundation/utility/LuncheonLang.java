@@ -1,6 +1,5 @@
 package net.vercte.luncheon.foundation.utility;
 
-import com.simibubi.create.Create;
 import com.simibubi.create.foundation.utility.Components;
 import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.LangBuilder;

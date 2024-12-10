@@ -1,6 +1,5 @@
 package net.vercte.luncheon.content.block;
 
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 import vectorwing.farmersdelight.common.block.PieBlock;
