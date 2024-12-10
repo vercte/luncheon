@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.ChatFormatting;
+import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonRecipeTypes;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 
@@ -103,7 +104,7 @@ public class MechanicalStirrerBlockEntity extends BasinOperatingBlockEntity {
                         if (t != 0) recipeSpeed = t / 100f;
                     }
 
-                    processingTicks = Mth.clamp((Mth.log2((int) (128 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 128);
+                    processingTicks = Mth.clamp((Mth.log2((int) (256 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 256);
 
                     level.playSound(null, worldPosition, SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_AMBIENT,
                             SoundSource.BLOCKS, .75f, .75f);
@@ -126,6 +127,7 @@ public class MechanicalStirrerBlockEntity extends BasinOperatingBlockEntity {
     protected void onBasinRemoved() {
         if (!running)
             return;
+        runningTicks = 40;
         running = false;
     }
 
