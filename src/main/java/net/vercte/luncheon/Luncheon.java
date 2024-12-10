@@ -1,17 +1,14 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.vercte.luncheon.content.registry.LuncheonBlockEntityTypes;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonRecipeTypes;
+import net.vercte.luncheon.content.registry.*;
+import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.utility.data.LuncheonDatagen;
 import org.slf4j.Logger;
 
@@ -19,7 +16,7 @@ import org.slf4j.Logger;
 @Mod(Luncheon.MODID)
 public class Luncheon {
     public static final String MODID = "luncheon";
-    public static final NonNullSupplier<CreateRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> CreateRegistrate.create(MODID));
+    public static final NonNullSupplier<LuncheonRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> LuncheonRegistrate.create(MODID));
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Luncheon() {
@@ -28,6 +25,7 @@ public class Luncheon {
         LuncheonItems.register();
         LuncheonBlocks.register();
         LuncheonBlockEntityTypes.register();
+        LuncheonMobEffects.register();
         LuncheonRecipeTypes.register(modEventBus);
 
         modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
@@ -39,7 +37,7 @@ public class Luncheon {
         return new ResourceLocation(MODID, path);
     }
 
-    public static CreateRegistrate registrate() {
+    public static LuncheonRegistrate registrate() {
         return REGISTRATE.get();
     }
 

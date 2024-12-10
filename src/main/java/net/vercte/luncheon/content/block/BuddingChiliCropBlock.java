@@ -18,14 +18,14 @@ import vectorwing.farmersdelight.common.block.BuddingBushBlock;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 @NonnullDefault
-public class BuddingFireberryBlock extends BuddingBushBlock implements BonemealableBlock {
-    public BuddingFireberryBlock(Properties properties) {
+public class BuddingChiliCropBlock extends BuddingBushBlock implements BonemealableBlock {
+    public BuddingChiliCropBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     public BlockState getPlant(BlockGetter world, BlockPos pos) {
-        return LuncheonBlocks.BUDDING_FIREBERRY_CROP.getDefaultState();
+        return LuncheonBlocks.BUDDING_CHILI_CROP.getDefaultState();
     }
 
     @Override
@@ -36,7 +36,7 @@ public class BuddingFireberryBlock extends BuddingBushBlock implements Bonemeala
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
         if (state.getValue(BuddingBushBlock.AGE) == 4) {
-            level.setBlock(currentPos, LuncheonBlocks.FIREBERRY_CROP.get().defaultBlockState(), 3);
+            level.setBlock(currentPos, LuncheonBlocks.CHILI_CROP.get().defaultBlockState(), 3);
         }
         return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
     }
@@ -48,7 +48,7 @@ public class BuddingFireberryBlock extends BuddingBushBlock implements Bonemeala
 
     @Override
     public void growPastMaxAge(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        level.setBlockAndUpdate(pos, LuncheonBlocks.FIREBERRY_CROP.get().defaultBlockState());
+        level.setBlockAndUpdate(pos, LuncheonBlocks.CHILI_CROP.get().defaultBlockState());
     }
 
     @Override
@@ -73,7 +73,7 @@ public class BuddingFireberryBlock extends BuddingBushBlock implements Bonemeala
             level.setBlockAndUpdate(pos, state.setValue(AGE, ageGrowth));
         } else {
             int remainingGrowth = ageGrowth - maxAge - 1;
-            level.setBlockAndUpdate(pos, LuncheonBlocks.FIREBERRY_CROP.get().defaultBlockState().setValue(FireberryVineBlock.VINE_AGE, remainingGrowth));
+            level.setBlockAndUpdate(pos, LuncheonBlocks.CHILI_CROP.get().defaultBlockState().setValue(ChiliCropBlock.VINE_AGE, remainingGrowth));
         }
     }
 }

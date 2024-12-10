@@ -2,48 +2,37 @@ package net.vercte.luncheon.content.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 import org.lwjgl.system.NonnullDefault;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.ModTags;
-
-import javax.annotation.Nullable;
 
 @NonnullDefault
 @SuppressWarnings("deprecation")
-public class FireberryVineBlock extends CropBlock {
+public class ChiliCropBlock extends CropBlock {
     public static final IntegerProperty VINE_AGE = BlockStateProperties.AGE_3;
-    public static final BooleanProperty ROPELOGGED = BooleanProperty.create("ropelogged");
     private static final VoxelShape SHAPE = Block.box(2.0D, 0.0D, 2.0D, 14.0D, 16.0D, 14.0D);
 
-    public FireberryVineBlock(Properties properties) {
+    public ChiliCropBlock(Properties properties) {
         super(properties);
-        registerDefaultState(stateDefinition.any().setValue(getAgeProperty(), 0).setValue(ROPELOGGED, false));
+        registerDefaultState(stateDefinition.any().setValue(getAgeProperty(), 0));
     }
 
     @Override
@@ -54,7 +43,7 @@ public class FireberryVineBlock extends CropBlock {
             return InteractionResult.PASS;
         } else if (isMature) {
             int quantity = 1 + level.random.nextInt(2);
-            popResource(level, pos, new ItemStack(LuncheonItems.FIREBERRY.get(), quantity));
+            popResource(level, pos, new ItemStack(LuncheonItems.CHILI.get(), quantity));
 
             level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.random.nextFloat() * 0.4F);
             level.setBlock(pos, state.setValue(getAgeProperty(), 0), 2);
@@ -78,22 +67,6 @@ public class FireberryVineBlock extends CropBlock {
                 if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt((int) (25.0F / speed) + 1) == 0)) {
                     level.setBlock(pos, state.setValue(getAgeProperty(), age + 1), 2);
                     net.minecraftforge.common.ForgeHooks.onCropsGrowPost(level, pos, state);
-                }
-            }
-            attemptRopeClimb(level, pos, random);
-        }
-    }
-
-    public void attemptRopeClimb(ServerLevel level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.3F) {
-            BlockPos posAbove = pos.above();
-            BlockState stateAbove = level.getBlockState(posAbove);
-            boolean canClimb = vectorwing.farmersdelight.common.Configuration.ENABLE_TOMATO_VINE_CLIMBING_TAGGED_ROPES.get() ? stateAbove.is(ModTags.ROPES) : stateAbove.is(ModBlocks.ROPE.get());
-            if (canClimb) {
-                int vineHeight;
-                for (vineHeight = 1; level.getBlockState(pos.below(vineHeight)).is(this); ++vineHeight) {}
-                if (vineHeight < 3) {
-                    level.setBlockAndUpdate(posAbove, defaultBlockState().setValue(ROPELOGGED, true));
                 }
             }
         }
@@ -121,12 +94,12 @@ public class FireberryVineBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return LuncheonItems.FIREBERRY_SEEDS.get();
+        return LuncheonItems.CHILI.get();
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(VINE_AGE, ROPELOGGED);
+        builder.add(VINE_AGE);
     }
 
     @Override
@@ -143,38 +116,10 @@ public class FireberryVineBlock extends CropBlock {
         }
 
         level.setBlockAndUpdate(pos, state.setValue(getAgeProperty(), newAge));
-        attemptRopeClimb(level, pos, random);
-    }
-
-    @Override
-    public boolean isLadder(BlockState state, LevelReader level, BlockPos pos, LivingEntity entity) {
-        return state.getValue(ROPELOGGED) && state.is(BlockTags.CLIMBABLE);
-    }
-
-    @Override
-    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        BlockPos belowPos = pos.below();
-        BlockState belowState = level.getBlockState(belowPos);
-
-        if (state.getValue(FireberryVineBlock.ROPELOGGED)) {
-            return belowState.is(ModBlocks.TOMATO_CROP.get()) && hasGoodCropConditions(level, pos);
-        }
-
-        return super.canSurvive(state, level, pos);
     }
 
     public boolean hasGoodCropConditions(LevelReader level, BlockPos pos) {
         return level.getRawBrightness(pos, 0) >= 8 || level.canSeeSky(pos);
-    }
-
-    @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
-        boolean isRopelogged = state.getValue(FireberryVineBlock.ROPELOGGED);
-        super.playerDestroy(level, player, pos, state, blockEntity, stack);
-
-        if (isRopelogged) {
-            destroyAndPlaceRope(level, pos);
-        }
     }
 
     @Override
@@ -186,20 +131,10 @@ public class FireberryVineBlock extends CropBlock {
         return state;
     }
 
-    public static void destroyAndPlaceRope(Level level, BlockPos pos) {
-        Block configuredRopeBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(vectorwing.farmersdelight.common.Configuration.DEFAULT_TOMATO_VINE_ROPE.get()));
-        Block finalRopeBlock = configuredRopeBlock != null ? configuredRopeBlock : ModBlocks.ROPE.get();
-
-        level.setBlockAndUpdate(pos, finalRopeBlock.defaultBlockState());
-    }
-
     @Override
     public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!state.canSurvive(level, pos)) {
             level.destroyBlock(pos, true);
-            if (state.getValue(FireberryVineBlock.ROPELOGGED)) {
-                destroyAndPlaceRope(level, pos);
-            }
         }
     }
 }

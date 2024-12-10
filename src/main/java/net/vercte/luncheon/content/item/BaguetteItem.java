@@ -26,7 +26,7 @@ import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonMisc;
+import net.vercte.luncheon.content.registry.LuncheonTiers;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMultimap;
@@ -58,7 +58,7 @@ public class BaguetteItem extends SwordItem {
     public static final String BAGUETTE_MARKER = "luncheonBaguette";
 
     public BaguetteItem(Properties properties) {
-        super(LuncheonMisc.BAGUETTE_TIER, 2, -2.4F, properties);
+        super(LuncheonTiers.BAGUETTE_TIER, 2, -2.4F, properties);
     }
 
     @SubscribeEvent

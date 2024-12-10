@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "luncheon:fireberry_seeds"
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "luncheon:blocks/budding_fireberry"
+  "random_sequence": "luncheon:blocks/chili"
 }

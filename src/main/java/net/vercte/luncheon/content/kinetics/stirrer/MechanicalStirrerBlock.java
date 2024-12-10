@@ -1,24 +1,20 @@
 package net.vercte.luncheon.content.kinetics.stirrer;
 
 import net.minecraft.core.Direction.Axis;
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import com.simibubi.create.content.processing.basin.BasinBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.vercte.luncheon.content.registry.LuncheonBlockEntityTypes;
+import org.jetbrains.annotations.NotNull;
 
 public class MechanicalStirrerBlock extends KineticBlock implements IBE<MechanicalStirrerBlockEntity>, ICogWheel {
     public MechanicalStirrerBlock(Properties properties) {
@@ -26,7 +22,7 @@ public class MechanicalStirrerBlock extends KineticBlock implements IBE<Mechanic
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+    public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter worldIn, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return Shapes.block();
     }
 
@@ -43,11 +39,6 @@ public class MechanicalStirrerBlock extends KineticBlock implements IBE<Mechanic
     @Override
     public float getParticleTargetRadius() {
         return .85f;
-    }
-
-    @Override
-    public float getParticleInitialRadius() {
-        return .75f;
     }
 
     @Override

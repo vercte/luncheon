@@ -1,8 +1,17 @@
 {
   "block.luncheon.blaze_cake": "ǝʞɐƆ ǝzɐןᗺ",
+  "block.luncheon.budding_chili": "ıןıɥƆ buıppnᗺ",
+  "block.luncheon.chili": "ıןıɥƆ",
   "block.luncheon.mechanical_stirrer": "ɹǝɹɹıʇS ןɐɔıuɐɥɔǝW",
+  "death.attack.luncheon.glass_shards": "ʎpuɐɔ ʞɔoɹ snoɹǝbuɐp ǝɯos ǝʇɐ %1$s",
+  "death.attack.luncheon.too_spicy": "%1$s ɹoɟ ʎɔıds ooʇ sɐʍ pןɹoʍ ǝɥ⟘",
+  "effect.luncheon.spicy": "ʎɔıdS",
   "item.luncheon.baguette": "ǝʇʇǝnbɐᗺ",
   "item.luncheon.blaze_cake_slice": "ǝʞɐƆ ǝzɐןᗺ ɟo ǝɔıןS",
+  "item.luncheon.chili": "ıןıɥƆ",
+  "item.luncheon.chili_seeds": "spǝǝS ıןıɥƆ",
   "item.luncheon.glass_jar": "ɹɐſ ssɐן⅁",
-  "item.luncheon.ice_cube": "ɯɐǝɹƆ ǝɔI"
+  "item.luncheon.glass_shards": "spɹɐɥS ssɐן⅁",
+  "item.luncheon.ice_cube": "ɯɐǝɹƆ ǝɔI",
+  "luncheon.gui.contraptions.too_fast": "˙‾ʇsɐɟ ooʇ‾ buıʇɐʇoɹ sı %1$s sıɥʇ sɹɐǝddɐ ʇI"
 }

@@ -1,8 +1,17 @@
 {
   "block.luncheon.blaze_cake": "Blaze Cake",
+  "block.luncheon.budding_chili": "Budding Chili",
+  "block.luncheon.chili": "Chili",
   "block.luncheon.mechanical_stirrer": "Mechanical Stirrer",
+  "death.attack.luncheon.glass_shards": "%1$s ate some dangerous rock candy",
+  "death.attack.luncheon.too_spicy": "The world was too spicy for %1$s",
+  "effect.luncheon.spicy": "Spicy",
   "item.luncheon.baguette": "Baguette",
   "item.luncheon.blaze_cake_slice": "Slice of Blaze Cake",
+  "item.luncheon.chili": "Chili",
+  "item.luncheon.chili_seeds": "Chili Seeds",
   "item.luncheon.glass_jar": "Glass Jar",
-  "item.luncheon.ice_cube": "Ice Cream"
+  "item.luncheon.glass_shards": "Glass Shards",
+  "item.luncheon.ice_cube": "Ice Cream",
+  "luncheon.gui.contraptions.too_fast": "It appears this %1$s is rotating _too fast_."
 }

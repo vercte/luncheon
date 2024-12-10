@@ -11,7 +11,6 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.VariantBlockStateBuilder;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.block.BlazeCakeBlock;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.block.PieBlock;
 
@@ -40,6 +39,16 @@ public class LuncheonBlockstates {
                             .rotationY(((int) state.getValue(PieBlock.FACING).toYRot() + 180) % 360)
                             .build();
                 });
+    }
+
+    public static <T extends Block> VariantBlockStateBuilder stageBlock(DataGenContext<Block, T> c, RegistrateBlockstateProvider p, IntegerProperty ageProperty, Property<?>... ignored) {
+        return p.getVariantBuilder(c.getEntry())
+                .forAllStatesExcept(state -> {
+                    int ageSuffix = state.getValue(ageProperty);
+                    String stageName = String.join("", c.getId().getPath(), "_stage", Integer.toString(ageSuffix));
+                    return ConfiguredModel.builder()
+                            .modelFile(p.models().cross(stageName, resourceBlock(stageName)).renderType("cutout")).build();
+                }, ignored);
     }
 
     // now I have to deal with it too! (adapted from Farmer's Delight code BlockStates.customStageBlock for registrate)
