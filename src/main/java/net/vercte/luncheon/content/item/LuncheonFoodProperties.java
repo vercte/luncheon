@@ -5,7 +5,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.vercte.luncheon.content.registry.LuncheonMobEffects;
 
 public class LuncheonFoodProperties {
-    public static final FoodProperties BAGUETTE = food(6, 0.7F).build();
+    public static final FoodProperties BAGUETTE = food(5, 0.6F).build();
     public static final FoodProperties BLAZE_CAKE_SLICE = food(2, 0.1F, true).build();
 
     public static final FoodProperties CHILI = food(2, 0.1F)

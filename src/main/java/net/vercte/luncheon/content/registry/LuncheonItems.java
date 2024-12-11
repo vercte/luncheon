@@ -1,9 +1,12 @@
 package net.vercte.luncheon.content.registry;
 
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags.AllItemTags;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement;
+import net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacementsAPI;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -51,5 +54,13 @@ public class LuncheonItems {
             .register();
     // endregion
 
-    public static void register() {}
+    // region Misc
+    private static void registerPlacements(AdditionalItemPlacementsAPI.Event event) {
+        event.register(AllItems.BLAZE_CAKE.get(), new AdditionalItemPlacement(LuncheonBlocks.BLAZE_CAKE.get()));
+    }
+    // endregion
+
+    public static void register() {
+        AdditionalItemPlacementsAPI.addRegistration(LuncheonItems::registerPlacements);
+    }
 }

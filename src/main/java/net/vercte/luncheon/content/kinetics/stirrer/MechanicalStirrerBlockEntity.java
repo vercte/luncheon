@@ -34,7 +34,7 @@ import java.util.Optional;
 public class MechanicalStirrerBlockEntity extends BasinOperatingBlockEntity {
     private static final Object StirringRecipesKey = new Object();
 
-    public boolean running;
+    public boolean running; // TODO: Find out why this keeps getting set to false / recipes don't start unless replaced
     public int runningTicks;
     public int processingTicks;
 

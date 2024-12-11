@@ -8,7 +8,7 @@ import net.minecraftforge.common.Tags;
 public class LuncheonTiers {
     public static final ForgeTier BAGUETTE_TIER = new ForgeTier(
             0,
-            32,
+            10,
             2.0F,
             0.0F,
             0,

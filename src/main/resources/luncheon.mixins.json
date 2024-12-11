@@ -6,7 +6,6 @@
   "mixins": [
     "AssemblyOperatorBlockItemMixin",
     "BasinBlockMixin",
-    "IceBlockMixin",
     "LivingEntityInvoker"
   ],
   "client": [

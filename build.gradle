@@ -87,6 +87,18 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+
+        filter {
+            includeGroup "maven.modrinth"
+        }
+    }
     maven {
         name = "BlameJared"
         url = "https://maven.blamejared.com/"
@@ -130,6 +142,14 @@ dependencies {
     // farmersdelight dependency
     implementation fg.deobf("curse.maven:farmers-delight-398521:${farmers_delight_version}")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+
+    // moonlight lib dependency
+    implementation "maven.modrinth:moonlight:${moonlight_version}"
+
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.4.1")) {
+        jarJar.ranged(it, "[0.4.1,)")
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

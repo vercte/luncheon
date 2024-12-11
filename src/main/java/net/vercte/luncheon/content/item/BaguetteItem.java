@@ -184,7 +184,7 @@ public class BaguetteItem extends SwordItem {
 
     @Override
     public ItemStack finishUsingItem(ItemStack itemStack, @NotNull Level level, @NotNull LivingEntity livingEntity) {
-        itemStack.hurtAndBreak(8, livingEntity, (LivingEntity using) -> {
+        itemStack.hurtAndBreak(2, livingEntity, (LivingEntity using) -> {
                 using.broadcastBreakEvent(livingEntity.getUsedItemHand());
         });
         ((LivingEntityInvoker) livingEntity).callAddEatEffect(itemStack, level, livingEntity);
