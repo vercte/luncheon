@@ -23,7 +23,7 @@ public class SpicyEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity entity, int amplifier) {
-        if(ticksActive++ % 160 == 0) {
+        if(ticksActive++ % 120 == 0) {
             entity.hurt(LuncheonDamageSources.too_spicy(entity.level()), 1);
         }
     }

@@ -4,7 +4,7 @@ import com.simibubi.create.Create;
 import com.simibubi.create.foundation.utility.Lang;
 
 public enum CooledCondition {
-    NONE(0xffffff), COOLED(0x00d5ff), FREEZING(0xa53dff);
+    NONE(0xffffff), COOLED(0x00d5ff);
 
     private final int color;
     CooledCondition(int color) { this.color = color; }
