@@ -32,4 +32,6 @@ public class LuncheonRecipeProvider extends RecipeProvider {
     public interface GeneratedRecipe {
         void register(Consumer<FinishedRecipe> consumer);
     }
+
+    protected static class Marker {}
 }

@@ -37,7 +37,7 @@ public class LuncheonItems {
             .register();
 
     public static final ItemEntry<NotActuallyAFoodItem> ICE_CUBE = REGISTRATE.item("ice_cube", NotActuallyAFoodItem::new)
-            .lang("Ice Cream").register();
+            .lang("Ice Cube").register();
 
     public static final ItemEntry<GlassShardsItem> GLASS_SHARDS = REGISTRATE.item("glass_shards", GlassShardsItem::new)
             .lang("Glass Shards").register();

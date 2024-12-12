@@ -11,6 +11,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.utility.data.recipe.LuncheonProcessingRecipeGen;
+import net.vercte.luncheon.foundation.utility.data.recipe.LuncheonStandardRecipeGen;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -30,6 +31,7 @@ public class LuncheonDatagen {
             lookupProvider = generatedEntriesProvider.getRegistryProvider();
             generator.addProvider(true, generatedEntriesProvider);
 
+            generator.addProvider(true, new LuncheonStandardRecipeGen(output));
             generator.addProvider(true, new DamageTypeTagGen(output, lookupProvider, existingFileHelper));
 
             LuncheonProcessingRecipeGen.registerAll(generator, output);
