@@ -29,7 +29,6 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
     protected static final int BOTTLE = 250;
 
     public static void registerAll(DataGenerator gen, PackOutput output) {
-        GENERATORS.add(new StirringRecipeGen(output));
         GENERATORS.add(new CrushingRecipeGen(output));
 
         gen.addProvider(true, new DataProvider() {

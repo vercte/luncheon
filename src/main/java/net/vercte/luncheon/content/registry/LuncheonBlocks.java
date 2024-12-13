@@ -1,7 +1,9 @@
 package net.vercte.luncheon.content.registry;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -13,7 +15,7 @@ import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.block.BlazeCakeBlock;
 import net.vercte.luncheon.content.block.BuddingChiliCropBlock;
 import net.vercte.luncheon.content.block.ChiliCropBlock;
-import net.vercte.luncheon.content.kinetics.stirrer.MechanicalStirrerBlock;
+import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.utility.data.LuncheonBlockstates;
 
@@ -26,16 +28,10 @@ public class LuncheonBlocks {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
     // region Kinetics
-    public static final BlockEntry<MechanicalStirrerBlock> MECHANICAL_STIRRER =
-            REGISTRATE.block("mechanical_stirrer", MechanicalStirrerBlock::new)
-                    .initialProperties(SharedProperties::stone)
-                    .properties(p -> p.noOcclusion().mapColor(MapColor.STONE))
-                    .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(BlockStressDefaults.setImpact(4.0))
-                    .transform(axeOrPickaxe())
-                    .item(AssemblyOperatorBlockItem::new)
-                    .transform(customItemModel())
-                    .lang("Mechanical Stirrer")
+    public static final BlockEntry<CoolerBlock> COOLER =
+            REGISTRATE.block("cooler", CoolerBlock::new)
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY).lightLevel(CoolerBlock::getLight))
+                    .lang("Mechanical Cooler")
                     .register();
     // endregion
 
@@ -49,17 +45,19 @@ public class LuncheonBlocks {
     // endregion
 
     // region Crops
-    public static final BlockEntry<BuddingChiliCropBlock> BUDDING_CHILI_CROP = REGISTRATE.block("budding_chili", BuddingChiliCropBlock::new)
-            .initialProperties(() -> Blocks.WHEAT)
-            .blockstate((c, p) -> LuncheonBlockstates.HiddenStageBlock(c, p, LuncheonBlockstates.fdResourceBlock("crop_cross"), "cross", BuddingChiliCropBlock.AGE, Arrays.asList(0, 1, 2, 3, 3)))
-            .tag(BlockTags.CROPS)
-            .register();
+    public static final BlockEntry<BuddingChiliCropBlock> BUDDING_CHILI_CROP =
+            REGISTRATE.block("budding_chili", BuddingChiliCropBlock::new)
+                    .initialProperties(() -> Blocks.WHEAT)
+                    .blockstate((c, p) -> LuncheonBlockstates.HiddenStageBlock(c, p, LuncheonBlockstates.fdResourceBlock("crop_cross"), "cross", BuddingChiliCropBlock.AGE, Arrays.asList(0, 1, 2, 3, 3)))
+                    .tag(BlockTags.CROPS)
+                    .register();
 
-    public static final BlockEntry<ChiliCropBlock> CHILI_CROP = REGISTRATE.block("chili", ChiliCropBlock::new)
-            .initialProperties(() -> Blocks.WHEAT)
-            .blockstate((c, p) -> LuncheonBlockstates.stageBlock(c, p, ChiliCropBlock.VINE_AGE))
-            .tag(BlockTags.CROPS)
-            .register();
+    public static final BlockEntry<ChiliCropBlock> CHILI_CROP =
+            REGISTRATE.block("chili", ChiliCropBlock::new)
+                    .initialProperties(() -> Blocks.WHEAT)
+                    .blockstate((c, p) -> LuncheonBlockstates.stageBlock(c, p, ChiliCropBlock.VINE_AGE))
+                    .tag(BlockTags.CROPS)
+                    .register();
     // endregion
 
     public static void register() {}
