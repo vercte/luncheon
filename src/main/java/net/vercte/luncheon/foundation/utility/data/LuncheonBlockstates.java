@@ -27,6 +27,18 @@ public class LuncheonBlockstates {
         return new ResourceLocation(Luncheon.MODID, "block/" + path);
     }
 
+    public static <T extends Block> void cubeAll(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
+                                                 String textureSubDir) {
+        cubeAll(ctx, prov, textureSubDir, ctx.getName());
+    }
+
+    public static <T extends Block> void cubeAll(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,
+                                                 String textureSubDir, String name) {
+        String texturePath = "block/" + textureSubDir + name;
+        prov.simpleBlock(ctx.get(), prov.models()
+                .cubeAll(ctx.getName(), prov.modLoc(texturePath)));
+    }
+
     public static <T extends PieBlock> VariantBlockStateBuilder PieBlock(DataGenContext<Block, T> c, RegistrateBlockstateProvider p) {
         return p.getVariantBuilder(c.getEntry())
                 .forAllStates(state -> {

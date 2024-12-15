@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "luncheon:mechanical_stirrer"
+          "name": "luncheon:mechanical_cooler"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "luncheon:blocks/mechanical_stirrer"
+  "random_sequence": "luncheon:blocks/mechanical_cooler"
 }

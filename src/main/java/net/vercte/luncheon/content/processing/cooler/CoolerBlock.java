@@ -1,29 +1,34 @@
 package net.vercte.luncheon.content.processing.cooler;
 
-import com.simibubi.create.content.equipment.wrench.IWrenchable;
+import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.processing.basin.BasinBlockEntity;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.vercte.luncheon.Luncheon;
+import net.vercte.luncheon.content.registry.LuncheonBlockEntityTypes;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 @SuppressWarnings("deprecation")
-public class CoolerBlock extends HorizontalKineticBlock implements IBE<CoolerBlockEntity> {
-    public static final EnumProperty<CoolingLevel> COOL_LEVEL = EnumProperty.create("blaze", CoolingLevel.class);
+public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> {
+    public static final EnumProperty<CoolingLevel> COOL_LEVEL = EnumProperty.create("cool_level", CoolingLevel.class);
 
     public CoolerBlock(Properties properties) {
         super(properties);
@@ -33,7 +38,7 @@ public class CoolerBlock extends HorizontalKineticBlock implements IBE<CoolerBlo
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(COOL_LEVEL, HORIZONTAL_FACING);
+        builder.add(COOL_LEVEL);
     }
 
     @Override
@@ -47,6 +52,15 @@ public class CoolerBlock extends HorizontalKineticBlock implements IBE<CoolerBlo
     }
 
     @Override
+    public SpeedLevel getMinimumRequiredSpeedLevel() {
+        return SpeedLevel.MEDIUM;
+    }
+
+    public static boolean hasPipeTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
+            return face.getAxis() != Direction.Axis.Y;
+    }
+
+    @Override
     public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
         return face == Direction.DOWN;
     }
@@ -56,10 +70,6 @@ public class CoolerBlock extends HorizontalKineticBlock implements IBE<CoolerBlo
         return Direction.Axis.Y;
     }
 
-    public static boolean hasPipeTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
-        return face == state.getValue(HORIZONTAL_FACING).getOpposite();
-    }
-
     @Override
     public Class<CoolerBlockEntity> getBlockEntityClass() {
         return CoolerBlockEntity.class;
@@ -67,13 +77,30 @@ public class CoolerBlock extends HorizontalKineticBlock implements IBE<CoolerBlo
 
     @Override
     public BlockEntityType<? extends CoolerBlockEntity> getBlockEntityType() {
-        return null;
+        return LuncheonBlockEntityTypes.MECHANICAL_COOLER.get();
     }
 
     public static int getLight(BlockState state) {
         CoolingLevel level = state.getValue(COOL_LEVEL);
         if(level == CoolingLevel.COOLED) return 8;
         return 2;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context) {
+        return AllShapes.HEATER_BLOCK_SHAPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockGetter reader, BlockPos pos,
+                                        CollisionContext context) {
+        if (context == CollisionContext.empty())
+            return AllShapes.HEATER_BLOCK_SPECIAL_COLLISION_SHAPE;
+        return getShape(state, reader, pos, context);
+    }
+
+    public static CoolingLevel getCoolingLevelOf(BlockState blockState) {
+        return blockState.getValue(COOL_LEVEL);
     }
 
     public enum CoolingLevel implements StringRepresentable {
