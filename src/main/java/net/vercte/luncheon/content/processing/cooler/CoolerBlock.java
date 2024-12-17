@@ -1,10 +1,8 @@
 package net.vercte.luncheon.content.processing.cooler;
 
 import com.simibubi.create.AllShapes;
-import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.processing.basin.BasinBlockEntity;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +18,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlockEntityTypes;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import org.lwjgl.system.NonnullDefault;
@@ -43,6 +40,7 @@ public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> 
 
     @Override
     public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean moving) {
+        super.onPlace(state, world, pos, oldState, moving);
         if (world.isClientSide)
             return;
         BlockEntity blockEntity = world.getBlockEntity(pos.above());
@@ -108,14 +106,6 @@ public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> 
 
         public static CoolingLevel byIndex(int index) {
             return values()[index];
-        }
-
-        public CoolingLevel nextActiveLevel() {
-            return byIndex(ordinal() % (values().length - 1) + 1);
-        }
-
-        public boolean isAtLeast(CoolingLevel coolingLevel) {
-            return this.ordinal() >= coolingLevel.ordinal();
         }
 
         @Override

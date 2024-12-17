@@ -4,7 +4,12 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "luncheon.refmap.json",
   "mixins": [
-    "LivingEntityInvoker"
+    "LivingEntityInvoker",
+    "cooler.ProcessingRecipeBuilderMixin$ProcessingRecipeParamsMixin",
+    "cooler.BasinRecipeMixin",
+    "cooler.ProcessingRecipeBuilderMixin",
+    "cooler.ProcessingRecipeMixin",
+    "cooler.ProcessingRecipeSerializerMixin"
   ],
   "client": [
   ],

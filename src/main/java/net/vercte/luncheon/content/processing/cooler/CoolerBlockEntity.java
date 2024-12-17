@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.utility.animation.LerpedFloat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -34,6 +35,7 @@ public class CoolerBlockEntity extends KineticBlockEntity {
     protected void read(CompoundTag compound, boolean clientPacket) {
         satisfiedTicks = compound.getInt("satisfiedTicks");
         active = compound.getBoolean("active");
+        tankInventory.readFromNBT(compound);
 
         super.read(compound, clientPacket);
     }
@@ -42,24 +44,29 @@ public class CoolerBlockEntity extends KineticBlockEntity {
     protected void write(CompoundTag compoundTag, boolean clientPacket) {
         compoundTag.putInt("satisfiedTicks", satisfiedTicks);
         compoundTag.putBoolean("active", active);
+        tankInventory.writeToNBT(compoundTag);
+
         super.write(compoundTag, clientPacket);
     }
 
-    protected void onTankContentsChanged(FluidStack fluid) {}
-
+    @Override
     public void tick() {
+        super.tick();
 
-        active = satisfiedTicks > 0;
+        if(level.isClientSide) return;
+
+        active = false;
         if(isSpeedRequirementFulfilled()) {
             if(satisfiedTicks > 0) satisfiedTicks--;
             if(satisfiedTicks == 0) {
                 FluidStack drained = tankInventory.drain(drainSpeed, IFluidHandler.FluidAction.SIMULATE);
                 if(drained.getAmount() == drainSpeed) {
                     tankInventory.drain(drainSpeed, IFluidHandler.FluidAction.EXECUTE);
-                    active = true;
                     satisfiedTicks = 5;
                 }
             }
+
+            active = satisfiedTicks > 0;
         }
 
         setBlockState();
@@ -87,7 +94,7 @@ public class CoolerBlockEntity extends KineticBlockEntity {
     }
 
     public float getBladeRotationSpeed() {
-        if(active) return Math.min(16, speed / 2);
+        if(!active) return Math.max(-16, Math.min(speed / 2, 16));
         return speed;
     }
 
