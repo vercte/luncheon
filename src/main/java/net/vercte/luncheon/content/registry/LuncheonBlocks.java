@@ -1,5 +1,6 @@
 package net.vercte.luncheon.content.registry;
 
+import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
@@ -8,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GlassBlock;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
@@ -33,6 +35,7 @@ public class LuncheonBlocks {
                     .transform(pickaxeOnly())
                     .addLayer(() -> RenderType::cutoutMipped)
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                    .transform(BlockStressDefaults.setImpact(2.0))
                     .lang("Mechanical Cooler")
                     .item()
                     .transform(customItemModel())
@@ -68,10 +71,11 @@ public class LuncheonBlocks {
     // endregion
 
     // region Building Blocks
-    public static final BlockEntry<Block> COBBLED_GLASS = REGISTRATE.block("cobbled_glass", Block::new)
+    public static final BlockEntry<GlassBlock> COBBLED_GLASS = REGISTRATE.block("cobbled_glass", GlassBlock::new)
             .initialProperties(NonNullSupplier.of(() -> Blocks.GLASS))
             .tag(Tags.Blocks.GLASS_COLORLESS)
             .loot((t, g) -> t.dropWhenSilkTouch(g))
+            .addLayer(() -> RenderType::cutoutMipped)
             .blockstate((c, p) -> LuncheonBlockstates.cubeAll(c, p, "", "cobbled_glass"))
             .lang("Cobbled Glass")
             .item()

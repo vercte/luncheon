@@ -1,5 +1,6 @@
 {
-  "luncheon.gui.contraptions.too_fast": "It appears this %1$s is rotating _too fast_.",
+  "luncheon.tooltip.waterRequirement": "Water Requirement:",
+  "luncheon.gui.contraptions.no_water": "It appears this %1$s is _not recieving enough water_.",
 
   "death.attack.luncheon.glass_shards": "%1$s ate some dangerous rock candy",
   "death.attack.luncheon.too_spicy": "The world was too spicy for %1$s"

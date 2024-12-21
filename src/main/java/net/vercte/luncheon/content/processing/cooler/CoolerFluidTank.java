@@ -1,10 +1,14 @@
 package net.vercte.luncheon.content.processing.cooler;
 
+import com.simibubi.create.foundation.fluid.SmartFluidTank;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.minecraftforge.fluids.FluidStack;
 
-public class CoolerFluidTank extends FluidTank {
-    public CoolerFluidTank() {
-        super(1000, e -> e.getFluid().isSame(Fluids.WATER));
+import java.util.function.Consumer;
+
+public class CoolerFluidTank extends SmartFluidTank {
+    public CoolerFluidTank(Consumer<FluidStack> callback) {
+        super(800, callback);
+        setValidator(f -> f.getFluid().isSame(Fluids.WATER));
     }
 }

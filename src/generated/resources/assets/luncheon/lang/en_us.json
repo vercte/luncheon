@@ -14,5 +14,6 @@
   "item.luncheon.glass_jar": "Glass Jar",
   "item.luncheon.glass_shards": "Glass Shards",
   "item.luncheon.ice_cube": "Ice Cube",
-  "luncheon.gui.contraptions.too_fast": "It appears this %1$s is rotating _too fast_."
+  "luncheon.gui.contraptions.no_water": "It appears this %1$s is _not recieving enough water_.",
+  "luncheon.tooltip.waterRequirement": "Water Requirement"
 }

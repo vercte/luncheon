@@ -1,0 +1,23 @@
+{
+  "type": "create:compacting",
+  "coolRequirement": "cooled",
+  "ingredients": [
+    {
+      "item": "luncheon:ice_cube"
+    },
+    {
+      "item": "luncheon:ice_cube"
+    },
+    {
+      "item": "luncheon:ice_cube"
+    },
+    {
+      "item": "luncheon:ice_cube"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:ice"
+    }
+  ]
+}

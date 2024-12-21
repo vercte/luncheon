@@ -43,13 +43,6 @@ import org.jetbrains.annotations.NotNull;
 // adapted (pasted) from https://github.com/Creators-of-Create/Create/blob/mc1.20.1/dev/src/main/java/com/simibubi/create/foundation/data/recipe/StandardRecipeGen.java#L1301C2-L1502C3
 @SuppressWarnings("unused")
 public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
-    // region Recipes
-    GeneratedRecipe ICE_FROM_CUBES = create(() -> Items.ICE).unlockedBy(LuncheonItems.ICE_CUBE::get).withSuffix("_from_ice_cube")
-            .viaShaped(b -> b.define('C', LuncheonItems.ICE_CUBE::get)
-                    .pattern("CCC")
-                    .pattern("CCC")
-                    .pattern("CCC"));
-    // endregion
 
     String currentFolder = "";
 

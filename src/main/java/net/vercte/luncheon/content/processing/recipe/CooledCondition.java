@@ -1,7 +1,6 @@
 package net.vercte.luncheon.content.processing.recipe;
 
 import com.simibubi.create.Create;
-import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 import com.simibubi.create.foundation.utility.Lang;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 

@@ -10,9 +10,8 @@
       "item": "minecraft:snowball"
     },
     {
-      "item": "minecraft:snowball",
-      "chance": 0.75
+      "chance": 0.5,
+      "item": "minecraft:snowball"
     }
-  ],
-  "processingTime": 50
+  ]
 }
