@@ -1,13 +1,21 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.foundation.utility.Components;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.content.registry.*;
+import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.utility.data.LuncheonDatagen;
 import org.slf4j.Logger;
@@ -24,21 +32,33 @@ public class Luncheon {
 
         LuncheonItems.register();
         LuncheonBlocks.register();
+        LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
         LuncheonMobEffects.register();
 
         modEventBus.addListener(LuncheonClient::clientInit);
         modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
 
+        CREATIVE_TABS.register(modEventBus);
+
         REGISTRATE.get().registerEventListeners(modEventBus);
     }
+
+    private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+
+    public static final RegistryObject<CreativeModeTab> BASE_CREATIVE_TAB = CREATIVE_TABS.register("base",
+            () -> CreativeModeTab.builder()
+                    .title(Components.translatable("itemGroup.luncheon.base"))
+                    .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
+                    .icon(LuncheonItems.ICE_CUBE::asStack)
+                    .displayItems(new LuncheonDisplayItemsGenerator(Luncheon.BASE_CREATIVE_TAB))
+                    .build());
 
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(MODID, path);
     }
-
     public static LuncheonRegistrate registrate() {
         return REGISTRATE.get();
     }
-
 }

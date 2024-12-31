@@ -1,4 +1,6 @@
 {
+  "itemGroup.luncheon.base": "Luncheon",
+
   "luncheon.tooltip.waterRequirement": "Water Requirement:",
   "luncheon.gui.contraptions.no_water": "It appears this %1$s is _not recieving enough water_.",
 

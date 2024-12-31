@@ -1,0 +1,26 @@
+{
+  "type": "create:mixing",
+  "coolRequirement": "cooled",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "amount": 250,
+      "fluid": "luncheon:cream",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "amount": 250,
+      "fluid": "luncheon:ice_cream"
+    }
+  ]
+}

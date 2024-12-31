@@ -10,6 +10,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GlassBlock;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
@@ -27,6 +28,10 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public class LuncheonBlocks {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
+
+    static {
+        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
+    }
 
     // region Kinetics
     public static final BlockEntry<CoolerBlock> MECHANICAL_COOLER =
@@ -76,12 +81,34 @@ public class LuncheonBlocks {
             .tag(Tags.Blocks.GLASS_COLORLESS)
             .loot((t, g) -> t.dropWhenSilkTouch(g))
             .addLayer(() -> RenderType::cutoutMipped)
-            .blockstate((c, p) -> LuncheonBlockstates.cubeAll(c, p, "", "cobbled_glass"))
+            .blockstate(LuncheonBlockstates::cubeAll)
             .lang("Cobbled Glass")
             .item()
             .tag(Tags.Items.GLASS_COLORLESS)
             .build()
             .register();
+
+    public static final BlockEntry<RotatedPillarBlock> ICE_CREAM_BLOCK = REGISTRATE.block("ice_cream_block", RotatedPillarBlock::new)
+            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .blockstate((c, p) -> p.axisBlock(c.get()))
+            .lang("Block of Ice Cream")
+            .item().build().register();
+
+    public static final BlockEntry<Block> ICE_CREAM_BRICKS = REGISTRATE.block("ice_cream_bricks", Block::new)
+            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .blockstate(LuncheonBlockstates::cubeAll)
+            .lang("Ice Cream Bricks")
+            .item().build().register();
+
+    public static final BlockEntry<Block> POLISHED_ICE_CREAM = REGISTRATE.block("polished_ice_cream", Block::new)
+            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .blockstate(LuncheonBlockstates::cubeAll)
+            .lang("Polished Ice Cream")
+            .item().build().register();
+
     // endregion
 
     public static void register() {}

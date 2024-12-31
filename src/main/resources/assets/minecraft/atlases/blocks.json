@@ -1,0 +1,12 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/ice_cream_flow"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/ice_cream_still"
+    }
+  ]
+}

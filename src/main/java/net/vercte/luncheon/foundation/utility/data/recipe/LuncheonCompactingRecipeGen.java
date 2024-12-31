@@ -28,14 +28,6 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
              .output(Items.ICE, 1),
             CooledCondition.COOLED);
 
-    <T extends ProcessingRecipe<?>> GeneratedRecipe createCooled(String name, UnaryOperator<ProcessingRecipeBuilder<ProcessingRecipe<?>>> transform, CooledCondition cool) {
-        return create(Luncheon.asResource(name), b -> {
-            LuncheonProcessingRecipeBuilder<?> lb = (LuncheonProcessingRecipeBuilder<?>) b;
-            lb.luncheon$requiresCool(cool);
-            return transform.apply(b);
-        });
-    }
-
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.COMPACTING; }
 }

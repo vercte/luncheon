@@ -20,7 +20,9 @@ import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 public class LuncheonItems {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
-    public static final ItemEntry<Item> GLASS_JAR = REGISTRATE.item("glass_jar", Item::new).register();
+    static {
+        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
+    }
 
     // region Foods
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
