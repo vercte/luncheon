@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "luncheon:wafer"
+    }
+  ],
+  "results": [
+    {
+      "item": "luncheon:ice_cream_cone"
+    }
+  ]
+}

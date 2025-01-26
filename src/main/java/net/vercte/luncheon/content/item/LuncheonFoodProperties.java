@@ -13,6 +13,8 @@ public class LuncheonFoodProperties {
     public static final FoodProperties CHILI = food(2, 0.1F)
             .effect(() -> new MobEffectInstance(LuncheonMobEffects.SPICY.get(), 15 * 20), 1).build();
 
+    public static final FoodProperties PLAIN_ICE_CREAM = food(4, 0.7F).build();
+
     public static FoodProperties.Builder food(int nutrition, float saturationMod) {
         FoodProperties.Builder foodProperties = new FoodProperties.Builder();
         foodProperties.nutrition(nutrition);

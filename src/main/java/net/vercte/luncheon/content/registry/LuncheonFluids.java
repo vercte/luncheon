@@ -37,9 +37,9 @@ public class LuncheonFluids {
             .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> ICE_CREAM =
-            REGISTRATE.standardFluid("ice_cream", SolidRenderedPlaceableFluidType.create(0xffeecb,
+            REGISTRATE.standardFluid("plain_ice_cream", SolidRenderedPlaceableFluidType.create(0xffeecb,
                     () -> 1f / 8f))
-                    .lang("Ice Cream")
+                    .lang("Plain Ice Cream")
                     .properties(b -> b.viscosity(2000)
                             .density(1400))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)

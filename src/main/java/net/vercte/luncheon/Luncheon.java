@@ -36,6 +36,8 @@ public class Luncheon {
         LuncheonBlockEntityTypes.register();
         LuncheonMobEffects.register();
 
+        LuncheonTags.init();
+
         modEventBus.addListener(LuncheonClient::clientInit);
         modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
 

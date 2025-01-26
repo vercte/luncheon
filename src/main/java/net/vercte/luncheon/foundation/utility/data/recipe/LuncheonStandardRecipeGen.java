@@ -13,21 +13,12 @@ import com.tterrag.registrate.util.entry.ItemProviderEntry;
 
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
-import net.minecraft.data.recipes.SpecialRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -37,13 +28,25 @@ import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 
 import net.vercte.luncheon.Luncheon;
+import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.content.registry.LuncheonTags;
 import org.jetbrains.annotations.NotNull;
 
 // adapted (pasted) from https://github.com/Creators-of-Create/Create/blob/mc1.20.1/dev/src/main/java/com/simibubi/create/foundation/data/recipe/StandardRecipeGen.java#L1301C2-L1502C3
 @SuppressWarnings("unused")
 public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
     String currentFolder = "";
+
+    private final Marker PALETTES = enterFolder("palettes");
+
+    GeneratedRecipe STONECUTTING_ICE_CREAM_BLOCK = create(() -> LuncheonBlocks.ICE_CREAM_BLOCK)
+            .viaStonecuttingTag(() -> LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_PLAIN.tag).build();
+
+    private final Marker COOKING = enterFolder("/");
+
+    GeneratedRecipe WAFER = create(() -> LuncheonItems.WAFER).viaCooking(LuncheonItems.RAW_WAFER::get)
+		.inSmoker();
 
     Marker enterFolder(String folder) {
         currentFolder = folder;
@@ -72,73 +75,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
         });
     }
 
-    GeneratedRecipe blastCrushedMetal(Supplier<? extends ItemLike> result, Supplier<? extends ItemLike> ingredient) {
-        return create(result::get).withSuffix("_from_crushed")
-                .viaCooking(ingredient::get)
-                .rewardXP(.1f)
-                .inBlastFurnace();
-    }
-
-    GeneratedRecipe recycleGlass(BlockEntry<? extends Block> ingredient) {
-        return create(() -> Blocks.GLASS).withSuffix("_from_" + ingredient.getId()
-                        .getPath())
-                .viaCooking(ingredient::get)
-                .forDuration(50)
-                .inFurnace();
-    }
-
-    GeneratedRecipe recycleGlassPane(BlockEntry<? extends Block> ingredient) {
-        return create(() -> Blocks.GLASS_PANE).withSuffix("_from_" + ingredient.getId()
-                        .getPath())
-                .viaCooking(ingredient::get)
-                .forDuration(50)
-                .inFurnace();
-    }
-
-    GeneratedRecipe metalCompacting(List<ItemProviderEntry<? extends ItemLike>> variants,
-                                    List<Supplier<TagKey<Item>>> ingredients) {
-        GeneratedRecipe result = null;
-        for (int i = 0; i + 1 < variants.size(); i++) {
-            ItemProviderEntry<? extends ItemLike> currentEntry = variants.get(i);
-            ItemProviderEntry<? extends ItemLike> nextEntry = variants.get(i + 1);
-            Supplier<TagKey<Item>> currentIngredient = ingredients.get(i);
-            Supplier<TagKey<Item>> nextIngredient = ingredients.get(i + 1);
-
-            result = create(nextEntry).withSuffix("_from_compacting")
-                    .unlockedBy(currentEntry::get)
-                    .viaShaped(b -> b.pattern("###")
-                            .pattern("###")
-                            .pattern("###")
-                            .define('#', currentIngredient.get()));
-
-            result = create(currentEntry).returns(9)
-                    .withSuffix("_from_decompacting")
-                    .unlockedBy(nextEntry::get)
-                    .viaShapeless(b -> b.requires(nextIngredient.get()));
-        }
-        return result;
-    }
-
-    GeneratedRecipe conversionCycle(List<ItemProviderEntry<? extends ItemLike>> cycle) {
-        GeneratedRecipe result = null;
-        for (int i = 0; i < cycle.size(); i++) {
-            ItemProviderEntry<? extends ItemLike> currentEntry = cycle.get(i);
-            ItemProviderEntry<? extends ItemLike> nextEntry = cycle.get((i + 1) % cycle.size());
-            result = create(nextEntry).withSuffix("from_conversion")
-                    .unlockedBy(currentEntry::get)
-                    .viaShapeless(b -> b.requires(currentEntry.get()));
-        }
-        return result;
-    }
-
-    GeneratedRecipe clearData(ItemProviderEntry<? extends ItemLike> item) {
-        return create(item).withSuffix("_clear")
-                .unlockedBy(item::get)
-                .viaShapeless(b -> b.requires(item.get()));
-    }
-
     class GeneratedRecipeBuilder {
-
         private String path;
         private String suffix;
         private Supplier<? extends ItemLike> result;
@@ -262,6 +199,46 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
 
         GeneratedCookingRecipeBuilder viaCookingIngredient(Supplier<Ingredient> ingredient) {
             return new GeneratedCookingRecipeBuilder(ingredient);
+        }
+
+        GeneratedStonecuttingRecipeBuilder viaStonecutting(Supplier<? extends ItemLike> item) {
+            return unlockedBy(item).viaStonecuttingIngredient(() -> Ingredient.of(item.get()));
+        }
+
+        GeneratedStonecuttingRecipeBuilder viaStonecuttingTag(Supplier<TagKey<Item>> tag) {
+            return unlockedByTag(tag).viaStonecuttingIngredient(() -> Ingredient.of(tag.get()));
+        }
+
+        GeneratedStonecuttingRecipeBuilder viaStonecuttingIngredient(Supplier<Ingredient> ingredient) {
+            return new GeneratedStonecuttingRecipeBuilder(ingredient);
+        }
+
+        class GeneratedStonecuttingRecipeBuilder {
+            private Supplier<Ingredient> ingredient;
+
+            private final RecipeSerializer<StonecutterRecipe> SERIALIZER = RecipeSerializer.STONECUTTER;
+
+            GeneratedStonecuttingRecipeBuilder(Supplier<Ingredient> ingredient) {
+                this.ingredient = ingredient;
+            }
+
+            GeneratedRecipe build() {
+                return create(SERIALIZER, b -> b);
+            }
+
+            private GeneratedRecipe create(RecipeSerializer<StonecutterRecipe> serializer,
+                                           UnaryOperator<SingleItemRecipeBuilder> builder) {
+                return register(consumer -> {
+                     SingleItemRecipeBuilder b = builder.apply(SingleItemRecipeBuilder.stonecutting(
+                             ingredient.get(), RecipeCategory.BUILDING_BLOCKS, result.get()));
+
+                    if (unlockedBy != null)
+                        b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
+
+                    b.save(consumer, createSimpleLocation(RegisteredObjects.getKeyOrThrow(serializer)
+                            .getPath()));
+                });
+            }
         }
 
         class GeneratedCookingRecipeBuilder {

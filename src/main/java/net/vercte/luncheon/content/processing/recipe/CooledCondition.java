@@ -5,7 +5,7 @@ import com.simibubi.create.foundation.utility.Lang;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 
 public enum CooledCondition {
-    NONE(0xffffff), COOLED(0x00d5ff);
+    NONE(0xffffff), COOLED(0x4455b8);
 
     private final int color;
     CooledCondition(int color) { this.color = color; }
@@ -17,6 +17,8 @@ public enum CooledCondition {
     public String getTranslationKey() {
         return "recipe.cooling_requirement." + serialize();
     }
+
+    public int getColor() { return color; }
 
     public boolean testCooler(CoolerBlock.CoolingLevel level) {
         if(this == COOLED) return level == CoolerBlock.CoolingLevel.COOLED;

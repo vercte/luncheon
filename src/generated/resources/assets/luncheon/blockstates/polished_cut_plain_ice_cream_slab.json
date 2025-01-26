@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "luncheon:block/polished_cut_plain_ice_cream_slab"
+    },
+    "type=double": {
+      "model": "luncheon:block/polished_cut_plain_ice_cream_slab_double"
+    },
+    "type=top": {
+      "model": "luncheon:block/polished_cut_plain_ice_cream_slab_top"
+    }
+  }
+}

@@ -7,16 +7,14 @@ import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.GlassBlock;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.block.BlazeCakeBlock;
 import net.vercte.luncheon.content.block.BuddingChiliCropBlock;
 import net.vercte.luncheon.content.block.ChiliCropBlock;
+import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.utility.data.LuncheonBlockstates;
@@ -88,27 +86,21 @@ public class LuncheonBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<RotatedPillarBlock> ICE_CREAM_BLOCK = REGISTRATE.block("ice_cream_block", RotatedPillarBlock::new)
-            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
+    public static final BlockEntry<RotatedPillarBlock> ICE_CREAM_BLOCK = REGISTRATE.block("plain_ice_cream_block", RotatedPillarBlock::new)
+            .properties(p ->
+                p.mapColor(MapColor.SAND)
+                        .strength(0.3F)
+                        .sound(SoundType.SNOW)
+                        .requiresCorrectToolForDrops())
             .tag(BlockTags.MINEABLE_WITH_SHOVEL)
-            .blockstate((c, p) -> p.axisBlock(c.get()))
-            .lang("Block of Ice Cream")
-            .item().build().register();
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/palettes/ice_cream/plain")))
+            .lang("Block of Plain Ice Cream")
+            .item().tag(LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_PLAIN.tag)
+            .build().register();
 
-    public static final BlockEntry<Block> ICE_CREAM_BRICKS = REGISTRATE.block("ice_cream_bricks", Block::new)
-            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
-            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
-            .blockstate(LuncheonBlockstates::cubeAll)
-            .lang("Ice Cream Bricks")
-            .item().build().register();
-
-    public static final BlockEntry<Block> POLISHED_ICE_CREAM = REGISTRATE.block("polished_ice_cream", Block::new)
-            .initialProperties(NonNullSupplier.of(() -> Blocks.WHITE_WOOL))
-            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
-            .blockstate(LuncheonBlockstates::cubeAll)
-            .lang("Polished Ice Cream")
-            .item().build().register();
-
+    static {
+        IceCreamTypes.register(REGISTRATE);
+    }
     // endregion
 
     public static void register() {}

@@ -5,6 +5,7 @@
       "item": "luncheon:ice_cube"
     }
   ],
+  "processingTime": 50,
   "results": [
     {
       "item": "minecraft:snowball"

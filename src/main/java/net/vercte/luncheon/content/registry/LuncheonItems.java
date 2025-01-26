@@ -2,12 +2,14 @@ package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags.AllItemTags;
+import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.item.CombustibleItem;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacement;
 import net.mehvahdjukaar.moonlight.api.item.additional_placements.AdditionalItemPlacementsAPI;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.vercte.luncheon.Luncheon;
@@ -28,6 +30,7 @@ public class LuncheonItems {
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
             .properties(p -> p.food(LuncheonFoodProperties.BAGUETTE))
             .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "item.luncheon.baguette"))
+            .model(AssetLookup.existingItemModel())
             .lang("Baguette")
             .register();
 
@@ -38,11 +41,11 @@ public class LuncheonItems {
             .lang("Slice of Blaze Cake")
             .register();
 
-    public static final ItemEntry<NotActuallyAFoodItem> ICE_CUBE = REGISTRATE.item("ice_cube", NotActuallyAFoodItem::new)
-            .lang("Ice Cube").register();
-
-    public static final ItemEntry<GlassShardsItem> GLASS_SHARDS = REGISTRATE.item("glass_shards", GlassShardsItem::new)
-            .lang("Glass Shards").register();
+    public static final ItemEntry<Item> PLAIN_ICE_CREAM = REGISTRATE.item("plain_ice_cream", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.PLAIN_ICE_CREAM))
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Plain Ice Cream")
+            .register();
     // endregion
 
     // region Crops
@@ -57,10 +60,34 @@ public class LuncheonItems {
     // endregion
 
     // region Misc
+    public static final ItemEntry<Item> RAW_WAFER = ingredient("raw_wafer", "Raw Wafer");
+    public static final ItemEntry<Item> WAFER = ingredient("wafer", "Wafer");
+    public static final ItemEntry<Item> ICE_CREAM_CONE = taggedIngredient("ice_cream_cone", "Ice Cream Cone", AllItemTags.UPRIGHT_ON_BELT.tag);
+
+    public static final ItemEntry<NotActuallyAFoodItem> ICE_CUBE = REGISTRATE.item("ice_cube", NotActuallyAFoodItem::new)
+            .lang("Ice Cube").register();
+
+    public static final ItemEntry<GlassShardsItem> GLASS_SHARDS = REGISTRATE.item("glass_shards", GlassShardsItem::new)
+            .lang("Glass Shards").register();
+
     private static void registerPlacements(AdditionalItemPlacementsAPI.Event event) {
         event.register(AllItems.BLAZE_CAKE.get(), new AdditionalItemPlacement(LuncheonBlocks.BLAZE_CAKE.get()));
     }
     // endregion
+
+    private static ItemEntry<Item> ingredient(String name, String lang) {
+        return REGISTRATE.item(name, Item::new)
+                .lang(lang)
+                .register();
+    }
+
+    @SafeVarargs
+    private static ItemEntry<Item> taggedIngredient(String name, String lang, TagKey<Item>... tags) {
+        return REGISTRATE.item(name, Item::new)
+                .lang(lang)
+                .tag(tags)
+                .register();
+    }
 
     public static void register() {
         AdditionalItemPlacementsAPI.addRegistration(LuncheonItems::registerPlacements);

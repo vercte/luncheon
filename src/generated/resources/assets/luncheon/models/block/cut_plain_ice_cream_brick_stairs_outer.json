@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "luncheon:block/palettes/ice_cream/brick/plain_ice_cream_cut_brick",
+    "side": "luncheon:block/palettes/ice_cream/brick/plain_ice_cream_cut_brick",
+    "top": "luncheon:block/palettes/ice_cream/brick/plain_ice_cream_cut_brick"
+  }
+}

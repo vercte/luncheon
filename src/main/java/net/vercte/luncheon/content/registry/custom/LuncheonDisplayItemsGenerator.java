@@ -1,7 +1,5 @@
 package net.vercte.luncheon.content.registry.custom;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
@@ -25,7 +23,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
@@ -58,12 +55,18 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
     private static List<ItemOrdering> makeOrderings() {
         List<ItemOrdering> orderings = new ReferenceArrayList<>();
 
-        Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of();
+        Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of(
+                LuncheonItems.RAW_WAFER, LuncheonItems.WAFER,
+                LuncheonItems.WAFER, LuncheonItems.ICE_CREAM_CONE,
+                LuncheonItems.ICE_CREAM_CONE, LuncheonItems.PLAIN_ICE_CREAM,
+                LuncheonItems.PLAIN_ICE_CREAM, LuncheonBlocks.ICE_CREAM_BLOCK
+        );
 
         Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleAfterOrderings = Map.of(
                 LuncheonItems.CHILI_SEEDS, LuncheonItems.CHILI,
                 LuncheonItems.BLAZE_CAKE_SLICE, AllItems.BLAZE_CAKE,
-                LuncheonItems.ICE_CUBE, LuncheonBlocks.MECHANICAL_COOLER
+                LuncheonItems.ICE_CUBE, LuncheonBlocks.MECHANICAL_COOLER,
+                LuncheonBlocks.COBBLED_GLASS, LuncheonItems.GLASS_SHARDS
         );
 
         simpleBeforeOrderings.forEach((entry, otherEntry) -> {

@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "luncheon:ice_cream_cone"
+    },
+    {
+      "amount": 250,
+      "fluid": "luncheon:plain_ice_cream",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "luncheon:plain_ice_cream"
+    }
+  ]
+}

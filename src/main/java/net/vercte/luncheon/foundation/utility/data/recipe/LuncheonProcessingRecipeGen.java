@@ -31,10 +31,12 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
     protected static final int BOTTLE = 250;
 
     public static void registerAll(DataGenerator gen, PackOutput output) {
+        GENERATORS.add(new LuncheonPressingRecipeGen(output));
         GENERATORS.add(new LuncheonCompactingRecipeGen(output));
         GENERATORS.add(new LuncheonMixingRecipeGen(output));
-        GENERATORS.add(new CrushingRecipeGen(output));
-        GENERATORS.add(new CrushingRecipeGen.MillingRecipeGen(output));
+        GENERATORS.add(new LuncheonCrushingRecipeGen(output));
+        GENERATORS.add(new LuncheonCrushingRecipeGen.MillingRecipeGen(output));
+        GENERATORS.add(new LuncheonFillingRecipeGen(output));
 
         gen.addProvider(true, new DataProvider() {
             @Override

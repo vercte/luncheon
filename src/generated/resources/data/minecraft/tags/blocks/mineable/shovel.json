@@ -1,7 +1,23 @@
 {
   "values": [
-    "luncheon:ice_cream_block",
-    "luncheon:ice_cream_bricks",
-    "luncheon:polished_ice_cream"
+    "luncheon:plain_ice_cream_block",
+    "luncheon:cut_plain_ice_cream",
+    "luncheon:cut_plain_ice_cream_stairs",
+    "luncheon:cut_plain_ice_cream_slab",
+    "luncheon:cut_plain_ice_cream_wall",
+    "luncheon:polished_cut_plain_ice_cream",
+    "luncheon:polished_cut_plain_ice_cream_stairs",
+    "luncheon:polished_cut_plain_ice_cream_slab",
+    "luncheon:polished_cut_plain_ice_cream_wall",
+    "luncheon:cut_plain_ice_cream_bricks",
+    "luncheon:cut_plain_ice_cream_brick_stairs",
+    "luncheon:cut_plain_ice_cream_brick_slab",
+    "luncheon:cut_plain_ice_cream_brick_wall",
+    "luncheon:small_plain_ice_cream_bricks",
+    "luncheon:small_plain_ice_cream_brick_stairs",
+    "luncheon:small_plain_ice_cream_brick_slab",
+    "luncheon:small_plain_ice_cream_brick_wall",
+    "luncheon:layered_plain_ice_cream",
+    "luncheon:plain_ice_cream_pillar"
   ]
 }

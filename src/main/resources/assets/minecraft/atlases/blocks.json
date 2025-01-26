@@ -2,11 +2,15 @@
   "sources": [
     {
       "type": "single",
-      "resource": "luncheon:fluid/ice_cream_flow"
+      "resource": "luncheon:fluid/cream_still"
     },
     {
       "type": "single",
-      "resource": "luncheon:fluid/ice_cream_still"
+      "resource": "luncheon:fluid/plain_ice_cream_flow"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/plain_ice_cream_still"
     }
   ]
 }

@@ -5,13 +5,19 @@
   "refmap": "luncheon.refmap.json",
   "mixins": [
     "LivingEntityInvoker",
-    "cooler.ProcessingRecipeBuilderMixin$ProcessingRecipeParamsMixin",
+    "cooler.BasinCategoryMixin",
+    "cooler.BasinCategoryMixin$MixingCategoryMixin",
+    "cooler.BasinCategoryMixin$PackingCategoryMixin",
     "cooler.BasinRecipeMixin",
     "cooler.ProcessingRecipeBuilderMixin",
+    "cooler.ProcessingRecipeBuilderMixin$ProcessingRecipeParamsMixin",
     "cooler.ProcessingRecipeMixin",
     "cooler.ProcessingRecipeSerializerMixin"
   ],
   "client": [
   ],
+  "mixinextras": {
+    "minVersion": "0.5.0-beta.5"
+  },
   "minVersion": "0.8"
 }
