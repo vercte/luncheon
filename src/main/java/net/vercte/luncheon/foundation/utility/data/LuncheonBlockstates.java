@@ -24,7 +24,7 @@ public class LuncheonBlockstates {
     }
 
     public static ResourceLocation resourceBlock(String path) {
-        return new ResourceLocation(Luncheon.MODID, "block/" + path);
+        return new ResourceLocation(Luncheon.ID, "block/" + path);
     }
 
     public static <T extends Block> void cubeAll(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov) {

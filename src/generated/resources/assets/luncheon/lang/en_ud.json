@@ -42,6 +42,10 @@
   "item.luncheon.wafer": "ɹǝɟɐM",
   "itemGroup.luncheon.base": "uoǝɥɔunꞀ",
   "luncheon.gui.contraptions.no_water": "˙‾ɹǝʇɐʍ ɥbnouǝ buıʌǝıɔǝɹ ʇou‾ sı %1$s sıɥʇ sɹɐǝddɐ ʇI",
+  "luncheon.ponder.mechanical_cooler.header": "ɹǝןooƆ ןɐɔıuɐɥɔǝW ǝɥʇ buızıןıʇ∩",
+  "luncheon.ponder.mechanical_cooler.text_1": "uısnoɔ ɹǝןooɔ s,ɹǝuɹnᗺ ǝzɐןᗺ ǝɥʇ sı ɹǝןooƆ ןɐɔıuɐɥɔǝW ǝɥ⟘",
+  "luncheon.ponder.mechanical_cooler.text_2": "˙˙˙ʍoןǝq ɯoɹɟ ɹǝʍod spǝǝu ʇı 'ǝʇɐɹǝdo o⟘",
+  "luncheon.ponder.mechanical_cooler.text_3": "˙ǝpıs ǝɥʇ ɯoɹɟ ɹǝʇɐʍ puⱯ",
   "luncheon.recipe.cooling_requirement.cooled": "pǝןooƆ",
   "luncheon.tooltip.waterRequirement": ":ʇuǝɯǝɹınbǝᴚ ɹǝʇɐM"
 }

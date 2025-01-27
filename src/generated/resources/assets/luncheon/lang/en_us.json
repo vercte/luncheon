@@ -42,6 +42,10 @@
   "item.luncheon.wafer": "Wafer",
   "itemGroup.luncheon.base": "Luncheon",
   "luncheon.gui.contraptions.no_water": "It appears this %1$s is _not recieving enough water_.",
+  "luncheon.ponder.mechanical_cooler.header": "Utilizing the Mechanical Cooler",
+  "luncheon.ponder.mechanical_cooler.text_1": "The Mechanical Cooler is the Blaze Burner's cooler cousin",
+  "luncheon.ponder.mechanical_cooler.text_2": "To operate, it needs power from below...",
+  "luncheon.ponder.mechanical_cooler.text_3": "And water from the side.",
   "luncheon.recipe.cooling_requirement.cooled": "Cooled",
   "luncheon.tooltip.waterRequirement": "Water Requirement:"
 }

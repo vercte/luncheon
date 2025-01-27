@@ -80,7 +80,7 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
      * as the name of the recipe
      */
     <T extends ProcessingRecipe<?>> GeneratedRecipe create(Supplier<ItemLike> singleIngredient, UnaryOperator<ProcessingRecipeBuilder<T>> transform) {
-        return create(Luncheon.MODID, singleIngredient, transform);
+        return create(Luncheon.ID, singleIngredient, transform);
     }
 
     protected <T extends ProcessingRecipe<?>> GeneratedRecipe createWithDeferredId(Supplier<ResourceLocation> name, UnaryOperator<ProcessingRecipeBuilder<T>> transform) {

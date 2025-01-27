@@ -7,5 +7,10 @@
   "luncheon.gui.contraptions.no_water": "It appears this %1$s is _not recieving enough water_.",
 
   "death.attack.luncheon.glass_shards": "%1$s ate some dangerous rock candy",
-  "death.attack.luncheon.too_spicy": "The world was too spicy for %1$s"
+  "death.attack.luncheon.too_spicy": "The world was too spicy for %1$s",
+
+  "luncheon.ponder.mechanical_cooler.header": "Utilizing the Mechanical Cooler",
+  "luncheon.ponder.mechanical_cooler.text_1": "The Mechanical Cooler is the Blaze Burner's cooler cousin",
+  "luncheon.ponder.mechanical_cooler.text_2": "To operate, it needs power from below...",
+  "luncheon.ponder.mechanical_cooler.text_3": "And water from the side."
 }

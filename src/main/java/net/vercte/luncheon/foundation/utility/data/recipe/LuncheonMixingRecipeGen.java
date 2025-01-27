@@ -4,13 +4,10 @@ import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.processing.recipe.HeatCondition;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 import net.vercte.luncheon.content.registry.LuncheonFluids;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 public class LuncheonMixingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonMixingRecipeGen(PackOutput generator) { super(generator); }

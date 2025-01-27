@@ -12,11 +12,11 @@ import net.vercte.luncheon.Luncheon;
 
 public class LuncheonLang extends Lang {
     public static LangBuilder builder() {
-        return new LangBuilder(Luncheon.MODID);
+        return new LangBuilder(Luncheon.ID);
     }
 
     public static MutableComponent translateDirect(String key, Object... args) {
-        return Components.translatable(Luncheon.MODID + "." + key, resolveBuilders(args));
+        return Components.translatable(Luncheon.ID + "." + key, resolveBuilders(args));
     }
 
     public static LangBuilder blockName(BlockState state) {

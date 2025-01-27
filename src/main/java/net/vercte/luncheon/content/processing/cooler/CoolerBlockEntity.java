@@ -134,8 +134,8 @@ public class CoolerBlockEntity extends KineticBlockEntity {
                 sendData();
         }
 
-        if(level.isClientSide) {
-            if(!isVirtual()) spawnParticles();
+        if(level.isClientSide && !isVirtual()) {
+            spawnParticles();
             return;
         }
 

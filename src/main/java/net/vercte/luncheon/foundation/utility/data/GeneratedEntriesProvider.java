@@ -17,7 +17,7 @@ public class GeneratedEntriesProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.DAMAGE_TYPE, LuncheonDamageTypes::bootstrap);
 
     public GeneratedEntriesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(Luncheon.MODID));
+        super(output, registries, BUILDER, Set.of(Luncheon.ID));
     }
 
     @Override

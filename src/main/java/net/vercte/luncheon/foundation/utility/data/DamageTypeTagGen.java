@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class DamageTypeTagGen extends TagsProvider<DamageType> {
     public DamageTypeTagGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, Registries.DAMAGE_TYPE, lookupProvider, Luncheon.MODID, existingFileHelper);
+        super(output, Registries.DAMAGE_TYPE, lookupProvider, Luncheon.ID, existingFileHelper);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.utility.Components;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.registries.Registries;
@@ -21,10 +20,10 @@ import net.vercte.luncheon.foundation.utility.data.LuncheonDatagen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(Luncheon.MODID)
+@Mod(Luncheon.ID)
 public class Luncheon {
-    public static final String MODID = "luncheon";
-    public static final NonNullSupplier<LuncheonRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> LuncheonRegistrate.create(MODID));
+    public static final String ID = "luncheon";
+    public static final NonNullSupplier<LuncheonRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> LuncheonRegistrate.create(ID));
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Luncheon() {
@@ -47,7 +46,7 @@ public class Luncheon {
     }
 
     private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
-            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ID);
 
     public static final RegistryObject<CreativeModeTab> BASE_CREATIVE_TAB = CREATIVE_TABS.register("base",
             () -> CreativeModeTab.builder()
@@ -58,7 +57,7 @@ public class Luncheon {
                     .build());
 
     public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MODID, path);
+        return new ResourceLocation(ID, path);
     }
     public static LuncheonRegistrate registrate() {
         return REGISTRATE.get();

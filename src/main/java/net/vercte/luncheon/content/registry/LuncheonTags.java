@@ -3,10 +3,8 @@ package net.vercte.luncheon.content.registry;
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.utility.Lang;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.vercte.luncheon.Luncheon;
@@ -25,7 +23,7 @@ public class LuncheonTags {
 
     public enum Namespace {
 
-        MOD(Luncheon.MODID, false, true),
+        MOD(Luncheon.ID, false, true),
         CREATE(Create.ID, false, false),
         FORGE("forge"),
         ;

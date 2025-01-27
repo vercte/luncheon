@@ -30,8 +30,6 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
-
 @SuppressWarnings({"all"})
 public abstract class IceCreamPaletteBlockPartial<B extends Block> {
 
@@ -204,7 +202,7 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
                     .requires(ingredient)
                     .requires(ingredient)
                     .unlockedBy("has_" + c.getName(), ingredient.getCritereon(p))
-                    .save(p, Luncheon.MODID + ":" + c.getName() + "_recycling");
+                    .save(p, Luncheon.ID + ":" + c.getName() + "_recycling");
         }
 
         @Override
