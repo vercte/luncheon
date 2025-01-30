@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe;
+package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;

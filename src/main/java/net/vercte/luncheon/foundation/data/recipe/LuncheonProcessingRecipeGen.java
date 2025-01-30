@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe;
+package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
@@ -15,7 +15,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.fluids.FluidType;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
-import net.vercte.luncheon.foundation.utility.data.recipe.mixin.LuncheonProcessingRecipeBuilder;
+import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipeBuilder;
 import org.lwjgl.system.NonnullDefault;
 
 import java.util.ArrayList;
@@ -37,6 +37,7 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
         GENERATORS.add(new LuncheonCrushingRecipeGen(output));
         GENERATORS.add(new LuncheonCrushingRecipeGen.MillingRecipeGen(output));
         GENERATORS.add(new LuncheonFillingRecipeGen(output));
+        GENERATORS.add(new LuncheonFillingRecipeGen.DrainingRecipeGen(output));
 
         gen.addProvider(true, new DataProvider() {
             @Override

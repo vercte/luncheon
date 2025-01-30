@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data;
+package net.vercte.luncheon.foundation.data;
 
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;

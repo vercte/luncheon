@@ -32,6 +32,10 @@ public class LuncheonFluids {
         REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
     }
 
+    public static final FluidEntry<VirtualFluid> POWDERED_SNOW = REGISTRATE.virtualFluid("powdered_snow", Luncheon.asVanillaResource("block/powder_snow"), Luncheon.asVanillaResource("block/powder_snow"))
+            .lang("Powdered Snow")
+            .register();
+
     public static final FluidEntry<VirtualFluid> CREAM = REGISTRATE.virtualFluid("cream")
             .lang("Cream")
             .register();

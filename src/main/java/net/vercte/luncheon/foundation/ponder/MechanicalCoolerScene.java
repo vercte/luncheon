@@ -4,17 +4,12 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
-import com.simibubi.create.foundation.ponder.ElementLink;
 import com.simibubi.create.foundation.ponder.SceneBuilder;
 import com.simibubi.create.foundation.ponder.SceneBuildingUtil;
 import com.simibubi.create.foundation.ponder.Selection;
-import com.simibubi.create.foundation.ponder.element.WorldSectionElement;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlockEntity;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 
 public class MechanicalCoolerScene {
@@ -71,14 +66,14 @@ public class MechanicalCoolerScene {
         scene.world.propagatePipeChange(pump);
         scene.world.showSection(util.select.position(pumpCogConnection), Direction.DOWN);
 
-        scene.idle(30);
+        scene.idle(40);
 
         scene.overlay.showText(60)
                 .attachKeyFrame()
                 .text("And water from the side.")
                 .pointAt(util.vector.blockSurface(power.above(), Direction.EAST))
                 .placeNearTarget();
-        scene.idle(40);
+        scene.idle(50);
 
         BlockPos examplePress = power.above(4);
         Class<MechanicalPressBlockEntity> pressType = MechanicalPressBlockEntity.class;

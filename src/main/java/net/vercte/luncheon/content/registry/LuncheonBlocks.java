@@ -2,11 +2,11 @@ package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
@@ -17,7 +17,7 @@ import net.vercte.luncheon.content.block.ChiliCropBlock;
 import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
-import net.vercte.luncheon.foundation.utility.data.LuncheonBlockstates;
+import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
 
 import java.util.Arrays;
 
@@ -50,9 +50,7 @@ public class LuncheonBlocks {
             REGISTRATE.block("blaze_cake", BlazeCakeBlock::new)
                     .initialProperties(NonNullSupplier.of(() -> Blocks.CAKE))
                     .blockstate(LuncheonBlockstates::PieBlock)
-                    .loot((lt, block) -> {
-                        lt.add(block, BlazeCakeBlock.buildLootTable());
-                    })
+                    .loot((lt, block) -> lt.add(block, BlazeCakeBlock.buildLootTable()))
                     .lang("Blaze Cake")
                     .register();
     // endregion
@@ -77,7 +75,7 @@ public class LuncheonBlocks {
     public static final BlockEntry<GlassBlock> COBBLED_GLASS = REGISTRATE.block("cobbled_glass", GlassBlock::new)
             .initialProperties(NonNullSupplier.of(() -> Blocks.GLASS))
             .tag(Tags.Blocks.GLASS_COLORLESS)
-            .loot((t, g) -> t.dropWhenSilkTouch(g))
+            .loot(RegistrateBlockLootTables::dropWhenSilkTouch)
             .addLayer(() -> RenderType::cutoutMipped)
             .blockstate(LuncheonBlockstates::cubeAll)
             .lang("Cobbled Glass")

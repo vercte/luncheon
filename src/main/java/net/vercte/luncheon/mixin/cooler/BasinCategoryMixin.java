@@ -20,7 +20,7 @@ import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
-import net.vercte.luncheon.foundation.utility.data.recipe.mixin.LuncheonProcessingRecipe;
+import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipe;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

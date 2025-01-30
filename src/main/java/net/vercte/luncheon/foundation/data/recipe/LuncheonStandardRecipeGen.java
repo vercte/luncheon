@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe;
+package net.vercte.luncheon.foundation.data.recipe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,6 @@ import com.google.common.base.Supplier;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.simibubi.create.foundation.utility.RegisteredObjects;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -20,8 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;

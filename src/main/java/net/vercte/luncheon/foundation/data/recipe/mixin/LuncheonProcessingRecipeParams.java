@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe.mixin;
+package net.vercte.luncheon.foundation.data.recipe.mixin;
 
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 

@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe;
+package net.vercte.luncheon.foundation.data.recipe;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;

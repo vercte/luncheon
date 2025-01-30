@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data.recipe.mixin;
+package net.vercte.luncheon.foundation.data.recipe.mixin;
 
 import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;

@@ -1,18 +1,12 @@
-package net.vercte.luncheon.foundation.utility.data.recipe;
+package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
-import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
-import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.foundation.utility.data.recipe.mixin.LuncheonProcessingRecipeBuilder;
-
-import java.util.function.UnaryOperator;
 
 public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonCompactingRecipeGen(PackOutput generator) { super(generator); }

@@ -1,0 +1,24 @@
+{
+  "type": "create:mixing",
+  "coolRequirement": "cooled",
+  "ingredients": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    }
+  ],
+  "results": [
+    {
+      "amount": 1000,
+      "fluid": "luncheon:powdered_snow"
+    }
+  ]
+}

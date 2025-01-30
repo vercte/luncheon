@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.content.registry.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
-import net.vercte.luncheon.foundation.utility.data.LuncheonDatagen;
+import net.vercte.luncheon.foundation.data.LuncheonDatagen;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -34,6 +34,7 @@ public class Luncheon {
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
         LuncheonMobEffects.register();
+        LuncheonRecipeTypes.register(modEventBus);
 
         LuncheonTags.init();
 
@@ -56,6 +57,9 @@ public class Luncheon {
                     .displayItems(new LuncheonDisplayItemsGenerator(Luncheon.BASE_CREATIVE_TAB))
                     .build());
 
+    public static ResourceLocation asVanillaResource(String path) {
+        return new ResourceLocation("minecraft", path);
+    }
     public static ResourceLocation asResource(String path) {
         return new ResourceLocation(ID, path);
     }

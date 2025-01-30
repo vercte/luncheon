@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data;
+package net.vercte.luncheon.foundation.data;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -10,8 +10,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.foundation.utility.data.recipe.LuncheonProcessingRecipeGen;
-import net.vercte.luncheon.foundation.utility.data.recipe.LuncheonStandardRecipeGen;
+import net.vercte.luncheon.foundation.data.recipe.LuncheonProcessingRecipeGen;
+import net.vercte.luncheon.foundation.data.recipe.LuncheonStandardRecipeGen;
 
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;

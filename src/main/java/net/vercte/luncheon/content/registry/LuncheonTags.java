@@ -45,7 +45,8 @@ public class LuncheonTags {
 
     public enum ItemTags {
         ICE_CREAM_BLOCKS_PLAIN(MOD, "ice_cream_blocks/plain"),
-        ICE_CREAM_BLOCKS_CHOCOLATE(MOD, "ice_cream_blocks/chocolate");
+        ICE_CREAM_BLOCKS_CHOCOLATE(MOD, "ice_cream_blocks/chocolate"),
+        GLASS_SHARD_INCOMPATIBLE(MOD, "glass_shard_incompatible");
 
         public final TagKey<Item> tag;
         public final boolean alwaysDatagen;

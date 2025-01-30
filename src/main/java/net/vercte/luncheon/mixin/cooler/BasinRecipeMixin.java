@@ -9,7 +9,7 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
-import net.vercte.luncheon.foundation.utility.data.recipe.mixin.LuncheonProcessingRecipe;
+import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipe;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;

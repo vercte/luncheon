@@ -1,4 +1,4 @@
-package net.vercte.luncheon.foundation.utility.data;
+package net.vercte.luncheon.foundation.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
