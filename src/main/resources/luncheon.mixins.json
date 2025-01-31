@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "luncheon.refmap.json",
   "mixins": [
+    "ItemStackMixin",
     "LivingEntityInvoker",
     "cooler.BasinCategoryMixin",
     "cooler.BasinCategoryMixin$MixingCategoryMixin",

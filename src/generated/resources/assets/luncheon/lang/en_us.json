@@ -25,6 +25,7 @@
   "block.luncheon.small_plain_ice_cream_brick_wall": "Small Plain Ice Cream Brick Wall",
   "block.luncheon.small_plain_ice_cream_bricks": "Small Plain Ice Cream Bricks",
   "death.attack.luncheon.glass_shards": "%1$s ate some dangerous rock candy",
+  "death.attack.luncheon.glass_spiked": "%1$s ate some spiked %2$s",
   "death.attack.luncheon.too_spicy": "The world was too spicy for %1$s",
   "effect.luncheon.spicy": "Spicy",
   "fluid.luncheon.cream": "Cream",

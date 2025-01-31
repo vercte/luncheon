@@ -1,12 +1,9 @@
 package net.vercte.luncheon.content.processing.recipe;
 
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
 import com.simibubi.create.content.kinetics.deployer.DeployerRecipeSearchEvent;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -25,6 +22,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Optional;
 
 @ParametersAreNonnullByDefault
+@Mod.EventBusSubscriber
 public class GlassShardApplicationRecipe implements Recipe<RecipeWrapper> {
     private final RecipeWrapper inventory;
     public GlassShardApplicationRecipe(RecipeWrapper inventory) {
@@ -35,8 +33,12 @@ public class GlassShardApplicationRecipe implements Recipe<RecipeWrapper> {
         return Optional.of(new GlassShardApplicationRecipe(inventory));
     }
 
+    @SubscribeEvent
     public static void addDeployerRecipe(DeployerRecipeSearchEvent event) {
-        event.addRecipe(() -> fromInventory(event.getInventory()), 50);
+        Optional<GlassShardApplicationRecipe> recipe = fromInventory(event.getInventory());
+        if(recipe.isEmpty()) return;
+        if(recipe.get().matches(event.getInventory(), event.getBlockEntity().getLevel()))
+            event.addRecipe(() -> recipe, 50);
     }
 
     @Override

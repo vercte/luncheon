@@ -14,6 +14,10 @@ public class LuncheonDamageSources {
         return source(LuncheonDamageTypes.GLASS_SHARDS, level);
     }
 
+    public static DamageSource glass_spiked(Level level) {
+        return source(LuncheonDamageTypes.GLASS_SPIKED, level);
+    }
+
     public static DamageSource too_spicy(Level level) {
         return source(LuncheonDamageTypes.TOO_SPICY, level);
     }

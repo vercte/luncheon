@@ -9,6 +9,7 @@ import net.vercte.luncheon.Luncheon;
 
 public class LuncheonDamageTypes {
     public static final ResourceKey<DamageType> GLASS_SHARDS = key("glass_shards");
+    public static final ResourceKey<DamageType> GLASS_SPIKED = key("glass_spiked");
     public static final ResourceKey<DamageType> TOO_SPICY = key("too_spicy");
 
     private static ResourceKey<DamageType> key(String name) {
@@ -17,6 +18,7 @@ public class LuncheonDamageTypes {
 
     public static void bootstrap(BootstapContext<DamageType> ctx) {
         new DamageTypeBuilder(GLASS_SHARDS).register(ctx);
+        new DamageTypeBuilder(GLASS_SPIKED).register(ctx);
         new DamageTypeBuilder(TOO_SPICY).register(ctx);
     }
 }

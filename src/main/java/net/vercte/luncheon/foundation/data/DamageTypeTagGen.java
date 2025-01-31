@@ -11,6 +11,7 @@ import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonDamageTypes;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
@@ -22,10 +23,11 @@ public class DamageTypeTagGen extends TagsProvider<DamageType> {
     @Override
     protected void addTags(@NotNull HolderLookup.Provider provider) {
         tag(DamageTypeTags.BYPASSES_ARMOR)
-                .add(LuncheonDamageTypes.GLASS_SHARDS);
+                .add(LuncheonDamageTypes.GLASS_SHARDS)
+                .add(LuncheonDamageTypes.GLASS_SPIKED);
     }
 
-    @Override
+    @Override @Nonnull
     public String getName() {
         return "Luncheon's Damage Type Tags";
     }
