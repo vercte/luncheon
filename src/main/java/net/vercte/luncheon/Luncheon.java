@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import net.vercte.luncheon.content.processing.recipe.GlassShardApplicationRecipe;
 import net.vercte.luncheon.content.registry.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
@@ -34,7 +35,8 @@ public class Luncheon {
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
         LuncheonMobEffects.register();
-        LuncheonRecipeTypes.register(modEventBus);
+
+        modEventBus.addListener(GlassShardApplicationRecipe::addDeployerRecipe);
 
         LuncheonTags.init();
 
