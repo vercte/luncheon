@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "luncheon:block/palettes/ice_cream/brick/chocolate_ice_cream_cut_brick"
+  }
+}

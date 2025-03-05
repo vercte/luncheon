@@ -46,6 +46,23 @@ public class LuncheonItems {
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Plain Ice Cream")
             .register();
+
+    public static final ItemEntry<Item> CHOCOLATE_ICE_CREAM = REGISTRATE.item("chocolate_ice_cream", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.CHOCOLATE_ICE_CREAM))
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Chocolate Ice Cream")
+            .register();
+
+    public static final ItemEntry<Item> BERRY_ICE_CREAM = REGISTRATE.item("berry_ice_cream", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.BERRY_ICE_CREAM))
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Berry Ice Cream")
+            .register();
+
+    public static final ItemEntry<Item> HOT_SAUCE = REGISTRATE.item("hot_sauce", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.HOT_SAUCE))
+            .lang("Hot Sauce")
+            .register();
     // endregion
 
     // region Crops

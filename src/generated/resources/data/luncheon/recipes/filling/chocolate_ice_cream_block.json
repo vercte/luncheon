@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:snow_block"
+    },
+    {
+      "amount": 500,
+      "fluid": "luncheon:chocolate_ice_cream",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "luncheon:chocolate_ice_cream_block"
+    }
+  ]
+}

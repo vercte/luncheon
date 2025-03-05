@@ -3,6 +3,14 @@
     "luncheon:cut_plain_ice_cream_wall",
     "luncheon:polished_cut_plain_ice_cream_wall",
     "luncheon:cut_plain_ice_cream_brick_wall",
-    "luncheon:small_plain_ice_cream_brick_wall"
+    "luncheon:small_plain_ice_cream_brick_wall",
+    "luncheon:cut_chocolate_ice_cream_wall",
+    "luncheon:polished_cut_chocolate_ice_cream_wall",
+    "luncheon:cut_chocolate_ice_cream_brick_wall",
+    "luncheon:small_chocolate_ice_cream_brick_wall",
+    "luncheon:cut_berry_ice_cream_wall",
+    "luncheon:polished_cut_berry_ice_cream_wall",
+    "luncheon:cut_berry_ice_cream_brick_wall",
+    "luncheon:small_berry_ice_cream_brick_wall"
   ]
 }

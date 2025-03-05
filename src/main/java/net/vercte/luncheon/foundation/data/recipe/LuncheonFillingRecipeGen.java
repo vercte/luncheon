@@ -9,16 +9,33 @@ import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonFluids;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 
+@SuppressWarnings({"NullableProblems", "unused"})
 public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonFillingRecipeGen(PackOutput generator) { super(generator); }
 
-    GeneratedRecipe ICE_CREAM = create("ice_cream", b -> b.require(LuncheonFluids.ICE_CREAM.get(), 250)
+    GeneratedRecipe ICE_CREAM = create("ice_cream", b -> b.require(LuncheonFluids.PLAIN_ICE_CREAM.get(), 250)
             .require(LuncheonItems.ICE_CREAM_CONE)
             .output(LuncheonItems.PLAIN_ICE_CREAM));
 
-    GeneratedRecipe ICE_CREAM_BLOCK = create("ice_cream_block", b -> b.require(LuncheonFluids.ICE_CREAM.get(), 500)
+    GeneratedRecipe CHOCOLATE_ICE_CREAM = create("chocolate_ice_cream", b -> b.require(LuncheonFluids.CHOCOLATE_ICE_CREAM.get(), 250)
+            .require(LuncheonItems.ICE_CREAM_CONE)
+            .output(LuncheonItems.CHOCOLATE_ICE_CREAM));
+
+    GeneratedRecipe BERRY_ICE_CREAM = create("berry_ice_cream", b -> b.require(LuncheonFluids.BERRY_ICE_CREAM.get(), 250)
+            .require(LuncheonItems.ICE_CREAM_CONE)
+            .output(LuncheonItems.BERRY_ICE_CREAM));
+
+    GeneratedRecipe ICE_CREAM_BLOCK = create("ice_cream_block", b -> b.require(LuncheonFluids.PLAIN_ICE_CREAM.get(), 500)
             .require(Blocks.SNOW_BLOCK)
-            .output(LuncheonBlocks.ICE_CREAM_BLOCK));
+            .output(LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK));
+
+    GeneratedRecipe CHOCOLATE_ICE_CREAM_BLOCK = create("chocolate_ice_cream_block", b -> b.require(LuncheonFluids.CHOCOLATE_ICE_CREAM.get(), 500)
+            .require(Blocks.SNOW_BLOCK)
+            .output(LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK));
+
+    GeneratedRecipe BERRY_ICE_CREAM_BLOCK = create("berry_ice_cream_block", b -> b.require(LuncheonFluids.BERRY_ICE_CREAM.get(), 500)
+            .require(Blocks.SNOW_BLOCK)
+            .output(LuncheonBlocks.BERRY_ICE_CREAM_BLOCK));
 
     GeneratedRecipe POWDERED_SNOW = create("filling_powder_snow_bucket", b -> b.require(LuncheonFluids.POWDERED_SNOW.get(), 1000)
             .require(Items.BUCKET)
@@ -30,7 +47,7 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
     public static class DrainingRecipeGen extends LuncheonProcessingRecipeGen {
         public DrainingRecipeGen(PackOutput generator) { super(generator); }
 
-        GeneratedRecipe SNOW_FROM_ICE_CUBE = create("emptying_powder_snow_bucket", b -> b.require(Items.POWDER_SNOW_BUCKET)
+        GeneratedRecipe POWDERED_SNOW_FROM_BUCKET = create("emptying_powder_snow_bucket", b -> b.require(Items.POWDER_SNOW_BUCKET)
                 .output(LuncheonFluids.POWDERED_SNOW.get(), 1000)
                 .output(Items.BUCKET));
 

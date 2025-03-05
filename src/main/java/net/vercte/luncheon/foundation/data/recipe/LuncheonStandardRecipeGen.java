@@ -37,7 +37,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
 
     private final Marker PALETTES = enterFolder("palettes");
 
-    GeneratedRecipe STONECUTTING_ICE_CREAM_BLOCK = create(() -> LuncheonBlocks.ICE_CREAM_BLOCK)
+    GeneratedRecipe STONECUTTING_ICE_CREAM_BLOCK = create(() -> LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK)
             .viaStonecuttingTag(() -> LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_PLAIN.tag).build();
 
     private final Marker COOKING = enterFolder("/");
@@ -72,6 +72,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
         });
     }
 
+    @SuppressWarnings({"SameParameterValue", "FieldMayBeFinal"})
     class GeneratedRecipeBuilder {
         private String path;
         private String suffix;
@@ -210,6 +211,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
             return new GeneratedStonecuttingRecipeBuilder(ingredient);
         }
 
+        @SuppressWarnings("FieldMayBeFinal")
         class GeneratedStonecuttingRecipeBuilder {
             private Supplier<Ingredient> ingredient;
 
@@ -238,6 +240,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
             }
         }
 
+        @SuppressWarnings("FieldMayBeFinal")
         class GeneratedCookingRecipeBuilder {
 
             private Supplier<Ingredient> ingredient;
@@ -318,6 +321,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
         super(p_i48262_1_);
     }
 
+    @SuppressWarnings("NullableProblems")
     private record ModdedCookingRecipeResult(FinishedRecipe wrapped, ResourceLocation outputOverride, List<ICondition> conditions) implements FinishedRecipe {
         @Override
         public ResourceLocation getId() {
@@ -350,6 +354,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
         }
     }
 
+    @SuppressWarnings("NullableProblems")
     private record ConditionSupportingShapelessRecipeResult(FinishedRecipe wrapped, List<ICondition> conditions) implements FinishedRecipe {
         @Override
         public ResourceLocation getId() {

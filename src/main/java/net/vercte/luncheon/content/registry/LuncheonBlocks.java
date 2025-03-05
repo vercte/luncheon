@@ -84,7 +84,7 @@ public class LuncheonBlocks {
             .build()
             .register();
 
-    public static final BlockEntry<RotatedPillarBlock> ICE_CREAM_BLOCK = REGISTRATE.block("plain_ice_cream_block", RotatedPillarBlock::new)
+    public static final BlockEntry<RotatedPillarBlock> PLAIN_ICE_CREAM_BLOCK = REGISTRATE.block("plain_ice_cream_block", RotatedPillarBlock::new)
             .properties(p ->
                 p.mapColor(MapColor.SAND)
                         .strength(0.3F)
@@ -94,6 +94,30 @@ public class LuncheonBlocks {
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/palettes/ice_cream/plain")))
             .lang("Block of Plain Ice Cream")
             .item().tag(LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_PLAIN.tag)
+            .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> CHOCOLATE_ICE_CREAM_BLOCK = REGISTRATE.block("chocolate_ice_cream_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.SAND)
+                            .strength(0.3F)
+                            .sound(SoundType.SNOW)
+                            .requiresCorrectToolForDrops())
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/palettes/ice_cream/chocolate")))
+            .lang("Block of Chocolate Ice Cream")
+            .item().tag(LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_CHOCOLATE.tag)
+            .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> BERRY_ICE_CREAM_BLOCK = REGISTRATE.block("berry_ice_cream_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.SAND)
+                            .strength(0.3F)
+                            .sound(SoundType.SNOW)
+                            .requiresCorrectToolForDrops())
+            .tag(BlockTags.MINEABLE_WITH_SHOVEL)
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/palettes/ice_cream/berry")))
+            .lang("Block of Berry Ice Cream")
+            .item().tag(LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_BERRY.tag)
             .build().register();
 
     static {

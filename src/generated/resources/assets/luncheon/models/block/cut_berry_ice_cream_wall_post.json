@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "luncheon:block/palettes/ice_cream/cut/berry_ice_cream_cut"
+  }
+}

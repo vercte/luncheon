@@ -1,0 +1,22 @@
+{
+  "type": "create:mixing",
+  "coolRequirement": "cooled",
+  "ingredients": [
+    {
+      "amount": 500,
+      "fluid": "luncheon:plain_ice_cream",
+      "nbt": {}
+    },
+    {
+      "amount": 100,
+      "fluid": "luncheon:berry_extract",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "amount": 500,
+      "fluid": "luncheon:berry_ice_cream"
+    }
+  ]
+}

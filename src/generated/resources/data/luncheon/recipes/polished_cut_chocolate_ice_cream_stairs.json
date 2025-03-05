@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "polished_cut_chocolate_ice_cream_stairs",
+  "key": {
+    "X": {
+      "item": "luncheon:polished_cut_chocolate_ice_cream"
+    }
+  },
+  "pattern": [
+    "X  ",
+    "XX ",
+    "XXX"
+  ],
+  "result": {
+    "count": 4,
+    "item": "luncheon:polished_cut_chocolate_ice_cream_stairs"
+  },
+  "show_notification": true
+}

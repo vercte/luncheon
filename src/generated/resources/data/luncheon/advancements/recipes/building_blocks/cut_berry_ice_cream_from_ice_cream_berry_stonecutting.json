@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ice_cream_berry": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "luncheon:ice_cream/berry"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "luncheon:cut_berry_ice_cream_from_ice_cream_berry_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_ice_cream_berry",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "luncheon:cut_berry_ice_cream_from_ice_cream_berry_stonecutting"
+    ]
+  },
+  "sends_telemetry_event": false
+}

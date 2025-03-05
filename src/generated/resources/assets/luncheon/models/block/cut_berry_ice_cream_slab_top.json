@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "luncheon:block/palettes/ice_cream/cut/berry_ice_cream_cut",
+    "side": "luncheon:block/palettes/ice_cream/cut/berry_ice_cream_cut",
+    "top": "luncheon:block/palettes/ice_cream/cut/berry_ice_cream_cut"
+  }
+}

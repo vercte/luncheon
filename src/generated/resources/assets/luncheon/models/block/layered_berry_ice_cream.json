@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "luncheon:block/palettes/ice_cream/cap/berry_ice_cream_cut_cap",
+    "side": "luncheon:block/palettes/ice_cream/layered/berry_ice_cream_cut_layered"
+  }
+}

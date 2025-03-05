@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "luncheon:block/palettes/ice_cream/small_brick/berry_ice_cream_cut_small_brick"
+  }
+}

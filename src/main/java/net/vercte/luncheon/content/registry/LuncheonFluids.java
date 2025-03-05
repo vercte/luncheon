@@ -40,10 +40,44 @@ public class LuncheonFluids {
             .lang("Cream")
             .register();
 
-    public static final FluidEntry<ForgeFlowingFluid.Flowing> ICE_CREAM =
-            REGISTRATE.standardFluid("plain_ice_cream", SolidRenderedPlaceableFluidType.create(0xffeecb,
-                    () -> 1f / 8f))
+    public static final FluidEntry<VirtualFluid> BERRY_EXTRACT = REGISTRATE.virtualFluid("berry_extract")
+            .lang("Berry Extract")
+            .register();
+
+    public static final FluidEntry<VirtualFluid> HOT_SAUCE = REGISTRATE.virtualFluid("hot_sauce")
+            .lang("Hot Sauce")
+            .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> PLAIN_ICE_CREAM =
+            REGISTRATE.standardFluid("plain_ice_cream", SolidRenderedPlaceableFluidType.create(0xffd79e,
+                    () -> 1f / 24f))
                     .lang("Plain Ice Cream")
+                    .properties(b -> b.viscosity(2000)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket().build().register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CHOCOLATE_ICE_CREAM =
+            REGISTRATE.standardFluid("chocolate_ice_cream", SolidRenderedPlaceableFluidType.create(0xad513f,
+                            () -> 1f / 32f))
+                    .lang("Chocolate Ice Cream")
+                    .properties(b -> b.viscosity(2000)
+                            .density(1400))
+                    .fluidProperties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket().build().register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> BERRY_ICE_CREAM =
+            REGISTRATE.standardFluid("berry_ice_cream", SolidRenderedPlaceableFluidType.create(0xffb4b4,
+                            () -> 1f / 24f))
+                    .lang("Berry Ice Cream")
                     .properties(b -> b.viscosity(2000)
                             .density(1400))
                     .fluidProperties(p -> p.levelDecreasePerBlock(2)

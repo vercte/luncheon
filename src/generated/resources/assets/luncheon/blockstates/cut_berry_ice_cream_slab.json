@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "luncheon:block/cut_berry_ice_cream_slab"
+    },
+    "type=double": {
+      "model": "luncheon:block/cut_berry_ice_cream"
+    },
+    "type=top": {
+      "model": "luncheon:block/cut_berry_ice_cream_slab_top"
+    }
+  }
+}

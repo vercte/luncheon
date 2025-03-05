@@ -56,6 +56,7 @@ public class GlassShardApplicationRecipe implements Recipe<RecipeWrapper> {
     @Override @Nonnull
     public ItemStack assemble(RecipeWrapper inv, RegistryAccess access) {
         ItemStack copied = inv.getItem(0).copy();
+        copied.setCount(1);
         copied.getOrCreateTag().putBoolean("luncheon.spiked", true);
         return copied;
     }
@@ -68,6 +69,7 @@ public class GlassShardApplicationRecipe implements Recipe<RecipeWrapper> {
     @Override @Nonnull
     public ItemStack getResultItem(RegistryAccess p_267052_) {
         ItemStack copied = inventory.getItem(0).copy();
+        copied.setCount(1);
         copied.getOrCreateTag().putBoolean("luncheon.spiked", true);
         return copied;
     }

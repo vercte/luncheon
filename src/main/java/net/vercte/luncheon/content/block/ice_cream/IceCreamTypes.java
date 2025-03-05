@@ -11,10 +11,13 @@ import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 
+import java.util.Locale;
 import java.util.function.Function;
 
 public enum IceCreamTypes {
-    PLAIN(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.ICE_CREAM_BLOCK::get);
+    PLAIN(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK::get),
+    CHOCOLATE(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK::get),
+    BERRY(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK::get);
 
     private Function<CreateRegistrate, NonNullSupplier<Block>> factory;
     private IceCreamPalettesVariantEntry variants;
@@ -43,7 +46,7 @@ public enum IceCreamTypes {
             iceCreamVariant.baseBlock = baseBlock;
             String id = LuncheonLang.asId(iceCreamVariant.name() + "_ice_cream");
             iceCreamVariant.materialTag =
-                    AllTags.optionalTag(ForgeRegistries.ITEMS, Luncheon.asResource("ice_cream/" + id));
+                    AllTags.optionalTag(ForgeRegistries.ITEMS, Luncheon.asResource("ice_cream/" + iceCreamVariant.name().toLowerCase(Locale.ROOT)));
             iceCreamVariant.variants = new IceCreamPalettesVariantEntry(id, iceCreamVariant);
         }
     }

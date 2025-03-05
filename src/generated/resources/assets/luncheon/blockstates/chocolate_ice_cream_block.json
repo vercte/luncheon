@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "luncheon:block/chocolate_ice_cream_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "luncheon:block/chocolate_ice_cream_block"
+    },
+    "axis=z": {
+      "model": "luncheon:block/chocolate_ice_cream_block_horizontal",
+      "x": 90
+    }
+  }
+}

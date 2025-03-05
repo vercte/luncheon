@@ -25,6 +25,7 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 @NonnullDefault
+@SuppressWarnings("unused")
 public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider {
     protected static final List<LuncheonProcessingRecipeGen> GENERATORS = new ArrayList<>();
     protected static final int BUCKET = FluidType.BUCKET_VOLUME;
@@ -128,6 +129,6 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
     }
 
     protected <T extends ProcessingRecipe<?>> ProcessingRecipeSerializer<T> getSerializer() {
-        return getRecipeType().getSerializer();
+        return  getRecipeType().getSerializer();
     }
 }

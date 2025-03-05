@@ -1,6 +1,7 @@
 package net.vercte.luncheon.content.item;
 
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.vercte.luncheon.content.registry.LuncheonMobEffects;
 
@@ -13,7 +14,13 @@ public class LuncheonFoodProperties {
     public static final FoodProperties CHILI = food(2, 0.1F)
             .effect(() -> new MobEffectInstance(LuncheonMobEffects.SPICY.get(), 15 * 20), 1).build();
 
+    public static final FoodProperties HOT_SAUCE = food(1, 0.4F)
+            .effect(() -> new MobEffectInstance(LuncheonMobEffects.SPICY.get(), 30 * 20), 1).build();
+
     public static final FoodProperties PLAIN_ICE_CREAM = food(4, 0.7F).build();
+    public static final FoodProperties CHOCOLATE_ICE_CREAM = food(7, 0.8F).build();
+    public static final FoodProperties BERRY_ICE_CREAM = food(6, 0.6F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400), 1).build();
 
     public static FoodProperties.Builder food(int nutrition, float saturationMod) {
         FoodProperties.Builder foodProperties = new FoodProperties.Builder();

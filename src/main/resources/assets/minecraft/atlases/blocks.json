@@ -11,6 +11,22 @@
     {
       "type": "single",
       "resource": "luncheon:fluid/plain_ice_cream_still"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/chocolate_ice_cream_flow"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/chocolate_ice_cream_still"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/berry_ice_cream_flow"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/berry_ice_cream_still"
     }
   ]
 }

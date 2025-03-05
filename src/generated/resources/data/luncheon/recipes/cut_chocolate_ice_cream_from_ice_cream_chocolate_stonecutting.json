@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "tag": "luncheon:ice_cream/chocolate"
+  },
+  "result": "luncheon:cut_chocolate_ice_cream"
+}
