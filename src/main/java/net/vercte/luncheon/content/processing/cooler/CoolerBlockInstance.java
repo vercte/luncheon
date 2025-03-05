@@ -10,13 +10,13 @@ import net.minecraft.core.Direction;
 import net.vercte.luncheon.content.registry.LuncheonPartialModels;
 
 public class CoolerBlockInstance extends SingleRotatingInstance<CoolerBlockEntity> implements DynamicInstance {
-    protected RotatingData blade;
+    protected RotatingData fan;
     protected CoolerBlockEntity cooler;
 
     public CoolerBlockInstance(MaterialManager materialManager, CoolerBlockEntity blockEntity) {
         super(materialManager, blockEntity);
 
-        blade = setup(getBlade().createInstance());
+        fan = setup(getFan().createInstance());
 
         cooler = blockEntity;
     }
@@ -24,21 +24,21 @@ public class CoolerBlockInstance extends SingleRotatingInstance<CoolerBlockEntit
     @Override
     public void updateLight() {
         super.updateLight();
-        relight(pos, blade);
+        relight(pos, fan);
     }
 
     @Override
     public void remove() {
         super.remove();
-        blade.delete();
+        fan.delete();
     }
 
     @Override
     public void beginFrame() {
         float speed = blockEntity.getBladeRotationSpeed();
 
-        blade.setPosition(getInstancePosition())
-                .nudge(0, (float) 4/16, 0)
+        fan.setPosition(getInstancePosition())
+                .nudge(0, (float) 2/16, 0)
                 .setRotationalSpeed(speed);
     }
 
@@ -48,9 +48,9 @@ public class CoolerBlockInstance extends SingleRotatingInstance<CoolerBlockEntit
         return getRotatingMaterial().getModel(LuncheonPartialModels.SHAFT_TINY, blockState, Direction.DOWN);
     }
 
-    protected Instancer<RotatingData> getBlade() {
+    protected Instancer<RotatingData> getFan() {
         return materialManager.defaultCutout()
                 .material(AllMaterialSpecs.ROTATING)
-                .getModel(LuncheonPartialModels.MECHANICAL_COOLER_BLADE, blockState);
+                .getModel(LuncheonPartialModels.SHAFT_FAN, blockState);
     }
 }

@@ -17,7 +17,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
-import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonPartialModels;
 
 public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockEntity> {
@@ -46,9 +45,9 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
         float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
         VertexConsumer vbCutout = buffer.getBuffer(RenderType.cutoutMipped());
-        SuperByteBuffer bladeRender = CachedBufferer.partial(LuncheonPartialModels.MECHANICAL_COOLER_BLADE, blockState);
+        SuperByteBuffer bladeRender = CachedBufferer.partial(LuncheonPartialModels.SHAFT_FAN, blockState);
         bladeRender.rotateCentered(Direction.UP, angle)
-                .translate(0, (float) 4 / 16, 0)
+                .translate(0, (float) 2 / 16, 0)
                 .renderInto(ms, vbCutout);
     }
 
@@ -58,7 +57,7 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
             return;
 
         float minPuddleHeight = 1 / 16f;
-        float totalHeight = 1 / 4f - minPuddleHeight;
+        float totalHeight = 3 / 16f - minPuddleHeight;
 
         float level = fluidLevel.getValue(partialTicks);
         if (level < 1 / (512f * totalHeight))
@@ -78,7 +77,7 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
         float zMin = 1 / 16f;
         float zMax = xMin + 14 / 16f;
 
-        float yMin = totalHeight + 4 / 16f + minPuddleHeight - clampedLevel;
+        float yMin = totalHeight + 2 / 16f + minPuddleHeight - clampedLevel;
         float yMax = yMin + clampedLevel;
 
         ms.pushPose();

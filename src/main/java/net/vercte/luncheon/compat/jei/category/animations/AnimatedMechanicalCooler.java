@@ -1,12 +1,10 @@
 package net.vercte.luncheon.compat.jei.category.animations;
 
 import com.jozufozu.flywheel.core.PartialModel;
-import com.jozufozu.flywheel.util.AnimationTickHolder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.util.Mth;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonPartialModels;
@@ -30,9 +28,9 @@ public class AnimatedMechanicalCooler extends AnimatedKinetics {
         matrixStack.mulPose(Axis.YP.rotationDegrees(22.5f));
         int scale = 23;
 
-        PartialModel blade = LuncheonPartialModels.MECHANICAL_COOLER_BLADE;
+        PartialModel fan = LuncheonPartialModels.SHAFT_FAN;
 
-        blockElement(blade).atLocal(0, 1.65 - (4f / 16), 0)
+        blockElement(fan).atLocal(0, 1.65 - (2f / 16), 0)
                 .rotateBlock(0, getCurrentAngle()*4, 0)
                 .scale(scale)
                 .render(graphics);
