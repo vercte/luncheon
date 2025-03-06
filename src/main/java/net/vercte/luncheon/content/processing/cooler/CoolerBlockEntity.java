@@ -3,9 +3,10 @@ package net.vercte.luncheon.content.processing.cooler;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.fluid.SmartFluidTank;
 import com.simibubi.create.foundation.item.TooltipHelper;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.VecHelper;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat;
+import net.createmod.catnip.animation.LerpedFloat;
+import net.createmod.catnip.lang.FontHelper;
+import net.createmod.catnip.lang.Lang;
+import net.createmod.catnip.math.VecHelper;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -102,10 +103,10 @@ public class CoolerBlockEntity extends KineticBlockEntity {
             MutableComponent hint =
                     LuncheonLang.translateDirect("gui.contraptions.no_water", I18n.get(getBlockState().getBlock()
                             .getDescriptionId()));
-            List<Component> cutString = TooltipHelper.cutTextComponent(hint, TooltipHelper.Palette.GRAY_AND_WHITE);
-            for (int i = 0; i < cutString.size(); i++)
-                Lang.builder()
-                        .add(cutString.get(i)
+            List<Component> cutString = TooltipHelper.cutTextComponent(hint, FontHelper.Palette.GRAY_AND_WHITE);
+            for (Component component : cutString)
+                Lang.builder(Luncheon.ID)
+                        .add(component
                                 .copy())
                         .forGoggles(tooltip);
             return true;

@@ -1,14 +1,14 @@
 package net.vercte.luncheon.content.processing.cooler;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.fluid.FluidRenderer;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
-import com.simibubi.create.foundation.utility.animation.LerpedFloat;
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
+import net.createmod.catnip.animation.AnimationTickHolder;
+import net.createmod.catnip.animation.LerpedFloat;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -31,13 +31,13 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
     protected void renderSafe(CoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
         renderWater(be, partialTicks, ms, buffer, light, overlay);
 
-        if (Backend.canUseInstancing(be.getLevel()))
+        if (VisualizationManager.supportsVisualization(be.getLevel()))
             return;
 
         BlockState blockState = be.getBlockState();
 
         VertexConsumer vb = buffer.getBuffer(RenderType.solid());
-        SuperByteBuffer superBuffer = CachedBufferer.partialFacing(LuncheonPartialModels.SHAFT_TINY, blockState, Direction.DOWN);
+        SuperByteBuffer superBuffer = CachedBuffers.partialFacing(LuncheonPartialModels.SHAFT_TINY, blockState, Direction.DOWN);
         standardKineticRotationTransform(superBuffer, be, light).renderInto(ms, vb);
 
         float speed = be.getBladeRotationSpeed();
@@ -45,8 +45,8 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
         float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
         VertexConsumer vbCutout = buffer.getBuffer(RenderType.cutoutMipped());
-        SuperByteBuffer bladeRender = CachedBufferer.partial(LuncheonPartialModels.SHAFT_FAN, blockState);
-        bladeRender.rotateCentered(Direction.UP, angle)
+        SuperByteBuffer bladeRender = CachedBuffers.partial(LuncheonPartialModels.SHAFT_FAN, blockState);
+        bladeRender.rotateCentered(angle, Direction.UP)
                 .translate(0, (float) 2 / 16, 0)
                 .renderInto(ms, vbCutout);
     }
@@ -82,10 +82,10 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
 
         ms.pushPose();
         ms.translate(0, clampedLevel - totalHeight, 0);
-        FluidRenderer.renderFluidBox(fluidStack,
+        FluidRenderer.renderFluidBox(fluidStack.getFluid(), fluidStack.getAmount(),
                 xMin + clip, yMin, zMin + clip,
                 xMax - clip, yMax, zMax - clip,
-                buffer, ms, light, false);
+                buffer, ms, light, false, false);
         ms.popPose();
     }
 }

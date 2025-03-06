@@ -1,7 +1,7 @@
 package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.Create;
-import com.simibubi.create.foundation.utility.Lang;
+import net.createmod.catnip.lang.Lang;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;

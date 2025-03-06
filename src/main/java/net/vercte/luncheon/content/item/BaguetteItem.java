@@ -1,8 +1,8 @@
 package net.vercte.luncheon.content.item;
 
-import com.jozufozu.flywheel.util.AnimationTickHolder;
 import com.simibubi.create.AllPackets;
 import com.simibubi.create.content.equipment.extendoGrip.ExtendoGripInteractionPacket;
+import net.createmod.catnip.animation.AnimationTickHolder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.nbt.CompoundTag;

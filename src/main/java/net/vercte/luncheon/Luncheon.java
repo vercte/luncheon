@@ -1,9 +1,9 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.foundation.utility.Components;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -50,7 +50,7 @@ public class Luncheon {
 
     public static final RegistryObject<CreativeModeTab> BASE_CREATIVE_TAB = CREATIVE_TABS.register("base",
             () -> CreativeModeTab.builder()
-                    .title(Components.translatable("itemGroup.luncheon.base"))
+                    .title(Component.translatable("itemGroup.luncheon.base"))
                     .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
                     .icon(LuncheonItems.ICE_CUBE::asStack)
                     .displayItems(new LuncheonDisplayItemsGenerator(Luncheon.BASE_CREATIVE_TAB))

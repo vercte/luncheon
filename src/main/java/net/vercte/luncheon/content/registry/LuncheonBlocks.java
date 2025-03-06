@@ -1,7 +1,8 @@
 package net.vercte.luncheon.content.registry;
 
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
@@ -38,10 +39,12 @@ public class LuncheonBlocks {
                     .transform(pickaxeOnly())
                     .addLayer(() -> RenderType::cutoutMipped)
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                    .transform(BlockStressDefaults.setImpact(2.0))
                     .lang("Mechanical Cooler")
                     .item()
                     .transform(customItemModel())
+                    .onRegister((block) -> {
+                        BlockStressValues.IMPACTS.register(block, () -> 2.0);
+                    })
                     .register();
     // endregion
 

@@ -1,14 +1,16 @@
 package net.vercte.luncheon.foundation.utility;
 
-import com.simibubi.create.foundation.utility.Components;
-import com.simibubi.create.foundation.utility.Lang;
-import com.simibubi.create.foundation.utility.LangBuilder;
-import com.simibubi.create.foundation.utility.LangNumberFormat;
+import net.createmod.catnip.lang.Lang;
+import net.createmod.catnip.lang.LangBuilder;
+import net.createmod.catnip.lang.LangNumberFormat;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.vercte.luncheon.Luncheon;
+
+import static net.createmod.catnip.lang.LangBuilder.resolveBuilders;
 
 public class LuncheonLang extends Lang {
     public static LangBuilder builder() {
@@ -16,7 +18,7 @@ public class LuncheonLang extends Lang {
     }
 
     public static MutableComponent translateDirect(String key, Object... args) {
-        return Components.translatable(Luncheon.ID + "." + key, resolveBuilders(args));
+        return Component.translatable(Luncheon.ID + "." + key, resolveBuilders(args));
     }
 
     public static LangBuilder blockName(BlockState state) {
