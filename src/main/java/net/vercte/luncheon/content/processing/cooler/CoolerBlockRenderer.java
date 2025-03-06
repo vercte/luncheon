@@ -40,12 +40,13 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
         SuperByteBuffer superBuffer = CachedBuffers.partialFacing(LuncheonPartialModels.SHAFT_TINY, blockState, Direction.DOWN);
         standardKineticRotationTransform(superBuffer, be, light).renderInto(ms, vb);
 
-        float speed = be.getBladeRotationSpeed();
+        float speed = be.getFanRotationSpeed();
         float time = AnimationTickHolder.getRenderTime(be.getLevel());
         float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
         VertexConsumer vbCutout = buffer.getBuffer(RenderType.cutoutMipped());
         SuperByteBuffer bladeRender = CachedBuffers.partial(LuncheonPartialModels.SHAFT_FAN, blockState);
+        bladeRender.useLevelLight(be.getLevel());
         bladeRender.rotateCentered(angle, Direction.UP)
                 .translate(0, (float) 2 / 16, 0)
                 .renderInto(ms, vbCutout);

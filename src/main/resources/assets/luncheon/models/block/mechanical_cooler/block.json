@@ -2,7 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "luncheon:block/mechanical_cooler"
+		"0": "luncheon:block/mechanical_cooler",
+		"particle": "create:block/industrial_iron_block"
 	},
 	"elements": [
 		{

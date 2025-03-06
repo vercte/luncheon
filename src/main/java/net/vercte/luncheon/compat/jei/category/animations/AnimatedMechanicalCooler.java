@@ -31,7 +31,7 @@ public class AnimatedMechanicalCooler extends AnimatedKinetics {
         PartialModel fan = LuncheonPartialModels.SHAFT_FAN;
 
         blockElement(fan).atLocal(0, 1.65 - (2f / 16), 0)
-                .rotateBlock(0, getCurrentAngle()*4, 0)
+                .rotateBlock(0, getCurrentAngle()*8, 0)
                 .scale(scale)
                 .render(graphics);
 

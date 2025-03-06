@@ -3,42 +3,56 @@ package net.vercte.luncheon.content.processing.cooler;
 import com.simibubi.create.content.kinetics.base.RotatingInstance;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.foundation.render.AllInstanceTypes;
+import dev.engine_room.flywheel.api.instance.Instance;
 import dev.engine_room.flywheel.api.visual.DynamicVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
+import net.minecraft.core.Direction;
 import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+
+import java.util.function.Consumer;
 
 public class CoolerBlockVisual extends SingleAxisRotatingVisual<CoolerBlockEntity> implements SimpleDynamicVisual {
     protected RotatingInstance fan;
     protected CoolerBlockEntity cooler;
 
     public CoolerBlockVisual(VisualizationContext context, CoolerBlockEntity blockEntity, float partialTick) {
-        super(context, blockEntity, partialTick, Models.partial(LuncheonPartialModels.SHAFT_TINY));
+        super(context, blockEntity, partialTick, Models.partial(LuncheonPartialModels.SHAFT_TINY, Direction.DOWN));
 
-        fan = instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(LuncheonPartialModels.SHAFT_FAN)).createInstance();
+        this.fan = instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(LuncheonPartialModels.SHAFT_FAN)).createInstance();
 
         cooler = blockEntity;
+
+        animateFan();
     }
 
     @Override
     public void updateLight(float partialTick) {
         super.updateLight(partialTick);
-        relight(pos, fan);
+        relight(pos, this.fan);
     }
 
     @Override
     public void _delete() {
         super._delete();
-        fan.delete();
+        this.fan.delete();
     }
 
     @Override
-    public void beginFrame(DynamicVisual.Context ctx) {
-        float speed = blockEntity.getBladeRotationSpeed();
+    public void beginFrame(DynamicVisual.Context ctx) { this.animateFan(); }
 
-        fan.setPosition(getVisualPosition())
+    public void animateFan() {
+        float fanSpeed = blockEntity.getFanRotationSpeed();
+
+        this.fan.setPosition(getVisualPosition())
                 .nudge(0, (float) 2/16, 0)
-                .setRotationalSpeed(speed);
+                .setRotationalSpeed(fanSpeed)
+                .setChanged();
+    }
+
+    public void collectCrumblingInstances(Consumer<Instance> consumer) {
+        super.collectCrumblingInstances(consumer);
+        consumer.accept(this.fan);
     }
 }

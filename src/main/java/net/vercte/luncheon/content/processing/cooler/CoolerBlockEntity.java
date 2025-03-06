@@ -178,7 +178,7 @@ public class CoolerBlockEntity extends KineticBlockEntity {
         return CoolerBlock.getCoolingLevelOf(getBlockState());
     }
 
-    public float getBladeRotationSpeed() {
+    public float getFanRotationSpeed() {
         if(!active) return Mth.clamp(speed / 2, -8, 8);
         return speed;
     }

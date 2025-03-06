@@ -6,6 +6,7 @@
 		"2": "luncheon:block/mechanical_cooler_fan",
 		"particle": "create:block/axis"
 	},
+	"render_type": "minecraft:cutout",
 	"elements": [
 		{
 			"name": "Shaft",
