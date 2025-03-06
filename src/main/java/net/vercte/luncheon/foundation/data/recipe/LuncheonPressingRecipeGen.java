@@ -6,6 +6,7 @@ import net.minecraft.data.PackOutput;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
+@SuppressWarnings({"NullableProblems", "unused"})
 public class LuncheonPressingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonPressingRecipeGen(PackOutput generator) { super(generator); }
 

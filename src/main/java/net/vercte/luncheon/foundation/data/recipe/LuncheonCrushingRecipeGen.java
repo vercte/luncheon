@@ -9,6 +9,7 @@ import net.vercte.luncheon.content.registry.LuncheonItems;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
+@SuppressWarnings({"unused"})
 public class LuncheonCrushingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonCrushingRecipeGen(PackOutput generator) { super(generator); }
 

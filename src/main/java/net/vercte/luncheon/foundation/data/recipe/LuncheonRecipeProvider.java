@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+@SuppressWarnings({"unused"})
 public class LuncheonRecipeProvider extends RecipeProvider {
     protected final List<GeneratedRecipe> all = new ArrayList<>();
 
