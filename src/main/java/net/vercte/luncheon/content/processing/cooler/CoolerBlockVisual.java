@@ -17,12 +17,21 @@ public class CoolerBlockVisual extends SingleAxisRotatingVisual<CoolerBlockEntit
     protected RotatingInstance fan;
     protected CoolerBlockEntity cooler;
 
+    private float lastSpeed;
+
     public CoolerBlockVisual(VisualizationContext context, CoolerBlockEntity blockEntity, float partialTick) {
         super(context, blockEntity, partialTick, Models.partial(LuncheonPartialModels.SHAFT_TINY, Direction.DOWN));
 
         this.fan = instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(LuncheonPartialModels.SHAFT_FAN)).createInstance();
 
-        cooler = blockEntity;
+        this.cooler = blockEntity;
+
+        this.lastSpeed = blockEntity.getFanRotationSpeed();
+        fan.setup(blockEntity, this.lastSpeed)
+                .setPosition(getVisualPosition())
+                .nudge(0, (float) 2/16, 0)
+                .rotateToFace(Direction.UP, Direction.Axis.Y)
+                .setChanged();
 
         animateFan();
     }
@@ -45,9 +54,9 @@ public class CoolerBlockVisual extends SingleAxisRotatingVisual<CoolerBlockEntit
     public void animateFan() {
         float fanSpeed = blockEntity.getFanRotationSpeed();
 
-        this.fan.setPosition(getVisualPosition())
-                .nudge(0, (float) 2/16, 0)
-                .setRotationalSpeed(fanSpeed)
+        if(fanSpeed == this.lastSpeed) return;
+        this.lastSpeed = fanSpeed;
+        this.fan.setRotationalSpeed(fanSpeed)
                 .setChanged();
     }
 
