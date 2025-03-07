@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
+import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonFluids;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 
@@ -34,11 +35,18 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
     );
 
     GeneratedRecipe HOT_SAUCE = create("hot_sauce", b ->
-            b.require(LuncheonItems.CHILI_SEEDS::get)
-                    .require(LuncheonItems.CHILI_SEEDS::get)
+            b.require(LuncheonItems.CHILI_SEEDS)
+                    .require(LuncheonItems.CHILI_SEEDS)
                     .require(Fluids.WATER, 50)
                     .output(LuncheonFluids.HOT_SAUCE.get(), 100)
                     .requiresHeat(HeatCondition.HEATED));
+
+    GeneratedRecipe WAFER_BLOCK = create("wafer_block", b ->
+            b.require(LuncheonItems.WAFER)
+                    .require(LuncheonItems.WAFER)
+                    .require(LuncheonItems.WAFER)
+                    .require(LuncheonItems.WAFER)
+                    .output(LuncheonBlocks.WAFER_BLOCK));
 
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.COMPACTING; }

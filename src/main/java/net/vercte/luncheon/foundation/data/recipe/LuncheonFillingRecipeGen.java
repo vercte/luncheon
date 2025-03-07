@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonFluids;
 import net.vercte.luncheon.content.registry.LuncheonItems;
@@ -40,6 +41,18 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
     GeneratedRecipe POWDERED_SNOW = create("filling_powder_snow_bucket", b -> b.require(LuncheonFluids.POWDERED_SNOW.get(), 1000)
             .require(Items.BUCKET)
             .output(Items.POWDER_SNOW_BUCKET));
+
+    GeneratedRecipe PLAIN_FILLED_WAFER_BLOCK = create("plain_filled_wafer_block", b -> b.require(LuncheonFluids.PLAIN_ICE_CREAM.get(), 500)
+            .require(LuncheonBlocks.WAFER_BLOCK)
+            .output(LuncheonBlocks.PLAIN_FILLED_WAFER_BLOCK));
+
+    GeneratedRecipe CHOCOLATE_FILLED_WAFER_BLOCK = create("chocolate_filled_wafer_block", b -> b.require(LuncheonFluids.CHOCOLATE_ICE_CREAM.get(), 500)
+            .require(LuncheonBlocks.WAFER_BLOCK)
+            .output(LuncheonBlocks.CHOCOLATE_FILLED_WAFER_BLOCK));
+
+    GeneratedRecipe BERRY_FILLED_WAFER_BLOCK = create("berry_filled_wafer_block", b -> b.require(LuncheonFluids.CHOCOLATE_ICE_CREAM.get(), 500)
+            .require(LuncheonBlocks.WAFER_BLOCK)
+            .output(LuncheonBlocks.BERRY_FILLED_WAFER_BLOCK));
 
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.FILLING; }

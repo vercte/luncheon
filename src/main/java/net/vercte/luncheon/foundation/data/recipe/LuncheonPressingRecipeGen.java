@@ -14,7 +14,7 @@ public class LuncheonPressingRecipeGen extends LuncheonProcessingRecipeGen {
             b.require(ForgeTags.DOUGH).output(LuncheonItems.RAW_WAFER));
 
     GeneratedRecipe ICE_CREAM_CONE = create("ice_cream_cone", b ->
-            b.require(LuncheonItems.WAFER).output(LuncheonItems.ICE_CREAM_CONE));
+            b.require(LuncheonItems.WAFER).output(LuncheonItems.ICE_CREAM_CONE, 4));
 
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.PRESSING; }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "luncheon:block/plain_filled_wafer_block_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "luncheon:block/plain_filled_wafer_block"
+    },
+    "axis=z": {
+      "model": "luncheon:block/plain_filled_wafer_block_horizontal",
+      "x": 90
+    }
+  }
+}

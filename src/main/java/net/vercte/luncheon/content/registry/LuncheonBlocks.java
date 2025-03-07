@@ -23,6 +23,7 @@ import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
 import java.util.Arrays;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public class LuncheonBlocks {
@@ -122,6 +123,55 @@ public class LuncheonBlocks {
             .lang("Block of Berry Ice Cream")
             .item().tag(LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_BERRY.tag)
             .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> WAFER_BLOCK = REGISTRATE.block("wafer_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.TERRACOTTA_YELLOW)
+                            .strength(0.2F)
+                            .sound(SoundType.HANGING_ROOTS)
+                            .requiresCorrectToolForDrops())
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/empty_wafer_side"), Luncheon.asResource("block/wafer_top")))
+            .lang("Filled Wafer Block")
+            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> PLAIN_FILLED_WAFER_BLOCK = REGISTRATE.block("plain_filled_wafer_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.TERRACOTTA_YELLOW)
+                            .strength(0.2F)
+                            .sound(SoundType.HANGING_ROOTS)
+                            .requiresCorrectToolForDrops())
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/plain_wafer_side"), Luncheon.asResource("block/wafer_top")))
+            .lang("Filled Wafer Block")
+            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> CHOCOLATE_FILLED_WAFER_BLOCK = REGISTRATE.block("chocolate_filled_wafer_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.TERRACOTTA_YELLOW)
+                            .strength(0.2F)
+                            .sound(SoundType.HANGING_ROOTS)
+                            .requiresCorrectToolForDrops())
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/chocolate_wafer_side"), Luncheon.asResource("block/wafer_top")))
+            .lang("Chocolate Filled Wafer Block")
+            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .build().register();
+
+    public static final BlockEntry<RotatedPillarBlock> BERRY_FILLED_WAFER_BLOCK = REGISTRATE.block("berry_filled_wafer_block", RotatedPillarBlock::new)
+            .properties(p ->
+                    p.mapColor(MapColor.TERRACOTTA_YELLOW)
+                            .strength(0.2F)
+                            .sound(SoundType.HANGING_ROOTS)
+                            .requiresCorrectToolForDrops())
+            .transform(axeOrPickaxe())
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/berry_wafer_side"), Luncheon.asResource("block/wafer_top")))
+            .lang("Berry Filled Wafer Block")
+            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .build().register();
+
 
     static {
         IceCreamTypes.register(REGISTRATE);

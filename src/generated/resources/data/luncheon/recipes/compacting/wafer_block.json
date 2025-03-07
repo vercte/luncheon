@@ -1,0 +1,22 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "luncheon:wafer"
+    },
+    {
+      "item": "luncheon:wafer"
+    },
+    {
+      "item": "luncheon:wafer"
+    },
+    {
+      "item": "luncheon:wafer"
+    }
+  ],
+  "results": [
+    {
+      "item": "luncheon:wafer_block"
+    }
+  ]
+}
