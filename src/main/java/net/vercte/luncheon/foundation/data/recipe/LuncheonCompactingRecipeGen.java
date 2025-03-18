@@ -34,10 +34,10 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
                     .output(LuncheonFluids.BERRY_EXTRACT.get(), 100)
     );
 
-    GeneratedRecipe WAFER = create("wafer", b ->
+    GeneratedRecipe RAW_WAFER = create("raw_wafer", b ->
             b.require(AllItems.WHEAT_FLOUR)
                     .require(Fluids.WATER, 100)
-                    .output(LuncheonItems.WAFER, 2));
+                    .output(LuncheonItems.RAW_WAFER, 2));
 
     GeneratedRecipe WAFER_BLOCK = create("wafer_block", b ->
             b.require(LuncheonItems.WAFER)

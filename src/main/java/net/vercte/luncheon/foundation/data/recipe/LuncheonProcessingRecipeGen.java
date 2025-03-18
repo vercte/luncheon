@@ -39,6 +39,7 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
         GENERATORS.add(new LuncheonCrushingRecipeGen.MillingRecipeGen(output));
         GENERATORS.add(new LuncheonFillingRecipeGen(output));
         GENERATORS.add(new LuncheonFillingRecipeGen.DrainingRecipeGen(output));
+        GENERATORS.add(new LuncheonSequencedAssemblyGen(output));
 
         gen.addProvider(true, new DataProvider() {
             @Override

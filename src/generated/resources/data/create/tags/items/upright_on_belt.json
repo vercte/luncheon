@@ -3,6 +3,8 @@
     "luncheon:plain_ice_cream",
     "luncheon:chocolate_ice_cream",
     "luncheon:berry_ice_cream",
+    "luncheon:incomplete_neapolitan_sundae",
+    "luncheon:neapolitan_sundae",
     "luncheon:ice_cream_cone"
   ]
 }

@@ -49,6 +49,15 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
 
     private static Predicate<Item> makeExclusionPredicate() {
         Set<Item> exclusions = new ReferenceOpenHashSet<>();
+
+        List<ItemProviderEntry<?>> simpleExclusions = List.of(
+                LuncheonItems.INCOMPLETE_NEAPOLITAN_SUNDAE
+        );
+
+        for (ItemProviderEntry<?> entry : simpleExclusions) {
+            exclusions.add(entry.asItem());
+        }
+
         return exclusions::contains;
     }
 
@@ -66,7 +75,8 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
                 LuncheonItems.ICE_CUBE, LuncheonBlocks.MECHANICAL_COOLER,
                 LuncheonBlocks.COBBLED_GLASS, LuncheonItems.GLASS_SHARDS,
                 LuncheonItems.CHOCOLATE_ICE_CREAM, LuncheonItems.PLAIN_ICE_CREAM,
-                LuncheonItems.BERRY_ICE_CREAM, LuncheonItems.PLAIN_ICE_CREAM,
+                LuncheonItems.BERRY_ICE_CREAM, LuncheonItems.CHOCOLATE_ICE_CREAM,
+                LuncheonItems.NEAPOLITAN_SUNDAE, LuncheonItems.BERRY_ICE_CREAM,
                 LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK, IceCreamTypes.PLAIN.getVariants().registeredBlocks.get(5),
                 LuncheonBlocks.BERRY_ICE_CREAM_BLOCK, IceCreamTypes.CHOCOLATE.getVariants().registeredBlocks.get(5)
         );

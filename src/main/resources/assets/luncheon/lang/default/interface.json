@@ -13,5 +13,9 @@
   "luncheon.ponder.mechanical_cooler.header": "Utilizing the Mechanical Cooler",
   "luncheon.ponder.mechanical_cooler.text_1": "The Mechanical Cooler is the Blaze Burner's cooler cousin",
   "luncheon.ponder.mechanical_cooler.text_2": "To operate, it needs power from below...",
-  "luncheon.ponder.mechanical_cooler.text_3": "And water from the side."
+  "luncheon.ponder.mechanical_cooler.text_3": "And water from the side.",
+
+  "item.luncheon.baguette.tooltip.summary": "A baguette. Lets you attack from a _greater distance_.",
+  "item.luncheon.baguette.tooltip.condition1": "When Eaten",
+  "item.luncheon.baguette.tooltip.behaviour1": "Decreases _durability_."
 }

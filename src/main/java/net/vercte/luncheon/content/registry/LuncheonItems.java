@@ -1,9 +1,13 @@
 package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.AllTags.AllItemTags;
+import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.foundation.item.KineticStats;
+import com.simibubi.create.foundation.item.TooltipModifier;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -17,9 +21,13 @@ import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 public class LuncheonItems {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
-    static {
-        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
-    }
+static {
+    REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
+    REGISTRATE.setTooltipModifierFactory(item ->
+        new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
+                .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
+    );
+}
 
     // region Foods
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
@@ -45,6 +53,17 @@ public class LuncheonItems {
             .properties(p -> p.food(LuncheonFoodProperties.BERRY_ICE_CREAM))
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Berry Ice Cream")
+            .register();
+
+    public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_NEAPOLITAN_SUNDAE = REGISTRATE.item("incomplete_neapolitan_sundae", SequencedAssemblyItem::new)
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Incomplete Neapolitan Sundae")
+            .register();
+
+    public static final ItemEntry<Item> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE))
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Neapolitan Sundae")
             .register();
     // endregion
 
