@@ -1,0 +1,19 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "create:wheat_flour"
+    },
+    {
+      "amount": 100,
+      "fluid": "minecraft:water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "count": 2,
+      "item": "luncheon:wafer"
+    }
+  ]
+}

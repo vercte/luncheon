@@ -1,7 +1,0 @@
-{
-  "parent": "farmersdelight:block/crop_cross",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "luncheon:block/budding_chili_stage3"
-  }
-}

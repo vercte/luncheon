@@ -18,10 +18,6 @@ public class LuncheonDamageSources {
         return source(LuncheonDamageTypes.GLASS_SPIKED, level);
     }
 
-    public static DamageSource too_spicy(Level level) {
-        return source(LuncheonDamageTypes.TOO_SPICY, level);
-    }
-
     private static DamageSource source(ResourceKey<DamageType> key, LevelReader level) {
         Registry<DamageType> registry = level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
         return new DamageSource(registry.getHolderOrThrow(key));

@@ -1,6 +1,5 @@
 package net.vercte.luncheon.content.registry.custom;
 
-import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -64,8 +63,6 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
         );
 
         Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleAfterOrderings = Map.of(
-                LuncheonItems.CHILI_SEEDS, LuncheonItems.CHILI,
-                LuncheonItems.BLAZE_CAKE_SLICE, AllItems.BLAZE_CAKE,
                 LuncheonItems.ICE_CUBE, LuncheonBlocks.MECHANICAL_COOLER,
                 LuncheonBlocks.COBBLED_GLASS, LuncheonItems.GLASS_SHARDS,
                 LuncheonItems.CHOCOLATE_ICE_CREAM, LuncheonItems.PLAIN_ICE_CREAM,
@@ -167,7 +164,7 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
 
         public enum Type {
             BEFORE,
-            AFTER;
+            AFTER
         }
     }
 }

@@ -27,6 +27,14 @@
     {
       "type": "single",
       "resource": "luncheon:fluid/berry_ice_cream_still"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/hot_sauce_flow"
+    },
+    {
+      "type": "single",
+      "resource": "luncheon:fluid/hot_sauce_still"
     }
   ]
 }

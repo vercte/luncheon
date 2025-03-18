@@ -7,8 +7,7 @@
     },
     {
       "amount": 250,
-      "fluid": "luncheon:cream",
-      "nbt": {}
+      "fluidTag": "forge:milk"
     },
     {
       "amount": 500,

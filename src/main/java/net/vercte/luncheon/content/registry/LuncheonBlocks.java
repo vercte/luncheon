@@ -2,7 +2,6 @@ package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
@@ -12,15 +11,10 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.block.BlazeCakeBlock;
-import net.vercte.luncheon.content.block.BuddingChiliCropBlock;
-import net.vercte.luncheon.content.block.ChiliCropBlock;
 import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
-
-import java.util.Arrays;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
@@ -43,35 +37,7 @@ public class LuncheonBlocks {
                     .lang("Mechanical Cooler")
                     .item()
                     .transform(customItemModel())
-                    .onRegister((block) -> {
-                        BlockStressValues.IMPACTS.register(block, () -> 2.0);
-                    })
-                    .register();
-    // endregion
-
-    // region Placeable Foods
-    public static final BlockEntry<BlazeCakeBlock> BLAZE_CAKE =
-            REGISTRATE.block("blaze_cake", BlazeCakeBlock::new)
-                    .initialProperties(NonNullSupplier.of(() -> Blocks.CAKE))
-                    .blockstate(LuncheonBlockstates::PieBlock)
-                    .loot((lt, block) -> lt.add(block, BlazeCakeBlock.buildLootTable()))
-                    .lang("Blaze Cake")
-                    .register();
-    // endregion
-
-    // region Crops
-    public static final BlockEntry<BuddingChiliCropBlock> BUDDING_CHILI_CROP =
-            REGISTRATE.block("budding_chili", BuddingChiliCropBlock::new)
-                    .initialProperties(() -> Blocks.WHEAT)
-                    .blockstate((c, p) -> LuncheonBlockstates.HiddenStageBlock(c, p, LuncheonBlockstates.fdResourceBlock("crop_cross"), "cross", BuddingChiliCropBlock.AGE, Arrays.asList(0, 1, 2, 3, 3)))
-                    .tag(BlockTags.CROPS)
-                    .register();
-
-    public static final BlockEntry<ChiliCropBlock> CHILI_CROP =
-            REGISTRATE.block("chili", ChiliCropBlock::new)
-                    .initialProperties(() -> Blocks.WHEAT)
-                    .blockstate((c, p) -> LuncheonBlockstates.stageBlock(c, p, ChiliCropBlock.VINE_AGE))
-                    .tag(BlockTags.CROPS)
+                    .onRegister((block) -> BlockStressValues.IMPACTS.register(block, () -> 2.0))
                     .register();
     // endregion
 
@@ -132,7 +98,7 @@ public class LuncheonBlocks {
                             .requiresCorrectToolForDrops())
             .transform(axeOrPickaxe())
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/empty_wafer_side"), Luncheon.asResource("block/wafer_top")))
-            .lang("Filled Wafer Block")
+            .lang("Empty Wafer Block")
             .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
             .build().register();
 

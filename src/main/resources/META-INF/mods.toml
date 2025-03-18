@@ -67,9 +67,3 @@ mandatory=true
 versionRange="[6.0.1,)"
 ordering="NONE"
 side="BOTH"
-[[dependencies."${mod_id}"]]
-modId="farmersdelight"
-mandatory=true
-versionRange="[1.2.4,)"
-ordering="NONE"
-side="BOTH"

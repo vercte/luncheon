@@ -2,7 +2,6 @@ package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.AllFluids;
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.processing.recipe.HeatCondition;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
@@ -14,14 +13,8 @@ import net.vercte.luncheon.content.registry.LuncheonFluids;
 public class LuncheonMixingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonMixingRecipeGen(PackOutput generator) { super(generator); }
 
-    GeneratedRecipe CREAM = create("cream", b ->
-        b.require(Tags.Fluids.MILK, 250)
-         .output(LuncheonFluids.CREAM.get(), 250)
-         .requiresHeat(HeatCondition.HEATED)
-    );
-
     GeneratedRecipe PLAIN_ICE_CREAM = createCooled("plain_ice_cream", b ->
-            b.require(LuncheonFluids.CREAM.get(), 250)
+            b.require(Tags.Fluids.MILK, 250)
                     .require(Items.SUGAR)
                     .require(LuncheonFluids.POWDERED_SNOW.get(), 500)
                     .output(LuncheonFluids.PLAIN_ICE_CREAM.get(), 250),

@@ -33,7 +33,6 @@ public class Luncheon {
         LuncheonBlocks.register();
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
-        LuncheonMobEffects.register();
 
         LuncheonTags.init();
 

@@ -1,7 +1,7 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.content.processing.recipe.HeatCondition;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
@@ -34,12 +34,10 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
                     .output(LuncheonFluids.BERRY_EXTRACT.get(), 100)
     );
 
-    GeneratedRecipe HOT_SAUCE = create("hot_sauce", b ->
-            b.require(LuncheonItems.CHILI_SEEDS)
-                    .require(LuncheonItems.CHILI_SEEDS)
-                    .require(Fluids.WATER, 50)
-                    .output(LuncheonFluids.HOT_SAUCE.get(), 100)
-                    .requiresHeat(HeatCondition.HEATED));
+    GeneratedRecipe WAFER = create("wafer", b ->
+            b.require(AllItems.WHEAT_FLOUR)
+                    .require(Fluids.WATER, 100)
+                    .output(LuncheonItems.WAFER, 2));
 
     GeneratedRecipe WAFER_BLOCK = create("wafer_block", b ->
             b.require(LuncheonItems.WAFER)

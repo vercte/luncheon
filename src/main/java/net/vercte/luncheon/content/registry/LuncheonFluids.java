@@ -9,6 +9,7 @@ import net.createmod.catnip.theme.Color;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -36,16 +37,10 @@ public class LuncheonFluids {
             .lang("Powdered Snow")
             .register();
 
-    public static final FluidEntry<VirtualFluid> CREAM = REGISTRATE.virtualFluid("cream")
-            .lang("Cream")
-            .register();
-
+    // TODO: texture
     public static final FluidEntry<VirtualFluid> BERRY_EXTRACT = REGISTRATE.virtualFluid("berry_extract")
             .lang("Berry Extract")
-            .register();
-
-    public static final FluidEntry<VirtualFluid> HOT_SAUCE = REGISTRATE.virtualFluid("hot_sauce")
-            .lang("Hot Sauce")
+            .renderType(RenderType::translucent)
             .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> PLAIN_ICE_CREAM =
