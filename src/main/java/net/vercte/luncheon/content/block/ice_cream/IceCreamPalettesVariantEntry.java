@@ -2,7 +2,6 @@ package net.vercte.luncheon.content.block.ice_cream;
 
 
 import com.google.common.collect.ImmutableList;
-import com.simibubi.create.content.decoration.palettes.PaletteBlockPartial;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
@@ -22,7 +21,6 @@ import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 
 import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 public class IceCreamPalettesVariantEntry {
     public final ImmutableList<BlockEntry<? extends Block>> registeredBlocks;

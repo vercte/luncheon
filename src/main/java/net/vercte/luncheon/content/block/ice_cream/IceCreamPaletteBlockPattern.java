@@ -32,9 +32,7 @@ import static net.vercte.luncheon.content.block.ice_cream.IceCreamPaletteBlockPa
 public class IceCreamPaletteBlockPattern {
 
 	public static final IceCreamPaletteBlockPattern
-
-			CUT =
-			create("cut", PatternNameType.PREFIX, ALL_PARTIALS),
+	CUT = create("cut", PatternNameType.PREFIX, ALL_PARTIALS),
 
 	BRICKS = create("cut_bricks", PatternNameType.WRAP, ALL_PARTIALS).textures("brick"),
 

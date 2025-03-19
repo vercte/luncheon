@@ -35,11 +35,6 @@ import org.jetbrains.annotations.NotNull;
 public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
     String currentFolder = "";
 
-    private final Marker PALETTES = enterFolder("palettes");
-
-    GeneratedRecipe STONECUTTING_ICE_CREAM_BLOCK = create(() -> LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK)
-            .viaStonecuttingTag(() -> LuncheonTags.ItemTags.ICE_CREAM_BLOCKS_PLAIN.tag).build();
-
     private final Marker COOKING = enterFolder("/");
 
     GeneratedRecipe WAFER = create(() -> LuncheonItems.WAFER).viaCooking(LuncheonItems.RAW_WAFER::get)

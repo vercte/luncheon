@@ -17,7 +17,7 @@ import java.util.function.Function;
 public enum IceCreamTypes {
     PLAIN(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK::get),
     CHOCOLATE(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK::get),
-    BERRY(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK::get);
+    BERRY(IceCreamPaletteBlockPattern.VANILLA_RANGE, r -> LuncheonBlocks.BERRY_ICE_CREAM_BLOCK::get);
 
     private Function<CreateRegistrate, NonNullSupplier<Block>> factory;
     private IceCreamPalettesVariantEntry variants;

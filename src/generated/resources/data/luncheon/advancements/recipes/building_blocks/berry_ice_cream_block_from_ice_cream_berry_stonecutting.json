@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "luncheon:chocolate_ice_cream_block_from_ice_cream_berry_stonecutting"
+        "recipe": "luncheon:berry_ice_cream_block_from_ice_cream_berry_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "luncheon:chocolate_ice_cream_block_from_ice_cream_berry_stonecutting"
+      "luncheon:berry_ice_cream_block_from_ice_cream_berry_stonecutting"
     ]
   },
   "sends_telemetry_event": false
