@@ -11,11 +11,14 @@ public class LuncheonFoodProperties {
     public static final FoodProperties PLAIN_ICE_CREAM = food(4,  0.7F).build();
     public static final FoodProperties CHOCOLATE_ICE_CREAM = food(6, 0.8F).build();
     public static final FoodProperties BERRY_ICE_CREAM = food(5, 0.6F)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400), 1).build();
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300), 1).build();
 
     public static final FoodProperties NEAPOLITAN_SUNDAE = food(14, 0.8F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800), 1)
             .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200), 1).build();
+
+    public static final FoodProperties BERRY_EXTRACT = food(1, 0.5F)
+            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100), 0.2f).build();
 
     public static FoodProperties.Builder food(int nutrition, float saturationMod) {
         FoodProperties.Builder foodProperties = new FoodProperties.Builder();

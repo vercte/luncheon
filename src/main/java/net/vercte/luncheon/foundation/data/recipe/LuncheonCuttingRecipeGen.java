@@ -15,6 +15,10 @@ public class LuncheonCuttingRecipeGen extends LuncheonProcessingRecipeGen {
             .duration(5)
             .output(LuncheonItems.BREAD_SLICE, 2));
 
+    GeneratedRecipe BREAD_SLICE_FROM_BAGUETTE = create("bread_slice_from_baguette", b -> b.require(LuncheonItems.BAGUETTE)
+            .duration(10)
+            .output(LuncheonItems.BREAD_SLICE, 6));
+
     @Override
     protected IRecipeTypeInfo getRecipeType() {
         return AllRecipeTypes.CUTTING;

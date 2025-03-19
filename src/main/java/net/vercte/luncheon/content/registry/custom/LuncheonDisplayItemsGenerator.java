@@ -14,7 +14,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
 import org.apache.commons.lang3.mutable.MutableObject;
@@ -67,18 +66,12 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
         Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of(
                 LuncheonItems.RAW_WAFER, LuncheonItems.WAFER,
                 LuncheonItems.WAFER, LuncheonItems.ICE_CREAM_CONE,
-                LuncheonItems.ICE_CREAM_CONE, LuncheonItems.PLAIN_ICE_CREAM,
-                LuncheonItems.PLAIN_ICE_CREAM, LuncheonBlocks.PLAIN_ICE_CREAM_BLOCK
+                LuncheonItems.ICE_CREAM_CONE, LuncheonItems.PLAIN_ICE_CREAM
         );
 
         Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleAfterOrderings = Map.of(
                 LuncheonItems.ICE_CUBE, LuncheonBlocks.MECHANICAL_COOLER,
-                LuncheonBlocks.COBBLED_GLASS, LuncheonItems.GLASS_SHARDS,
-                LuncheonItems.CHOCOLATE_ICE_CREAM, LuncheonItems.PLAIN_ICE_CREAM,
-                LuncheonItems.BERRY_ICE_CREAM, LuncheonItems.CHOCOLATE_ICE_CREAM,
-                LuncheonItems.NEAPOLITAN_SUNDAE, LuncheonItems.BERRY_ICE_CREAM,
-                LuncheonBlocks.CHOCOLATE_ICE_CREAM_BLOCK, IceCreamTypes.PLAIN.getVariants().registeredBlocks.get(5),
-                LuncheonBlocks.BERRY_ICE_CREAM_BLOCK, IceCreamTypes.CHOCOLATE.getVariants().registeredBlocks.get(5)
+                LuncheonBlocks.COBBLED_GLASS, LuncheonItems.GLASS_SHARDS
         );
 
         simpleBeforeOrderings.forEach((entry, otherEntry) -> {

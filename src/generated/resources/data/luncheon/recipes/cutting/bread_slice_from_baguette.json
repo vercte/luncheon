@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "luncheon:baguette"
+    }
+  ],
+  "processingTime": 10,
+  "results": [
+    {
+      "count": 6,
+      "item": "luncheon:bread_slice"
+    }
+  ]
+}

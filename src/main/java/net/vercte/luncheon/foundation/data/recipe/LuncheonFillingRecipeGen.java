@@ -5,7 +5,6 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonFluids;
 import net.vercte.luncheon.content.registry.LuncheonItems;
@@ -54,6 +53,10 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
             .require(LuncheonBlocks.WAFER_BLOCK)
             .output(LuncheonBlocks.BERRY_FILLED_WAFER_BLOCK));
 
+    GeneratedRecipe BERRY_EXTRACT = create("berry_extract", b -> b.require(LuncheonFluids.BERRY_EXTRACT.get(), 250)
+            .require(Items.GLASS_BOTTLE)
+            .output(LuncheonItems.BERRY_EXTRACT));
+
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.FILLING; }
 
@@ -63,6 +66,10 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
         GeneratedRecipe POWDERED_SNOW_FROM_BUCKET = create("emptying_powder_snow_bucket", b -> b.require(Items.POWDER_SNOW_BUCKET)
                 .output(LuncheonFluids.POWDERED_SNOW.get(), 1000)
                 .output(Items.BUCKET));
+
+        GeneratedRecipe BERRY_EXTRACT = create("berry_extract", b -> b.require(LuncheonItems.BERRY_EXTRACT)
+                .output(Items.GLASS_BOTTLE)
+                .output(LuncheonFluids.BERRY_EXTRACT.get(), 250));
 
         @Override
         protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.EMPTYING; }

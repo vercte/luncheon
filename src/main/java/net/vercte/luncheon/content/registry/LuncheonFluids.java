@@ -37,7 +37,6 @@ public class LuncheonFluids {
             .lang("Powdered Snow")
             .register();
 
-    // TODO: texture
     public static final FluidEntry<VirtualFluid> BERRY_EXTRACT = REGISTRATE.virtualFluid("berry_extract")
             .lang("Berry Extract")
             .renderType(RenderType::translucent)

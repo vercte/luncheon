@@ -30,11 +30,11 @@
     },
     {
       "type": "single",
-      "resource": "luncheon:fluid/hot_sauce_flow"
+      "resource": "luncheon:fluid/berry_extract_flow"
     },
     {
       "type": "single",
-      "resource": "luncheon:fluid/hot_sauce_still"
+      "resource": "luncheon:fluid/berry_extract_still"
     }
   ]
 }

@@ -12,10 +12,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.item.BaguetteItem;
-import net.vercte.luncheon.content.item.GlassShardsItem;
-import net.vercte.luncheon.content.item.LuncheonFoodProperties;
-import net.vercte.luncheon.content.item.NotActuallyAFoodItem;
+import net.vercte.luncheon.content.item.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 
 public class LuncheonItems {
@@ -66,9 +63,15 @@ public class LuncheonItems {
             .register();
 
     public static final ItemEntry<Item> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", Item::new)
-            .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE))
+            .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE).stacksTo(16))
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Neapolitan Sundae")
+            .register();
+
+    public static final ItemEntry<BottleFoodItem> BERRY_EXTRACT = REGISTRATE.item("berry_extract", BottleFoodItem::new)
+            .properties(p -> p.food(LuncheonFoodProperties.BERRY_EXTRACT).stacksTo(16))
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .lang("Bottle of Berry Extract")
             .register();
     // endregion
 
