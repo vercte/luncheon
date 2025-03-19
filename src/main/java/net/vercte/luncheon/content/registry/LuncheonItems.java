@@ -21,13 +21,13 @@ import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 public class LuncheonItems {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
-static {
-    REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
-    REGISTRATE.setTooltipModifierFactory(item ->
-        new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
-                .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
-    );
-}
+    static {
+        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
+        REGISTRATE.setTooltipModifierFactory(item ->
+                new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
+                        .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
+        );
+    }
 
     // region Foods
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
@@ -35,6 +35,11 @@ static {
             .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "item.luncheon.baguette"))
             .model(AssetLookup.existingItemModel())
             .lang("Baguette")
+            .register();
+
+    public static final ItemEntry<Item> BREAD_SLICE = REGISTRATE.item("bread_slice", Item::new)
+            .properties(p -> p.food(LuncheonFoodProperties.BREAD_SLICE))
+            .lang("Bread Slice")
             .register();
 
     public static final ItemEntry<Item> PLAIN_ICE_CREAM = REGISTRATE.item("plain_ice_cream", Item::new)

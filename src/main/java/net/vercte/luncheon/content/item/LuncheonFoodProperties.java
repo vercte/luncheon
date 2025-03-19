@@ -6,8 +6,9 @@ import net.minecraft.world.food.FoodProperties;
 
 public class LuncheonFoodProperties {
     public static final FoodProperties BAGUETTE = food(3, 0.6F).build();
+    public static final FoodProperties BREAD_SLICE = food(2, 0.6F).fast().build();
 
-    public static final FoodProperties PLAIN_ICE_CREAM = food(4, 0.7F).build();
+    public static final FoodProperties PLAIN_ICE_CREAM = food(4,  0.7F).build();
     public static final FoodProperties CHOCOLATE_ICE_CREAM = food(6, 0.8F).build();
     public static final FoodProperties BERRY_ICE_CREAM = food(5, 0.6F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 400), 1).build();
