@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "processingTime": 5,
+  "results": [
+    {
+      "count": 2,
+      "item": "luncheon:bread_slice"
+    }
+  ]
+}
