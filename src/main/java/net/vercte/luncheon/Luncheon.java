@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.registry.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
@@ -33,6 +34,7 @@ public class Luncheon {
         LuncheonBlocks.register();
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
+        IceCreamTypes.register(REGISTRATE.get());
 
         LuncheonTags.init();
 

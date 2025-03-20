@@ -2,11 +2,15 @@ package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.AssetLookup;
+import com.tterrag.registrate.builders.BlockBuilder;
+import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
@@ -99,7 +103,7 @@ public class LuncheonBlocks {
             .transform(axeOrPickaxe())
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/empty_wafer_side"), Luncheon.asResource("block/wafer_top")))
             .lang("Empty Wafer Block")
-            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .item().transform(buildingBlock()).tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
             .build().register();
 
     public static final BlockEntry<RotatedPillarBlock> PLAIN_FILLED_WAFER_BLOCK = REGISTRATE.block("plain_filled_wafer_block", RotatedPillarBlock::new)
@@ -111,7 +115,7 @@ public class LuncheonBlocks {
             .transform(axeOrPickaxe())
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/plain_wafer_side"), Luncheon.asResource("block/wafer_top")))
             .lang("Filled Wafer Block")
-            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .item().transform(buildingBlock()).tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
             .build().register();
 
     public static final BlockEntry<RotatedPillarBlock> CHOCOLATE_FILLED_WAFER_BLOCK = REGISTRATE.block("chocolate_filled_wafer_block", RotatedPillarBlock::new)
@@ -123,7 +127,7 @@ public class LuncheonBlocks {
             .transform(axeOrPickaxe())
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/chocolate_wafer_side"), Luncheon.asResource("block/wafer_top")))
             .lang("Chocolate Filled Wafer Block")
-            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .item().transform(buildingBlock()).tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
             .build().register();
 
     public static final BlockEntry<RotatedPillarBlock> BERRY_FILLED_WAFER_BLOCK = REGISTRATE.block("berry_filled_wafer_block", RotatedPillarBlock::new)
@@ -135,14 +139,13 @@ public class LuncheonBlocks {
             .transform(axeOrPickaxe())
             .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/berry_wafer_side"), Luncheon.asResource("block/wafer_top")))
             .lang("Berry Filled Wafer Block")
-            .item().tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
+            .item().transform(buildingBlock()).tag(LuncheonTags.ItemTags.WAFER_BLOCKS.tag)
             .build().register();
-
-
-    static {
-        IceCreamTypes.register(REGISTRATE);
-    }
     // endregion
+
+    public static <T extends Item, P> NonNullFunction<ItemBuilder<T, P>, ItemBuilder<T, P>> buildingBlock() {
+        return b -> b.tag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag);
+    }
 
     public static void register() {}
 }

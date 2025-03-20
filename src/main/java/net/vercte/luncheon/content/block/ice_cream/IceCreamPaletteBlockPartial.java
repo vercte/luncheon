@@ -4,6 +4,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.vercte.luncheon.Luncheon;
+import net.vercte.luncheon.content.registry.LuncheonTags;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
@@ -61,6 +62,7 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
         ItemBuilder<BlockItem, BlockBuilder<B, CreateRegistrate>> itemBuilder = blockBuilder.item()
                 .transform(b -> transformItem(b, variantName, pattern));
 
+        itemBuilder.tag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag);
         if (canRecycle())
             itemBuilder.tag(variant.materialTag);
 

@@ -1,6 +1,5 @@
 package net.vercte.luncheon.content.block.ice_cream;
 
-
 import com.google.common.collect.ImmutableList;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.builders.BlockBuilder;
@@ -18,6 +17,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.vercte.luncheon.Luncheon;
+import net.vercte.luncheon.content.registry.LuncheonTags;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 
 import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
@@ -52,7 +52,7 @@ public class IceCreamPalettesVariantEntry {
             if (itemTags != null)
                 itemBuilder.tag(itemTags);
 
-            itemBuilder.tag(iceCreamType.materialTag);
+            itemBuilder.tag(iceCreamType.materialTag).tag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag);
 
             if (pattern.isTranslucent())
                 builder.addLayer(() -> RenderType::translucent);
@@ -77,6 +77,9 @@ public class IceCreamPalettesVariantEntry {
                 p -> p.stonecutting(DataIngredient.tag(iceCreamType.materialTag), RecipeCategory.BUILDING_BLOCKS,
                         baseBlock));
         REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, p -> p.addTag(iceCreamType.materialTag)
+                .add(baseBlock.get()
+                        .asItem()));
+        REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, p -> p.addTag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag)
                 .add(baseBlock.get()
                         .asItem()));
 

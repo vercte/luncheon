@@ -16,6 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.content.registry.LuncheonTags;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.util.LinkedList;
@@ -26,6 +27,7 @@ import java.util.function.Predicate;
 
 public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
     private static final Predicate<Item> IS_ITEM_3D_PREDICATE;
+    private static final Predicate<Item> IS_BUILDING_BLOCK_PREDICATE;
 
     static {
         MutableObject<Predicate<Item>> isItem3d = new MutableObject<>(item -> false);
@@ -38,6 +40,7 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
             });
         });
         IS_ITEM_3D_PREDICATE = isItem3d.getValue();
+        IS_BUILDING_BLOCK_PREDICATE = (item -> item.getDefaultInstance().is(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag));
     }
 
     private final RegistryObject<CreativeModeTab> tabFilter;
@@ -64,6 +67,7 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
         List<ItemOrdering> orderings = new ReferenceArrayList<>();
 
         Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of(
+                LuncheonItems.BAGUETTE_DOUGH, LuncheonItems.BAGUETTE,
                 LuncheonItems.RAW_WAFER, LuncheonItems.WAFER,
                 LuncheonItems.WAFER, LuncheonItems.ICE_CREAM_CONE,
                 LuncheonItems.ICE_CREAM_CONE, LuncheonItems.PLAIN_ICE_CREAM
@@ -122,8 +126,9 @@ public class LuncheonDisplayItemsGenerator implements CreativeModeTab.DisplayIte
         List<Item> items = new LinkedList<>();
 
         items.addAll(collectItems(exclusionPredicate.or(IS_ITEM_3D_PREDICATE.negate())));
-        items.addAll(collectBlocks(exclusionPredicate));
+        items.addAll(collectBlocks(exclusionPredicate.or(IS_BUILDING_BLOCK_PREDICATE)));
         items.addAll(collectItems(exclusionPredicate.or(IS_ITEM_3D_PREDICATE)));
+        items.addAll(collectBlocks(exclusionPredicate.or(IS_BUILDING_BLOCK_PREDICATE.negate())));
 
         applyOrderings(items, orderings);
         outputAll(output, items);

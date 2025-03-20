@@ -7,6 +7,9 @@ import java.util.function.UnaryOperator;
 import com.google.common.base.Supplier;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.AllTags;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 
 import net.createmod.catnip.platform.CatnipServices;
@@ -35,10 +38,29 @@ import org.jetbrains.annotations.NotNull;
 public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
     String currentFolder = "";
 
+    private final Marker CRAFTING = enterFolder("/");
+    GeneratedRecipe MECHANICAL_COOLER = create(() -> LuncheonBlocks.MECHANICAL_COOLER).returns(1)
+            .unlockedBy(AllItems.PROPELLER::get)
+            .viaShaped(b -> b.define('+', AllItems.PROPELLER)
+                    .define('s', AllTags.forgeItemTag("plates/iron"))
+                    .define('i', Items.BLUE_ICE)
+                    .define('|', AllBlocks.SHAFT)
+                    .pattern("s+s")
+                    .pattern("sis")
+                    .pattern(" | "));
+
+    GeneratedRecipe BAGUETTE_DOUGH = create(() -> LuncheonItems.BAGUETTE_DOUGH).returns(1)
+            .unlockedBy(AllItems.DOUGH::get)
+            .viaShaped(b -> b.define('d', AllTags.forgeItemTag("dough/wheat"))
+                    .pattern("ddd"));
+
     private final Marker COOKING = enterFolder("/");
 
     GeneratedRecipe WAFER = create(() -> LuncheonItems.WAFER).viaCooking(LuncheonItems.RAW_WAFER::get)
 		.inSmoker();
+
+    GeneratedRecipe BAGUETTE = create(() -> LuncheonItems.BAGUETTE).viaCooking(LuncheonItems.BAGUETTE_DOUGH::get)
+            .inSmoker();
 
     Marker enterFolder(String folder) {
         currentFolder = folder;

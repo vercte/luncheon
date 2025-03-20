@@ -47,6 +47,7 @@ public class LuncheonTags {
         ICE_CREAM_BLOCKS_PLAIN(MOD, "ice_cream/plain"),
         ICE_CREAM_BLOCKS_CHOCOLATE(MOD, "ice_cream/chocolate"),
         ICE_CREAM_BLOCKS_BERRY(MOD, "ice_cream/berry"),
+        BUILDING_BLOCKS(MOD,"building"),
         WAFER_BLOCKS(MOD, "wafer_blocks"),
         GLASS_SHARD_INCOMPATIBLE(MOD, "glass_shard_incompatible");
 

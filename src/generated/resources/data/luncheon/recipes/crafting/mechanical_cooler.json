@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "+": {
+      "item": "create:propeller"
+    },
+    "i": {
+      "item": "minecraft:blue_ice"
+    },
+    "s": {
+      "tag": "forge:plates/iron"
+    },
+    "|": {
+      "item": "create:shaft"
+    }
+  },
+  "pattern": [
+    "s+s",
+    "sis",
+    " | "
+  ],
+  "result": {
+    "item": "luncheon:mechanical_cooler"
+  },
+  "show_notification": true
+}

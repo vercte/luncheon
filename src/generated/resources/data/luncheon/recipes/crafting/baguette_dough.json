@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "d": {
+      "tag": "forge:dough/wheat"
+    }
+  },
+  "pattern": [
+    "ddd"
+  ],
+  "result": {
+    "item": "luncheon:baguette_dough"
+  },
+  "show_notification": true
+}
