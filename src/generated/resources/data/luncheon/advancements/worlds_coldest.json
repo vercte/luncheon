@@ -1,0 +1,31 @@
+{
+  "parent": "luncheon:neapolitan_sundae",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "luncheon:worlds_coldest_builtin"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "color": "#DBA213",
+      "translate": "advancement.luncheon.worlds_coldest.desc"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "luncheon:neapolitan_sundae"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.luncheon.worlds_coldest"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

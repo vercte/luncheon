@@ -33,6 +33,7 @@ public class LuncheonDatagen {
 
             generator.addProvider(true, new LuncheonStandardRecipeGen(output));
             generator.addProvider(true, new DamageTypeTagGen(output, lookupProvider, existingFileHelper));
+            generator.addProvider(true, new LuncheonAdvancements(output));
 
             LuncheonProcessingRecipeGen.registerAll(generator, output);
         }
@@ -42,10 +43,12 @@ public class LuncheonDatagen {
         Luncheon.REGISTRATE.get().addDataGenerator(ProviderType.LANG, provider -> {
             BiConsumer<String, String> langConsumer = provider::add;
 
+            LuncheonAdvancements.provideLang(langConsumer);
             provideDefaultLang("interface", langConsumer);
         });
     }
 
+    @SuppressWarnings("SameParameterValue")
     private static void provideDefaultLang(String fileName, BiConsumer<String, String> consumer) {
         String path = "assets/luncheon/lang/default/" + fileName + ".json";
         JsonElement jsonElement = FilesHelper.loadJsonResource(path);

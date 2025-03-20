@@ -14,6 +14,7 @@ import java.util.Collections;
 import static net.vercte.luncheon.content.registry.LuncheonTags.Namespace.MOD;
 
 public class LuncheonTags {
+    @SuppressWarnings("DataFlowIssue")
     public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry,
                                             ResourceLocation id) {
         return registry.tags()
@@ -43,7 +44,9 @@ public class LuncheonTags {
         }
     }
 
+    @SuppressWarnings("unused")
     public enum ItemTags {
+        ICE_CREAM_CONES(MOD, "ice_cream/cones"),
         ICE_CREAM_BLOCKS_PLAIN(MOD, "ice_cream/plain"),
         ICE_CREAM_BLOCKS_CHOCOLATE(MOD, "ice_cream/chocolate"),
         ICE_CREAM_BLOCKS_BERRY(MOD, "ice_cream/berry"),

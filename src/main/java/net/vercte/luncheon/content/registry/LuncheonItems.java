@@ -8,13 +8,13 @@ import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.createmod.catnip.lang.FontHelper;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.item.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 
+@SuppressWarnings("SameParameterValue")
 public class LuncheonItems {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
@@ -29,7 +29,6 @@ public class LuncheonItems {
     // region Foods
     public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
             .properties(p -> p.food(LuncheonFoodProperties.BAGUETTE))
-            .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "item.luncheon.baguette"))
             .model(AssetLookup.existingItemModel())
             .lang("Baguette")
             .register();
@@ -41,19 +40,19 @@ public class LuncheonItems {
 
     public static final ItemEntry<Item> PLAIN_ICE_CREAM = REGISTRATE.item("plain_ice_cream", Item::new)
             .properties(p -> p.food(LuncheonFoodProperties.PLAIN_ICE_CREAM))
-            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag, LuncheonTags.ItemTags.ICE_CREAM_CONES.tag)
             .lang("Plain Ice Cream")
             .register();
 
     public static final ItemEntry<Item> CHOCOLATE_ICE_CREAM = REGISTRATE.item("chocolate_ice_cream", Item::new)
             .properties(p -> p.food(LuncheonFoodProperties.CHOCOLATE_ICE_CREAM))
-            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag, LuncheonTags.ItemTags.ICE_CREAM_CONES.tag)
             .lang("Chocolate Ice Cream")
             .register();
 
     public static final ItemEntry<Item> BERRY_ICE_CREAM = REGISTRATE.item("berry_ice_cream", Item::new)
             .properties(p -> p.food(LuncheonFoodProperties.BERRY_ICE_CREAM))
-            .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .tag(AllItemTags.UPRIGHT_ON_BELT.tag, LuncheonTags.ItemTags.ICE_CREAM_CONES.tag)
             .lang("Berry Ice Cream")
             .register();
 
@@ -62,7 +61,7 @@ public class LuncheonItems {
             .lang("Incomplete Neapolitan Sundae")
             .register();
 
-    public static final ItemEntry<Item> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", Item::new)
+    public static final ItemEntry<NeapolitanSundaeItem> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", NeapolitanSundaeItem::new)
             .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE).stacksTo(16))
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Neapolitan Sundae")
@@ -81,7 +80,7 @@ public class LuncheonItems {
     public static final ItemEntry<Item> ICE_CREAM_CONE = taggedIngredient("ice_cream_cone", "Ice Cream Cone", AllItemTags.UPRIGHT_ON_BELT.tag);
     public static final ItemEntry<Item> BAGUETTE_DOUGH = ingredient("baguette_dough", "Baguette Dough");
 
-    public static final ItemEntry<NotActuallyAFoodItem> ICE_CUBE = REGISTRATE.item("ice_cube", NotActuallyAFoodItem::new)
+    public static final ItemEntry<IceCubeItem> ICE_CUBE = REGISTRATE.item("ice_cube", IceCubeItem::new)
             .lang("Ice Cube").register();
 
     public static final ItemEntry<GlassShardsItem> GLASS_SHARDS = REGISTRATE.item("glass_shards", GlassShardsItem::new)

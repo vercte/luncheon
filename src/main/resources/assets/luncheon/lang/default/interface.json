@@ -17,5 +17,9 @@
 
   "item.luncheon.baguette.tooltip.summary": "A baguette. Lets you attack from a _greater distance_.",
   "item.luncheon.baguette.tooltip.condition1": "When Eaten",
-  "item.luncheon.baguette.tooltip.behaviour1": "Decreases _durability_."
+  "item.luncheon.baguette.tooltip.behaviour1": "Decreases _durability_.",
+
+  "item.luncheon.glass_shards.tooltip.summary": "Broken glass. Can be _deployed_ into _food_.",
+  "item.luncheon.glass_shards.tooltip.condition1": "When Eaten",
+  "item.luncheon.glass_shards.tooltip.behaviour1": "_Damages_ the diner."
 }

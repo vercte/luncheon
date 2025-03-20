@@ -1,0 +1,31 @@
+{
+  "parent": "luncheon:mechanical_cooler",
+  "criteria": {
+    "0": {
+      "conditions": {},
+      "trigger": "luncheon:ice_cube_builtin"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "color": "#DBA213",
+      "translate": "advancement.luncheon.ice_cube.desc"
+    },
+    "frame": "goal",
+    "hidden": true,
+    "icon": {
+      "item": "luncheon:ice_cube"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancement.luncheon.ice_cube"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
