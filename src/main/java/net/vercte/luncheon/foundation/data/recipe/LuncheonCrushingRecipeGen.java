@@ -26,9 +26,9 @@ public class LuncheonCrushingRecipeGen extends LuncheonProcessingRecipeGen {
         public MillingRecipeGen(PackOutput generator) { super(generator); }
 
         GeneratedRecipe SNOW_FROM_ICE_CUBE = create("snow_from_ice_cube", b -> b.require(LuncheonItems.ICE_CUBE)
-                .output(Items.SNOWBALL)
                 .duration(50)
-                .output(0.25f, Items.SNOWBALL, 1));
+                .output(0.25f, Items.SNOWBALL, 1)
+                .output(0.50f, Items.SNOWBALL, 1));
 
         @Override
         protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.MILLING; }

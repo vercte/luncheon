@@ -10,7 +10,7 @@ public class LuncheonPressingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonPressingRecipeGen(PackOutput generator) { super(generator); }
 
     GeneratedRecipe ICE_CREAM_CONE = create("ice_cream_cone", b ->
-            b.require(LuncheonItems.WAFER).output(LuncheonItems.ICE_CREAM_CONE, 4));
+            b.require(LuncheonItems.WAFER).output(LuncheonItems.ICE_CREAM_CONE, 2));
 
     @Override
     protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.PRESSING; }

@@ -30,7 +30,7 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
             b.require(() -> Items.SWEET_BERRIES)
                     .require(() -> Items.SWEET_BERRIES)
                     .require(() -> Items.SWEET_BERRIES)
-                    .require(() -> Items.GLOW_BERRIES)
+                    .require(() -> Items.SWEET_BERRIES)
                     .output(LuncheonFluids.BERRY_EXTRACT.get(), 100)
     );
 
