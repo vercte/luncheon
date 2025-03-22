@@ -14,10 +14,12 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
+import net.minecraftforge.fml.DistExecutor;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import org.jetbrains.annotations.NotNull;
@@ -39,7 +41,7 @@ public class LuncheonFluids {
 
     public static final FluidEntry<VirtualFluid> BERRY_EXTRACT = REGISTRATE.virtualFluid("berry_extract")
             .lang("Berry Extract")
-            .renderType(RenderType::translucent)
+            .renderType(DistExecutor.unsafeCallWhenOn(Dist.CLIENT, () -> () -> RenderType::translucent))
             .register();
 
     public static final FluidEntry<ForgeFlowingFluid.Flowing> PLAIN_ICE_CREAM =
