@@ -55,7 +55,7 @@ public class LuncheonAdvancements implements DataProvider {
 
     NEAPOLITAN_SUNDAE = create("neapolitan_sundae", b -> b.icon(LuncheonItems.NEAPOLITAN_SUNDAE)
             .title("Brain Freeze")
-            .description("Eat your first Neapolitan Sundae")
+            .description("Eat your first Neapolitan Sundae") // TODO: FIX THIS SHIT
             .after(ICE_CREAM).special(EXPERT)),
 
     WORLDS_COLDEST = create("worlds_coldest", b -> b.icon(LuncheonItems.NEAPOLITAN_SUNDAE)
