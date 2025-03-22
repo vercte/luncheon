@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:glass_bottle"
   },
-  "loops": 0,
+  "loops": 1,
   "results": [
     {
       "item": "luncheon:neapolitan_sundae"

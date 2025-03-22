@@ -58,6 +58,7 @@ public class LuncheonItems {
 
     public static final ItemEntry<SequencedAssemblyItem> INCOMPLETE_NEAPOLITAN_SUNDAE = REGISTRATE.item("incomplete_neapolitan_sundae", SequencedAssemblyItem::new)
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
+            .model(AssetLookup.existingItemModel())
             .lang("Incomplete Neapolitan Sundae")
             .register();
 

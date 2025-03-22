@@ -21,7 +21,7 @@ public class LuncheonSequencedAssemblyGen extends LuncheonProcessingRecipeGen {
     GeneratedRecipe NEAPOLITAN_SUNDAE = sequenced("neapolitan_sundae", b -> b.require(Items.GLASS_BOTTLE)
             .transitionTo(LuncheonItems.INCOMPLETE_NEAPOLITAN_SUNDAE)
             .addOutput(LuncheonItems.NEAPOLITAN_SUNDAE, 1)
-            .loops(0)
+            .loops(1)
             .addStep(FillingRecipe::new, rb -> rb.require(LuncheonFluids.PLAIN_ICE_CREAM.get(), 250))
             .addStep(FillingRecipe::new, rb -> rb.require(LuncheonFluids.CHOCOLATE_ICE_CREAM.get(), 250))
             .addStep(FillingRecipe::new, rb -> rb.require(LuncheonFluids.BERRY_ICE_CREAM.get(), 250))

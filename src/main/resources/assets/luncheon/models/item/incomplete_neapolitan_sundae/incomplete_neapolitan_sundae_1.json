@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "luncheon:item/incomplete_neapolitan_sundae/incomplete_neapolitan_sundae_1"
+  }
+}
