@@ -1,19 +1,6 @@
 {
   "parent": "luncheon:root",
-  "criteria": {
-    "0": {
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "luncheon:mechanical_cooler"
-            ]
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
+  "criteria": {},
   "display": {
     "announce_to_chat": false,
     "description": {
@@ -30,10 +17,6 @@
       "translate": "advancement.luncheon.mechanical_cooler"
     }
   },
-  "requirements": [
-    [
-      "0"
-    ]
-  ],
+  "requirements": [],
   "sends_telemetry_event": true
 }

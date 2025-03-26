@@ -6,12 +6,11 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.ItemLike;
+import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonTags;
 import net.vercte.luncheon.foundation.data.advancement.LuncheonAdvancement;
-import org.jetbrains.annotations.Nullable;
-import org.lwjgl.system.NonnullDefault;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -20,62 +19,47 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
-import static net.vercte.luncheon.foundation.data.advancement.LuncheonAdvancement.TaskType.*;
-
-@NonnullDefault
-@SuppressWarnings("unused")
 public class LuncheonAdvancements implements DataProvider {
     public static final List<LuncheonAdvancement> ENTRIES = new ArrayList<>();
 
-    public static @Nullable final LuncheonAdvancement START = null,
+    public static final LuncheonAdvancement BASE = null,
+        ROOT = create("root", LuncheonItems.ICE_CUBE)
+                .name("A Wonderful Luncheon").description("I hope you're prepared!")
+                .silent().build(),
 
-    ROOT = create("root", b -> b.icon(LuncheonItems.ICE_CUBE)
-            .title("A Wonderful Luncheon")
-            .description("I hope you're prepared!")
-            .awardedForFree()
-            .special(SILENT)),
+        MECHANICAL_COOLER = create("mechanical_cooler", LuncheonBlocks.MECHANICAL_COOLER)
+                .name("They freeze now?").description("Operate a Mechanical Cooler")
+                .after(ROOT).build(),
 
-    MECHANICAL_COOLER = create("mechanical_cooler", b -> b.icon(LuncheonBlocks.MECHANICAL_COOLER)
-            .title("They freeze now?")
-            .description("Meet the Blaze Burner's cooler, mechanical cousin")
-            .after(ROOT).whenIconCollected()),
+        ICE_CUBE = create("ice_cube", LuncheonItems.ICE_CUBE)
+                .name("Crispy Crunchy Watery").description("Eat an ice cube... Delicious!")
+                .after(MECHANICAL_COOLER).secret().build(),
 
-    ICE_CUBE = create("ice_cube", b -> b.icon(LuncheonItems.ICE_CUBE)
-            .title("Crispy and Crunchy")
-            .description("Eat an ice cube... Delicious!")
-            .after(MECHANICAL_COOLER).special(SECRET)),
+        ICE_CREAM = create("ice_cream", LuncheonItems.PLAIN_ICE_CREAM)
+                .name("Ice Cream...").description("You scream...")
+                .after(MECHANICAL_COOLER).build(),
 
-    ICE_CREAM = create("ice_cream", b -> b.icon(LuncheonItems.PLAIN_ICE_CREAM)
-            .title("Ice Cream...")
-            .description("You scream...")
-            .after(MECHANICAL_COOLER)
-            .whenItemCollected(LuncheonTags.ItemTags.ICE_CREAM_CONES.tag)),
+        NEAPOLITAN_SUNDAE = create("neapolitan_sundae", LuncheonItems.NEAPOLITAN_SUNDAE)
+                .name("Brain Freeze").description("Eat your first Neapolitan Sundae")
+                .after(ICE_CREAM).goal().build(),
 
-    NEAPOLITAN_SUNDAE = create("neapolitan_sundae", b -> b.icon(LuncheonItems.NEAPOLITAN_SUNDAE)
-            .title("Brain Freeze")
-            .description("Eat your first Neapolitan Sundae") // TODO: FIX THIS SHIT
-            .after(ICE_CREAM).special(EXPERT)),
+        WORLDS_COLDEST = create("worlds_coldest", LuncheonItems.INCOMPLETE_NEAPOLITAN_SUNDAE)
+                .name("World's Coldest").description("Automate the Neapolitan Sundae")
+                .after(NEAPOLITAN_SUNDAE).challenge().build();
 
-    WORLDS_COLDEST = create("worlds_coldest", b -> b.icon(LuncheonItems.NEAPOLITAN_SUNDAE)
-            .title("World's Coldest")
-            .description("Make 64 sundaes with the same deployer, successfully automating the Neapolitan Sundae")
-            .after(NEAPOLITAN_SUNDAE).special(CHALLENGE));
-
+    private static LuncheonAdvancement.Builder create(String id, ItemLike icon) {
+        return new LuncheonAdvancement.Builder(id, icon);
+    }
 
     private final PackOutput output;
     public LuncheonAdvancements(PackOutput output) {
         this.output = output;
     }
 
-    private static LuncheonAdvancement create(String id, UnaryOperator<LuncheonAdvancement.Builder> b) {
-        return new LuncheonAdvancement(id, b);
-    }
-
     @Override
     public CompletableFuture<?> run(CachedOutput cache) {
-        PackOutput.PathProvider pathProvider = output.createPathProvider(PackOutput.Target.DATA_PACK, "advancements");
+       PackOutput.PathProvider pathProvider = output.createPathProvider(PackOutput.Target.DATA_PACK, "advancements");
         List<CompletableFuture<?>> futures = new ArrayList<>();
 
         Set<ResourceLocation> set = Sets.newHashSet();
@@ -95,12 +79,18 @@ public class LuncheonAdvancements implements DataProvider {
     }
 
     public static void provideLang(BiConsumer<String, String> consumer) {
-        for (LuncheonAdvancement advancement : ENTRIES)
+        for(LuncheonAdvancement advancement : ENTRIES)
             advancement.provideLang(consumer);
+    }
+
+    public static ResourceLocation getBackground() {
+        return Luncheon.asResource("textures/gui/advancements.png");
     }
 
     @Override
     public String getName() {
         return "Luncheon's Advancements";
     }
+
+    public static void init() {}
 }

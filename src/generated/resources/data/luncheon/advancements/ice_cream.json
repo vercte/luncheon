@@ -1,17 +1,6 @@
 {
   "parent": "luncheon:mechanical_cooler",
-  "criteria": {
-    "0": {
-      "conditions": {
-        "items": [
-          {
-            "tag": "luncheon:ice_cream/cones"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
+  "criteria": {},
   "display": {
     "announce_to_chat": false,
     "description": {
@@ -28,10 +17,6 @@
       "translate": "advancement.luncheon.ice_cream"
     }
   },
-  "requirements": [
-    [
-      "0"
-    ]
-  ],
+  "requirements": [],
   "sends_telemetry_event": true
 }

@@ -1,99 +1,72 @@
 package net.vercte.luncheon.foundation.data.advancement;
 
-import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.critereon.*;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.data.LuncheonAdvancements;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
-@SuppressWarnings({"FieldMayBeFinal", "DataFlowIssue", "unused"})
 public class LuncheonAdvancement {
-    static final ResourceLocation BACKGROUND = Luncheon.asResource("textures/gui/advancements.png");
     static final String LANG = "advancement." + Luncheon.ID + ".";
     static final String SECRET_SUFFIX = "\n§7(Hidden Advancement)";
 
-    private Advancement.Builder builder;
-    private SimpleLuncheonTrigger builtinTrigger;
-    private LuncheonAdvancement parent;
+    private final String id;
+    private final ItemLike icon;
+    private final FrameType frameType;
 
-    Advancement datagenResult;
+    private final Advancement.Builder builder;
+    private final LuncheonAdvancement parent;
 
-    private String id;
+    private final boolean announces;
+    private final boolean toasts;
+    private final boolean hidden;
+
     private String title;
     private String description;
 
-    public LuncheonAdvancement(String id, UnaryOperator<Builder> b) {
+    Advancement datagenResult;
+
+    public LuncheonAdvancement(Builder builder) {
         this.builder = Advancement.Builder.advancement();
-        this.id = id;
 
-        Builder t = new Builder();
-        b.apply(t);
+        this.id = builder.id;
+        this.icon = builder.icon;
+        this.parent = builder.parent;
+        this.frameType = FrameType.byName(builder.frame);
+        this.announces = builder.announces;
+        this.toasts = builder.toasts;
+        this.hidden = builder.hidden;
 
-        if (!t.externalTrigger) {
-            builtinTrigger = LuncheonTriggers.addSimple(id + "_builtin");
-            builder.addCriterion("0", builtinTrigger.instance());
-        }
+        this.title = builder.name;
+        this.description = builder.description;
 
-        builder.display(t.icon, Component.translatable(titleKey()),
-                Component.translatable(descriptionKey()).withStyle(s -> s.withColor(0xDBA213)),
-                id.equals("root") ? BACKGROUND : null, t.type.frame, t.type.toast, t.type.announce, t.type.hide);
-
-        if (t.type == TaskType.SECRET)
+        if (this.hidden)
             description += SECRET_SUFFIX;
 
+        this.builder.display(this.icon, Component.translatable(titleKey()),
+                Component.translatable(descriptionKey()).withStyle(s -> s.withColor(0xDBA213)),
+                id.equals("root") ? LuncheonAdvancements.getBackground() : null,
+                this.frameType, this.toasts, this.announces, this.hidden);
+
         LuncheonAdvancements.ENTRIES.add(this);
-    }
-
-    private String titleKey() {
-        return LANG + id;
-    }
-
-    private String descriptionKey() {
-        return titleKey() + ".desc";
-    }
-
-    public boolean isAlreadyAwardedTo(Player player) {
-        if (!(player instanceof ServerPlayer sp))
-            return true;
-        Advancement advancement = sp.getServer()
-                .getAdvancements()
-                .getAdvancement(Luncheon.asResource(id));
-        if (advancement == null)
-            return true;
-        return sp.getAdvancements()
-                .getOrStartProgress(advancement)
-                .isDone();
-    }
-
-    public void awardTo(Player player) {
-        if (!(player instanceof ServerPlayer sp))
-            return;
-        if (builtinTrigger == null)
-            throw new UnsupportedOperationException(
-                    "Advancement " + id + " uses external Triggers, it cannot be awarded directly");
-        builtinTrigger.trigger(sp);
     }
 
     public void save(Consumer<Advancement> t) {
         if (parent != null)
             builder.parent(parent.datagenResult);
-        datagenResult = builder.save(t, Luncheon.asResource(id)
-                .toString());
+        datagenResult = this.builder.save(t, Luncheon.asResource(this.id).toString());
+    }
+
+    public String titleKey() {
+        return LANG + id;
+    }
+
+    public String descriptionKey() {
+        return LANG + id + ".desc";
     }
 
     public void provideLang(BiConsumer<String, String> consumer) {
@@ -101,105 +74,69 @@ public class LuncheonAdvancement {
         consumer.accept(descriptionKey(), description);
     }
 
-    @SuppressWarnings("NonFinalFieldInEnum")
-    public enum TaskType {
+    public static class Builder {
+        public final String id;
+        public final ItemLike icon;
 
-        SILENT(FrameType.TASK, false, false, false),
-        NORMAL(FrameType.TASK, true, false, false),
-        NOISY(FrameType.TASK, true, true, false),
-        EXPERT(FrameType.GOAL, true, true, false),
-        CHALLENGE(FrameType.CHALLENGE, true, true, false),
-        SECRET(FrameType.GOAL, true, true, true),
+        public LuncheonAdvancement parent;
 
-        ;
+        public boolean announces = false;
+        public boolean toasts = true;
+        public boolean hidden = false;
 
-        private FrameType frame;
-        private boolean toast;
-        private boolean announce;
-        private boolean hide;
+        public String frame = "task";
+        public String name;
+        public String description;
 
-        TaskType(FrameType frame, boolean toast, boolean announce, boolean hide) {
-            this.frame = frame;
-            this.toast = toast;
-            this.announce = announce;
-            this.hide = hide;
+        public Builder(String id, ItemLike icon) {
+            this.id = id;
+            this.icon = icon;
         }
-    }
 
-    public class Builder {
-
-        private TaskType type = TaskType.NORMAL;
-        private boolean externalTrigger;
-        private int keyIndex;
-        private ItemStack icon;
-
-        public Builder special(TaskType type) {
-            this.type = type;
+        public Builder after(LuncheonAdvancement after) {
+            this.parent = after;
             return this;
         }
 
-        public Builder after(LuncheonAdvancement other) {
-            LuncheonAdvancement.this.parent = other;
+        public Builder goal() {
+            this.announce();
+            this.frame = "goal";
             return this;
         }
 
-        public Builder icon(ItemProviderEntry<?> item) {
-            return icon(item.asStack());
-        }
-
-        public Builder icon(ItemLike item) {
-            return icon(new ItemStack(item));
-        }
-
-        public Builder icon(ItemStack stack) {
-            icon = stack;
+        public Builder challenge() {
+            this.announce();
+            this.frame = "challenge";
             return this;
         }
 
-        public Builder title(String title) {
-            LuncheonAdvancement.this.title = title;
+        public LuncheonAdvancement build() {
+            return new LuncheonAdvancement(this);
+        }
+
+        public Builder silent() {
+            this.toasts = false;
+            return this;
+        }
+
+        public Builder announce() {
+            this.announces = true;
+            return this;
+        }
+
+        public Builder secret() {
+            this.hidden = true;
+            return this;
+        }
+
+        public Builder name(String name) {
+            this.name = name;
             return this;
         }
 
         public Builder description(String description) {
-            LuncheonAdvancement.this.description = description;
+            this.description = description;
             return this;
         }
-
-        public Builder whenBlockPlaced(Block block) {
-            return externalTrigger(ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(block));
-        }
-
-        public Builder whenIconCollected() {
-            return externalTrigger(InventoryChangeTrigger.TriggerInstance.hasItems(icon.getItem()));
-        }
-
-        public Builder whenItemCollected(ItemProviderEntry<?> item) {
-            return whenItemCollected(item.asStack()
-                    .getItem());
-        }
-
-        public Builder whenItemCollected(ItemLike itemProvider) {
-            return externalTrigger(InventoryChangeTrigger.TriggerInstance.hasItems(itemProvider));
-        }
-
-        public Builder whenItemCollected(TagKey<Item> tag) {
-            return externalTrigger(InventoryChangeTrigger.TriggerInstance
-                    .hasItems(new ItemPredicate(tag, null, MinMaxBounds.Ints.ANY, MinMaxBounds.Ints.ANY,
-                            EnchantmentPredicate.NONE, EnchantmentPredicate.NONE, null, NbtPredicate.ANY)));
-        }
-
-        public Builder awardedForFree() {
-            return externalTrigger(InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[] {}));
-        }
-
-        public Builder externalTrigger(CriterionTriggerInstance trigger) {
-            builder.addCriterion(String.valueOf(keyIndex), trigger);
-            externalTrigger = true;
-            keyIndex++;
-            return this;
-        }
-
     }
-
 }

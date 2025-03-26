@@ -1,11 +1,6 @@
 {
   "parent": "luncheon:ice_cream",
-  "criteria": {
-    "0": {
-      "conditions": {},
-      "trigger": "luncheon:neapolitan_sundae_builtin"
-    }
-  },
+  "criteria": {},
   "display": {
     "announce_to_chat": true,
     "description": {
@@ -22,10 +17,6 @@
       "translate": "advancement.luncheon.neapolitan_sundae"
     }
   },
-  "requirements": [
-    [
-      "0"
-    ]
-  ],
+  "requirements": [],
   "sends_telemetry_event": true
 }

@@ -1,6 +1,7 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.Create;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,6 +19,7 @@ import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.registry.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.foundation.data.LuncheonAdvancements;
 import net.vercte.luncheon.foundation.data.LuncheonDatagen;
 import org.slf4j.Logger;
 
@@ -30,20 +33,26 @@ public class Luncheon {
     public Luncheon() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        REGISTRATE.get().registerEventListeners(modEventBus);
+
         LuncheonItems.register();
         LuncheonBlocks.register();
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
-        IceCreamTypes.register(REGISTRATE.get());
-
         LuncheonTags.init();
-
-        modEventBus.addListener(LuncheonClient::clientInit);
-        modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
-
+        IceCreamTypes.register(REGISTRATE.get());
         CREATIVE_TABS.register(modEventBus);
 
-        REGISTRATE.get().registerEventListeners(modEventBus);
+
+        modEventBus.addListener(Luncheon::init);
+        modEventBus.addListener(LuncheonClient::clientInit);
+        modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
+    }
+
+    public static void init(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            LuncheonAdvancements.init();
+        });
     }
 
     private static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =

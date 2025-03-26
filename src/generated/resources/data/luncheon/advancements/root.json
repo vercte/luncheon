@@ -1,10 +1,5 @@
 {
-  "criteria": {
-    "0": {
-      "conditions": {},
-      "trigger": "minecraft:inventory_changed"
-    }
-  },
+  "criteria": {},
   "display": {
     "announce_to_chat": false,
     "background": "luncheon:textures/gui/advancements.png",
@@ -22,10 +17,6 @@
       "translate": "advancement.luncheon.root"
     }
   },
-  "requirements": [
-    [
-      "0"
-    ]
-  ],
+  "requirements": [],
   "sends_telemetry_event": true
 }
