@@ -1,12 +1,17 @@
 package net.vercte.luncheon.foundation.data.advancement;
 
+import com.google.common.collect.Maps;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
+import net.minecraft.advancements.critereon.ConsumeItemTrigger;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.ItemLike;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.data.LuncheonAdvancements;
 
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -52,6 +57,8 @@ public class LuncheonAdvancement {
                 id.equals("root") ? LuncheonAdvancements.getBackground() : null,
                 this.frameType, this.toasts, this.announces, this.hidden);
 
+        builder.criteriaTriggers.forEach(this.builder::addCriterion);
+
         LuncheonAdvancements.ENTRIES.add(this);
     }
 
@@ -87,6 +94,8 @@ public class LuncheonAdvancement {
         public String frame = "task";
         public String name;
         public String description;
+
+        private Map<String, CriterionTriggerInstance> criteriaTriggers = Maps.newLinkedHashMap();
 
         public Builder(String id, ItemLike icon) {
             this.id = id;
@@ -136,6 +145,23 @@ public class LuncheonAdvancement {
 
         public Builder description(String description) {
             this.description = description;
+            return this;
+        }
+
+        public Builder free() {
+            return this.criterion(this.icon.asItem().toString(), InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[] {}));
+        }
+
+        public Builder onIconCollected() {
+            return this.criterion(this.icon.asItem().toString(), InventoryChangeTrigger.TriggerInstance.hasItems(icon.asItem()));
+        }
+
+        public Builder onIconConsumed() {
+            return this.criterion(this.icon.asItem().toString(), ConsumeItemTrigger.TriggerInstance.usedItem(icon.asItem()));
+        }
+
+        public Builder criterion(String key, CriterionTriggerInstance trigger) {
+            this.criteriaTriggers.put(key, trigger);
             return this;
         }
     }

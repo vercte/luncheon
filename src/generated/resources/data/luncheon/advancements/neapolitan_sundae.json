@@ -1,6 +1,17 @@
 {
   "parent": "luncheon:ice_cream",
-  "criteria": {},
+  "criteria": {
+    "neapolitan_sundae": {
+      "conditions": {
+        "item": {
+          "items": [
+            "luncheon:neapolitan_sundae"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
   "display": {
     "announce_to_chat": true,
     "description": {
@@ -17,6 +28,10 @@
       "translate": "advancement.luncheon.neapolitan_sundae"
     }
   },
-  "requirements": [],
+  "requirements": [
+    [
+      "neapolitan_sundae"
+    ]
+  ],
   "sends_telemetry_event": true
 }

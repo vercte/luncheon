@@ -1,6 +1,17 @@
 {
   "parent": "luncheon:mechanical_cooler",
-  "criteria": {},
+  "criteria": {
+    "ice_cube": {
+      "conditions": {
+        "item": {
+          "items": [
+            "luncheon:ice_cube"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
   "display": {
     "announce_to_chat": false,
     "description": {
@@ -17,6 +28,10 @@
       "translate": "advancement.luncheon.ice_cube"
     }
   },
-  "requirements": [],
+  "requirements": [
+    [
+      "ice_cube"
+    ]
+  ],
   "sends_telemetry_event": true
 }

@@ -1,5 +1,7 @@
 package net.vercte.luncheon.content.item;
 
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -25,6 +27,10 @@ public class NotActuallyAFoodItem extends Item {
 
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), entity.getEatingSound(stack), SoundSource.NEUTRAL, 1.0F, 1.0F + (level.random.nextFloat() - level.random.nextFloat()) * 0.4F);
+
+        if (entity instanceof ServerPlayer) {
+            CriteriaTriggers.CONSUME_ITEM.trigger((ServerPlayer) entity, stack);
+        }
 
         if (!(entity instanceof Player) || !((Player)entity).getAbilities().instabuild) {
             stack.shrink(1);

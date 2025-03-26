@@ -26,15 +26,15 @@ public class LuncheonAdvancements implements DataProvider {
     public static final LuncheonAdvancement BASE = null,
         ROOT = create("root", LuncheonItems.ICE_CUBE)
                 .name("A Wonderful Luncheon").description("I hope you're prepared!")
-                .silent().build(),
+                .free().silent().build(),
 
         MECHANICAL_COOLER = create("mechanical_cooler", LuncheonBlocks.MECHANICAL_COOLER)
-                .name("They freeze now?").description("Operate a Mechanical Cooler")
-                .after(ROOT).build(),
+                .name("They freeze now?").description("Obtain a Mechanical Cooler")
+                .after(ROOT).onIconCollected().build(),
 
         ICE_CUBE = create("ice_cube", LuncheonItems.ICE_CUBE)
                 .name("Crispy Crunchy Watery").description("Eat an ice cube... Delicious!")
-                .after(MECHANICAL_COOLER).secret().build(),
+                .after(MECHANICAL_COOLER).onIconConsumed().secret().build(),
 
         ICE_CREAM = create("ice_cream", LuncheonItems.PLAIN_ICE_CREAM)
                 .name("Ice Cream...").description("You scream...")
@@ -42,7 +42,7 @@ public class LuncheonAdvancements implements DataProvider {
 
         NEAPOLITAN_SUNDAE = create("neapolitan_sundae", LuncheonItems.NEAPOLITAN_SUNDAE)
                 .name("Brain Freeze").description("Eat your first Neapolitan Sundae")
-                .after(ICE_CREAM).goal().build(),
+                .after(ICE_CREAM).onIconConsumed().goal().build(),
 
         WORLDS_COLDEST = create("worlds_coldest", LuncheonItems.INCOMPLETE_NEAPOLITAN_SUNDAE)
                 .name("World's Coldest").description("Automate the Neapolitan Sundae")
