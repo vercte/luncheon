@@ -13,7 +13,10 @@
     "cooler.ProcessingRecipeBuilderMixin",
     "cooler.ProcessingRecipeBuilderMixin$ProcessingRecipeParamsMixin",
     "cooler.ProcessingRecipeMixin",
-    "cooler.ProcessingRecipeSerializerMixin"
+    "cooler.ProcessingRecipeSerializerMixin",
+    "deployer.AdvancementBehaviourAccessor",
+    "deployer.BeltDeployerCallbacksMixin",
+    "deployer.CountSundaesMixin"
   ],
   "client": [
   ],

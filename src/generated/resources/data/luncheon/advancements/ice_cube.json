@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": false,
     "description": {
-      "color": "#DBA213",
+      "color": "#FFFFFF",
       "translate": "advancement.luncheon.ice_cube.desc"
     },
     "frame": "task",

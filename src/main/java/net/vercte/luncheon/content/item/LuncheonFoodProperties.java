@@ -13,9 +13,10 @@ public class LuncheonFoodProperties {
     public static final FoodProperties BERRY_ICE_CREAM = food(5, 0.6F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 300), 1).build();
 
-    public static final FoodProperties NEAPOLITAN_SUNDAE = food(14, 0.8F)
+    public static final FoodProperties NEAPOLITAN_SUNDAE = food(14, 0.6F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 800), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200), 1).build();
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200), 1)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100, 2), 1).build();
 
     public static final FoodProperties BERRY_EXTRACT = food(1, 0.5F)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100), 0.2f).build();

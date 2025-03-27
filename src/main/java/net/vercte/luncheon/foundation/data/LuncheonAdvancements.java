@@ -10,6 +10,7 @@ import net.minecraft.world.level.ItemLike;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.content.registry.LuncheonTags;
 import net.vercte.luncheon.foundation.data.advancement.LuncheonAdvancement;
 
 import java.nio.file.Path;
@@ -37,16 +38,16 @@ public class LuncheonAdvancements implements DataProvider {
                 .after(MECHANICAL_COOLER).onIconConsumed().secret().build(),
 
         ICE_CREAM = create("ice_cream", LuncheonItems.PLAIN_ICE_CREAM)
-                .name("Ice Cream...").description("You scream...")
-                .after(MECHANICAL_COOLER).build(),
+                .name("You Scream").description("Eat your first Ice Cream of any kind")
+                .after(MECHANICAL_COOLER).onItemConsumed(LuncheonTags.ItemTags.ICE_CREAM_CONES.tag).build(),
 
         NEAPOLITAN_SUNDAE = create("neapolitan_sundae", LuncheonItems.NEAPOLITAN_SUNDAE)
                 .name("Brain Freeze").description("Eat your first Neapolitan Sundae")
                 .after(ICE_CREAM).onIconConsumed().goal().build(),
 
-        WORLDS_COLDEST = create("worlds_coldest", LuncheonItems.INCOMPLETE_NEAPOLITAN_SUNDAE)
-                .name("World's Coldest").description("Automate the Neapolitan Sundae")
-                .after(NEAPOLITAN_SUNDAE).challenge().build();
+        WORLDS_COLDEST = create("worlds_coldest", LuncheonItems.NEAPOLITAN_SUNDAE)
+                .name("World's Coldest").description("Fully automate the Neapolitan Sundae")
+                .after(NEAPOLITAN_SUNDAE).onItemAutomated(LuncheonItems.NEAPOLITAN_SUNDAE).challenge().build();
 
     private static LuncheonAdvancement.Builder create(String id, ItemLike icon) {
         return new LuncheonAdvancement.Builder(id, icon);

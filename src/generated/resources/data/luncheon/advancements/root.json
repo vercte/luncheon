@@ -9,7 +9,7 @@
     "announce_to_chat": false,
     "background": "luncheon:textures/gui/advancements.png",
     "description": {
-      "color": "#DBA213",
+      "color": "#FFFFFF",
       "translate": "advancement.luncheon.root.desc"
     },
     "frame": "task",

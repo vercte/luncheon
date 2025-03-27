@@ -1,7 +1,6 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.Create;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -16,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
+import net.vercte.luncheon.content.misc.LuncheonCriteriaTriggers;
 import net.vercte.luncheon.content.registry.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
@@ -52,6 +52,7 @@ public class Luncheon {
     public static void init(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             LuncheonAdvancements.init();
+            LuncheonCriteriaTriggers.register();
         });
     }
 

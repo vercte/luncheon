@@ -6,7 +6,10 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.network.chat.Component;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.data.LuncheonAdvancements;
@@ -53,7 +56,7 @@ public class LuncheonAdvancement {
             description += SECRET_SUFFIX;
 
         this.builder.display(this.icon, Component.translatable(titleKey()),
-                Component.translatable(descriptionKey()).withStyle(s -> s.withColor(0xDBA213)),
+                Component.translatable(descriptionKey()).withStyle(s -> s.withColor(0xFFFFFF)),
                 id.equals("root") ? LuncheonAdvancements.getBackground() : null,
                 this.frameType, this.toasts, this.announces, this.hidden);
 
@@ -150,6 +153,34 @@ public class LuncheonAdvancement {
 
         public Builder free() {
             return this.criterion(this.icon.asItem().toString(), InventoryChangeTrigger.TriggerInstance.hasItems(new ItemLike[] {}));
+        }
+
+        public Builder onItemCollected(TagKey<Item> tag) {
+            return this.criterion(tag.location().toString(),
+                    InventoryChangeTrigger.TriggerInstance.hasItems(
+                            ItemPredicate.Builder.item().of(tag).build()
+                    )
+            );
+        }
+
+        public Builder onItemCollected(ItemLike item) {
+            return this.criterion(item.asItem().toString(), InventoryChangeTrigger.TriggerInstance.hasItems(item));
+        }
+
+        public Builder onItemConsumed(TagKey<Item> tag) {
+            return this.criterion(tag.location().toString(),
+                    ConsumeItemTrigger.TriggerInstance.usedItem(
+                            ItemPredicate.Builder.item().of(tag).build()
+                    )
+            );
+        }
+
+        public Builder onItemConsumed(ItemLike item) {
+            return this.criterion(item.asItem().toString(), ConsumeItemTrigger.TriggerInstance.usedItem(item));
+        }
+
+        public Builder onItemAutomated(ItemLike item) {
+            return this.criterion(item.asItem().toString(), AutomationTrigger.TriggerInstance.automated(icon.asItem()));
         }
 
         public Builder onIconCollected() {

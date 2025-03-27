@@ -1,22 +1,37 @@
 {
   "parent": "luncheon:neapolitan_sundae",
-  "criteria": {},
+  "criteria": {
+    "neapolitan_sundae": {
+      "conditions": {
+        "item": {
+          "items": [
+            "luncheon:neapolitan_sundae"
+          ]
+        }
+      },
+      "trigger": "luncheon:automation"
+    }
+  },
   "display": {
     "announce_to_chat": true,
     "description": {
-      "color": "#DBA213",
+      "color": "#FFFFFF",
       "translate": "advancement.luncheon.worlds_coldest.desc"
     },
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "luncheon:incomplete_neapolitan_sundae"
+      "item": "luncheon:neapolitan_sundae"
     },
     "show_toast": true,
     "title": {
       "translate": "advancement.luncheon.worlds_coldest"
     }
   },
-  "requirements": [],
+  "requirements": [
+    [
+      "neapolitan_sundae"
+    ]
+  ],
   "sends_telemetry_event": true
 }
