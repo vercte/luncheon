@@ -120,4 +120,4 @@ run-data/
 
 
 # Generated Resources Cache
-src/generated/resources/.cache
+common/src/generated/resources/.cache

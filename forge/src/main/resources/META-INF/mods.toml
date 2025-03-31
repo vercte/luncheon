@@ -9,7 +9,7 @@ displayName = "${mod_name}"
 authors = "${mod_authors}"
 displayURL = "https://modrinth.com/mod/luncheon"
 description = '''${mod_description}'''
-logoFile = "icon.png"
+logoFile = "../icon.png"
 
 [[dependencies."${mod_id}"]] #optional
 # the modid of the dependency

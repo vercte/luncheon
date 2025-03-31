@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "luncheon",
+  "version": "${version}",
+  "name": "A Wonderful Create Mod Luncheon",
+  "description": "I hope you're prepared!",
+  "authors": [
+    {
+      "name": "Vercte",
+      "contact": {
+        "homepage": "https://vercte.net"
+      }
+    }
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/luncheon",
+    "sources": "https://github.com/vercte/luncheon",
+    "issues": "https://github.com/vercte/luncheon/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/luncheon/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.vercte.luncheon.fabric.LuncheonFabric"
+    ]
+  },
+  "mixins": [
+    "luncheon.mixins.json",
+    "luncheon-common.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "${minecraft_version}",
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "create": "${create_version}"
+  }
+}
