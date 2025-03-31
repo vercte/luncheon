@@ -23,6 +23,9 @@
   "entrypoints": {
     "main": [
       "net.vercte.luncheon.fabric.LuncheonFabric"
+    ],
+    "client": [
+      "net.vercte.luncheon.fabric.LuncheonFabricClient"
     ]
   },
   "mixins": [
