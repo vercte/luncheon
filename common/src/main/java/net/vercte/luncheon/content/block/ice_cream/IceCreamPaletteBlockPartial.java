@@ -1,6 +1,7 @@
 package net.vercte.luncheon.content.block.ice_cream;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.vercte.luncheon.Luncheon;
@@ -26,7 +27,6 @@ import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.StairBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -44,7 +44,7 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
 
     private final String name;
 
-    private IceCreamPaletteBlockPartial(String name) {
+    protected IceCreamPaletteBlockPartial(String name) {
         this.name = name;
     }
 
@@ -110,7 +110,7 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
 
         @Override
         protected StairBlock createBlock(Supplier<? extends Block> block) {
-            return new StairBlock(() -> block.get()
+            return new StairBlock(block.get()
                     .defaultBlockState(), Properties.copy(block.get()));
         }
 
@@ -140,9 +140,9 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
 
     }
 
-    private static class Slab extends IceCreamPaletteBlockPartial<SlabBlock> {
+    public static class Slab extends IceCreamPaletteBlockPartial<SlabBlock> {
 
-        private final boolean customSide;
+        protected final boolean customSide;
 
         public Slab(boolean customSide) {
             super("slab");
@@ -160,27 +160,10 @@ public abstract class IceCreamPaletteBlockPartial<B extends Block> {
         }
 
         @Override
+        @ExpectPlatform
         protected void generateBlockState(DataGenContext<Block, SlabBlock> ctx, RegistrateBlockstateProvider prov,
                                           String variantName, IceCreamPaletteBlockPattern pattern, Supplier<? extends Block> block) {
-            String name = ctx.getName();
-            ResourceLocation mainTexture = getTexture(variantName, pattern, 0);
-            ResourceLocation sideTexture = customSide ? getTexture(variantName, pattern, 1) : mainTexture;
-
-            ModelFile bottom = prov.models()
-                    .slab(name, sideTexture, mainTexture, mainTexture);
-            ModelFile top = prov.models()
-                    .slabTop(name + "_top", sideTexture, mainTexture, mainTexture);
-            ModelFile doubleSlab;
-
-            if (customSide) {
-                doubleSlab = prov.models()
-                        .cubeColumn(name + "_double", sideTexture, mainTexture);
-            } else {
-                doubleSlab = prov.models()
-                        .getExistingFile(prov.modLoc(pattern.createName(variantName)));
-            }
-
-            prov.slabBlock(ctx.get(), bottom, top, doubleSlab);
+            throw new AssertionError("not epic");
         }
 
         @Override

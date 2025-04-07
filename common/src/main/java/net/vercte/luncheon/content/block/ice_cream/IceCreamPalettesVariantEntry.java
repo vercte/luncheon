@@ -7,9 +7,7 @@ import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.util.DataIngredient;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import com.tterrag.registrate.util.nullness.NonNullConsumer;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
@@ -54,10 +52,8 @@ public class IceCreamPalettesVariantEntry {
 
             itemBuilder.tag(iceCreamType.materialTag).tag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag);
 
-            if (pattern.isTranslucent())
-                builder.addLayer(() -> RenderType::translucent);
             pattern.createCTBehaviour(name)
-                    .ifPresent(b -> builder.onRegister((NonNullConsumer<? super Block>)connectedTextures(b)));
+                    .ifPresent(b -> builder.onRegister(connectedTextures(b)));
 
             builder.recipe((c, p) -> {
                 p.stonecutting(DataIngredient.tag(iceCreamType.materialTag), RecipeCategory.BUILDING_BLOCKS, c);

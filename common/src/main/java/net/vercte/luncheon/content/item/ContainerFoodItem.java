@@ -9,15 +9,15 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
-public class BottleFoodItem extends Item {
-    public BottleFoodItem(Properties p_41383_) {
-        super(p_41383_);
+public class ContainerFoodItem extends Item {
+    public ContainerFoodItem(Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -28,11 +28,13 @@ public class BottleFoodItem extends Item {
             player.awardStat(Stats.ITEM_USED.get(this));
         }
 
+        Item remainder = this.getCraftingRemainingItem();
+        assert remainder != null;
         if (stack.isEmpty()) {
-            return new ItemStack(Items.GLASS_BOTTLE);
+            return new ItemStack(remainder);
         } else {
             if (entity instanceof Player player && !player.getAbilities().instabuild) {
-                ItemStack itemstack = new ItemStack(Items.GLASS_BOTTLE);
+                ItemStack itemstack = new ItemStack(remainder);
                 if (!player.getInventory().add(itemstack)) {
                     player.drop(itemstack, false);
                 }
@@ -42,17 +44,13 @@ public class BottleFoodItem extends Item {
         }
     }
 
-    @Override
-    public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
-        return Items.GLASS_BOTTLE.getDefaultInstance();
-    }
-
-    public UseAnim getUseAnimation(ItemStack p_41358_) {
-        return UseAnim.DRINK;
+    @NotNull
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.EAT;
     }
 
     @Override
     public SoundEvent getEatingSound() {
-        return SoundEvents.GENERIC_DRINK;
+        return SoundEvents.GENERIC_EAT;
     }
 }

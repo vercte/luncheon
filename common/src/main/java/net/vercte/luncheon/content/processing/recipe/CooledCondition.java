@@ -2,7 +2,7 @@ package net.vercte.luncheon.content.processing.recipe;
 
 import com.simibubi.create.Create;
 import net.createmod.catnip.lang.Lang;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
+import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 
 public enum CooledCondition {
     NONE(0xffffff), COOLED(0x4455b8);
@@ -20,8 +20,8 @@ public enum CooledCondition {
 
     public int getColor() { return color; }
 
-    public boolean testCooler(CoolerBlock.CoolingLevel level) {
-        if(this == COOLED) return level == CoolerBlock.CoolingLevel.COOLED;
+    public boolean testCooler(MechanicalCoolerBlock.CoolingLevel level) {
+        if(this == COOLED) return level == MechanicalCoolerBlock.CoolingLevel.COOLED;
         return true;
     }
 

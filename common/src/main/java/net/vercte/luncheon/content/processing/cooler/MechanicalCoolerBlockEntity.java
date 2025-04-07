@@ -1,15 +1,14 @@
 package net.vercte.luncheon.content.processing.cooler;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import com.simibubi.create.foundation.fluid.SmartFluidTank;
 import com.simibubi.create.foundation.item.TooltipHelper;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.createmod.catnip.animation.LerpedFloat;
 import net.createmod.catnip.lang.FontHelper;
 import net.createmod.catnip.lang.Lang;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -19,10 +18,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 
@@ -30,33 +25,33 @@ import java.util.List;
 
 import static net.minecraft.ChatFormatting.GOLD;
 
-public class CoolerBlockEntity extends KineticBlockEntity {
-    private int drainSpeed = 40;
-    private int satisfiedTicks;
+public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
+    protected int drainSpeed = 40;
+    protected int satisfiedTicks;
 
-    private static final int SYNC_RATE = 8;
-    private int syncCooldown;
-    private boolean queuedSync;
+    protected static final int SYNC_RATE = 8;
+    protected int syncCooldown;
+    protected boolean queuedSync;
 
-    private boolean active = false;
-    public SmartFluidTank tankInventory;
-    protected LazyOptional<IFluidHandler> fluidCapability;
+    protected boolean active = false;
+    public MechanicalCoolerFluidTank tankInventory;
 
     protected LerpedFloat fluidLevel;
 
-    public CoolerBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
+    public MechanicalCoolerBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
 
         satisfiedTicks = 0;
 
-        tankInventory = new CoolerFluidTank(this::onFluidStackChanged);
-        fluidCapability = LazyOptional.of(() -> tankInventory);
+        tankInventory = new MechanicalCoolerFluidTank(this::onFluidStackChanged);
+        this.initCapabilities();
     }
 
-    protected void onFluidStackChanged(FluidStack stack) {
+    protected void onFluidStackChanged() {
         if (!hasLevel())
             return;
 
+        assert level != null;
         if(!level.isClientSide) {
             setChanged();
             sendData();
@@ -123,72 +118,31 @@ public class CoolerBlockEntity extends KineticBlockEntity {
         super.write(compoundTag, clientPacket);
     }
 
-    @Override
-    public void tick() {
-        super.tick();
-
-        if (fluidLevel != null) fluidLevel.tickChaser();
-
-        if (syncCooldown > 0) {
-            syncCooldown--;
-            if (syncCooldown == 0 && queuedSync)
-                sendData();
-        }
-
-        if(level.isClientSide && !isVirtual()) {
-            spawnParticles();
-            return;
-        }
-
-        active = false;
-        if(isSpeedRequirementFulfilled()) {
-            if(satisfiedTicks > 0) satisfiedTicks--;
-            if(satisfiedTicks == 0) {
-                FluidStack drained = tankInventory.drain(drainSpeed, IFluidHandler.FluidAction.SIMULATE);
-                if(drained.getAmount() == drainSpeed) {
-                    tankInventory.drain(drainSpeed, IFluidHandler.FluidAction.EXECUTE);
-                    satisfiedTicks = 5;
-                }
-            }
-
-            active = satisfiedTicks > 0;
-        }
-
-        setBlockState();
-    }
-
     protected void setBlockState() {
         setBlockCooling(getCoolingLevel());
     }
 
-    protected void setBlockCooling(CoolerBlock.CoolingLevel coolingLevel) {
-        CoolerBlock.CoolingLevel inBlockState = getCoolingLevelFromBlock();
+    protected void setBlockCooling(MechanicalCoolerBlock.CoolingLevel coolingLevel) {
+        MechanicalCoolerBlock.CoolingLevel inBlockState = getCoolingLevelFromBlock();
         if (inBlockState == coolingLevel)
             return;
-        level.setBlockAndUpdate(worldPosition, getBlockState().setValue(CoolerBlock.COOL_LEVEL, coolingLevel));
+        assert level != null;
+        level.setBlockAndUpdate(worldPosition, getBlockState().setValue(MechanicalCoolerBlock.COOL_LEVEL, coolingLevel));
         notifyUpdate();
     }
 
-    protected CoolerBlock.CoolingLevel getCoolingLevel() {
-        if(active) return CoolerBlock.CoolingLevel.COOLED;
-        return CoolerBlock.CoolingLevel.NONE;
+    protected MechanicalCoolerBlock.CoolingLevel getCoolingLevel() {
+        if(active) return MechanicalCoolerBlock.CoolingLevel.COOLED;
+        return MechanicalCoolerBlock.CoolingLevel.NONE;
     }
 
-    public CoolerBlock.CoolingLevel getCoolingLevelFromBlock() {
-        return CoolerBlock.getCoolingLevelOf(getBlockState());
+    public MechanicalCoolerBlock.CoolingLevel getCoolingLevelFromBlock() {
+        return MechanicalCoolerBlock.getCoolingLevelOf(getBlockState());
     }
 
     public float getFanRotationSpeed() {
         if(!active) return Mth.clamp(speed / 2, -8, 8);
         return speed;
-    }
-
-    @Override
-    public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-        if (isFluidHandlerCap(cap)
-                && (side == null || CoolerBlock.hasPipeTowards(level, worldPosition, getBlockState(), side)))
-            return this.fluidCapability.cast();
-        return super.getCapability(cap, side);
     }
 
     public float getFillState() {
@@ -211,7 +165,16 @@ public class CoolerBlockEntity extends KineticBlockEntity {
 
         if(r.nextInt(6) != 0) return;
 
-        if(getCoolingLevel() == CoolerBlock.CoolingLevel.NONE) level.addParticle(ParticleTypes.SMOKE, v.x, v.y, v.z, 0, 0, 0);
-        if(getCoolingLevel() == CoolerBlock.CoolingLevel.COOLED) level.addParticle(ParticleTypes.SNOWFLAKE, v.x, v.y + 4/16f, v.z, 0, 0, 0);
+        if(getCoolingLevel() == MechanicalCoolerBlock.CoolingLevel.NONE) level.addParticle(ParticleTypes.SMOKE, v.x, v.y, v.z, 0, 0, 0);
+        if(getCoolingLevel() == MechanicalCoolerBlock.CoolingLevel.COOLED) level.addParticle(ParticleTypes.SNOWFLAKE, v.x, v.y + 4/16f, v.z, 0, 0, 0);
+    }
+
+    @ExpectPlatform
+    public void initCapabilities() {
+        throw new AssertionError("mechanical cooler block entity: initCapabilities");
+    }
+    @ExpectPlatform
+    public void tick() {
+        throw new AssertionError("mechanical cooler block entity: tick");
     }
 }

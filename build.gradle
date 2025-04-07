@@ -49,6 +49,7 @@ subprojects {
         // Can't use parchment for some reason, game ends up completely unmapped
         mappings loom.officialMojangMappings()
 
+
         // see each subproject for more dependencies.
     }
 }

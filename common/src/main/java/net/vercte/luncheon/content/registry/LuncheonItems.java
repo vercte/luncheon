@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.entry.ItemEntry;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.item.*;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
@@ -19,7 +20,6 @@ public class LuncheonItems {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
     static {
-        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
         REGISTRATE.setTooltipModifierFactory(item ->
                 new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                         .andThen(TooltipModifier.mapNull(KineticStats.create(item)))
@@ -27,11 +27,12 @@ public class LuncheonItems {
     }
 
     // region Foods
-    public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
-            .properties(p -> p.food(LuncheonFoodProperties.BAGUETTE))
-            .model(AssetLookup.existingItemModel())
-            .lang("Baguette")
-            .register();
+// TODO: get baguette working
+//    public static final ItemEntry<BaguetteItem> BAGUETTE = REGISTRATE.item("baguette", BaguetteItem::new)
+//            .properties(p -> p.food(LuncheonFoodProperties.BAGUETTE))
+//            .model(AssetLookup.existingItemModel())
+//            .lang("Baguette")
+//            .register();
 
     public static final ItemEntry<Item> BREAD_SLICE = REGISTRATE.item("bread_slice", Item::new)
             .properties(p -> p.food(LuncheonFoodProperties.BREAD_SLICE))
@@ -62,14 +63,14 @@ public class LuncheonItems {
             .lang("Incomplete Neapolitan Sundae")
             .register();
 
-    public static final ItemEntry<NeapolitanSundaeItem> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", NeapolitanSundaeItem::new)
-            .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE).stacksTo(16))
+    public static final ItemEntry<ContainerFoodItem> NEAPOLITAN_SUNDAE = REGISTRATE.item("neapolitan_sundae", ContainerFoodItem::new)
+            .properties(p -> p.food(LuncheonFoodProperties.NEAPOLITAN_SUNDAE).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE))
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Neapolitan Sundae")
             .register();
 
-    public static final ItemEntry<BottleFoodItem> BERRY_EXTRACT = REGISTRATE.item("berry_extract", BottleFoodItem::new)
-            .properties(p -> p.food(LuncheonFoodProperties.BERRY_EXTRACT).stacksTo(16))
+    public static final ItemEntry<ContainerDrinkItem> BERRY_EXTRACT = REGISTRATE.item("berry_extract", ContainerDrinkItem::new)
+            .properties(p -> p.food(LuncheonFoodProperties.BERRY_EXTRACT).stacksTo(16).craftRemainder(Items.GLASS_BOTTLE))
             .tag(AllItemTags.UPRIGHT_ON_BELT.tag)
             .lang("Bottle of Berry Extract")
             .register();

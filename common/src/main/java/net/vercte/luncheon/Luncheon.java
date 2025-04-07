@@ -39,6 +39,7 @@ public class Luncheon {
                     .displayItems(new LuncheonDisplayItemsGenerator(Luncheon.BASE_CREATIVE_TAB))
                     .build());
 
+    public static ResourceLocation at(String namespace, String path) { return new ResourceLocation(namespace, path); }
     public static ResourceLocation asVanillaResource(String path) {
         return new ResourceLocation("minecraft", path);
     }

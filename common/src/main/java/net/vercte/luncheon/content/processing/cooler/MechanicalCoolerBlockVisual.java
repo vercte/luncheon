@@ -13,13 +13,13 @@ import net.vercte.luncheon.content.registry.LuncheonPartialModels;
 
 import java.util.function.Consumer;
 
-public class CoolerBlockVisual extends SingleAxisRotatingVisual<CoolerBlockEntity> implements SimpleDynamicVisual {
+public class MechanicalCoolerBlockVisual extends SingleAxisRotatingVisual<MechanicalCoolerBlockEntity> implements SimpleDynamicVisual {
     protected RotatingInstance fan;
-    protected CoolerBlockEntity cooler;
+    protected MechanicalCoolerBlockEntity cooler;
 
     private float lastSpeed;
 
-    public CoolerBlockVisual(VisualizationContext context, CoolerBlockEntity blockEntity, float partialTick) {
+    public MechanicalCoolerBlockVisual(VisualizationContext context, MechanicalCoolerBlockEntity blockEntity, float partialTick) {
         super(context, blockEntity, partialTick, Models.partial(LuncheonPartialModels.SHAFT_TINY, Direction.DOWN));
 
         this.fan = instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(LuncheonPartialModels.SHAFT_FAN)).createInstance();

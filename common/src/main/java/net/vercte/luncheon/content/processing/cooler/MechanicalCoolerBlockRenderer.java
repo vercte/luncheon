@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.fluid.FluidRenderer;
+import com.simibubi.create.foundation.fluid.SmartFluidTank;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.animation.LerpedFloat;
@@ -15,20 +16,18 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.vercte.luncheon.content.registry.LuncheonPartialModels;
 
-public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockEntity> {
-    public CoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }
+public class MechanicalCoolerBlockRenderer extends KineticBlockEntityRenderer<MechanicalCoolerBlockEntity> {
+    public MechanicalCoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }
 
     @Override
-    public boolean shouldRenderOffScreen(CoolerBlockEntity be) {
+    public boolean shouldRenderOffScreen(MechanicalCoolerBlockEntity be) {
         return true;
     }
 
     @Override
-    protected void renderSafe(CoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+    protected void renderSafe(MechanicalCoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
         renderWater(be, partialTicks, ms, buffer, light, overlay);
 
         if (VisualizationManager.supportsVisualization(be.getLevel()))
@@ -52,7 +51,7 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
                 .renderInto(ms, vbCutout);
     }
 
-    protected void renderWater(CoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+    protected void renderWater(MechanicalCoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
         LerpedFloat fluidLevel = be.getFluidLevel();
         if (fluidLevel == null)
             return;
@@ -65,10 +64,8 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
             return;
         float clampedLevel = Mth.clamp(level * totalHeight, 0, totalHeight);
 
-        FluidTank tank = be.tankInventory;
-        FluidStack fluidStack = tank.getFluid();
-        if (fluidStack.isEmpty())
-            return;
+        SmartFluidTank tank = be.tankInventory;
+        if(tank.getFluid().isEmpty()) return;
 
         float clip = 1 / 128f;
 
@@ -83,7 +80,7 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
 
         ms.pushPose();
         ms.translate(0, clampedLevel - totalHeight, 0);
-        FluidRenderer.renderFluidBox(fluidStack.getFluid(), fluidStack.getAmount(),
+        FluidRenderer.renderFluidBox(tank.getFluid().getFluid(), Math.round(fluidLevel.getValue(partialTicks)),
                 xMin + clip, yMin, zMin + clip,
                 xMax - clip, yMax, zMax - clip,
                 buffer, ms, light, false, false);

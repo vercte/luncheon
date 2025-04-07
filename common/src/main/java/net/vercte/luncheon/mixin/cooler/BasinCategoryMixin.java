@@ -16,7 +16,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.vercte.luncheon.compat.jei.category.animations.AnimatedMechanicalCooler;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
+import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
@@ -82,7 +82,7 @@ public abstract class BasinCategoryMixin extends CreateRecipeCategory<BasinRecip
             LuncheonProcessingRecipe lRecipe = (LuncheonProcessingRecipe) recipe;
             CooledCondition requiredCool = lRecipe.luncheon$getRequiredCool();
             if(requiredCool != CooledCondition.NONE) {
-                luncheon$cooler.withCooling(CoolerBlock.CoolingLevel.COOLED)
+                luncheon$cooler.withCooling(MechanicalCoolerBlock.CoolingLevel.COOLED)
                                 .draw(graphics, getBackground().getWidth() / 2 + 3, 55);
                 mixer.draw(graphics, getBackground().getWidth() / 2 + 3, 34);
                 ci.cancel();
@@ -106,7 +106,7 @@ public abstract class BasinCategoryMixin extends CreateRecipeCategory<BasinRecip
             LuncheonProcessingRecipe lRecipe = (LuncheonProcessingRecipe) recipe;
             CooledCondition requiredCool = lRecipe.luncheon$getRequiredCool();
             if(requiredCool != CooledCondition.NONE) {
-                luncheon$cooler.withCooling(CoolerBlock.CoolingLevel.COOLED)
+                luncheon$cooler.withCooling(MechanicalCoolerBlock.CoolingLevel.COOLED)
                         .draw(graphics, getBackground().getWidth() / 2 + 3, 55);
                 press.draw(graphics, getBackground().getWidth() / 2 + 3, 34);
                 ci.cancel();

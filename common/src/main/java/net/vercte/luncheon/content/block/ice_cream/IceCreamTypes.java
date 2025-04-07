@@ -3,10 +3,10 @@ package net.vercte.luncheon.content.block.ice_cream;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
@@ -26,7 +26,7 @@ public enum IceCreamTypes {
     public IceCreamPaletteBlockPattern[] variantTypes;
     public TagKey<Item> materialTag;
 
-    private IceCreamTypes(IceCreamPaletteBlockPattern[] variantTypes,
+    IceCreamTypes(IceCreamPaletteBlockPattern[] variantTypes,
                           Function<CreateRegistrate, NonNullSupplier<Block>> factory) {
         this.factory = factory;
         this.variantTypes = variantTypes;
@@ -46,7 +46,7 @@ public enum IceCreamTypes {
             iceCreamVariant.baseBlock = baseBlock;
             String id = LuncheonLang.asId(iceCreamVariant.name() + "_ice_cream");
             iceCreamVariant.materialTag =
-                    AllTags.optionalTag(ForgeRegistries.ITEMS, Luncheon.asResource("ice_cream/" + iceCreamVariant.name().toLowerCase(Locale.ROOT)));
+                    AllTags.optionalTag(BuiltInRegistries.ITEM, Luncheon.asResource("ice_cream/" + iceCreamVariant.name().toLowerCase(Locale.ROOT)));
             iceCreamVariant.variants = new IceCreamPalettesVariantEntry(id, iceCreamVariant);
         }
     }

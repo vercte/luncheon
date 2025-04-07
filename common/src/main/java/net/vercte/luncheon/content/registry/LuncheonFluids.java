@@ -31,10 +31,6 @@ import java.util.function.Supplier;
 public class LuncheonFluids {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
-    static {
-        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
-    }
-
     public static final FluidEntry<VirtualFluid> POWDERED_SNOW = REGISTRATE.virtualFluid("powdered_snow", Luncheon.asVanillaResource("block/powder_snow"), Luncheon.asVanillaResource("block/powder_snow"))
             .lang("Powdered Snow")
             .register();

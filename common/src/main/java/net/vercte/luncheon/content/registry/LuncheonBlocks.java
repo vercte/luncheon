@@ -2,7 +2,6 @@ package net.vercte.luncheon.content.registry;
 
 import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.foundation.data.AssetLookup;
-import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -13,10 +12,8 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
+import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
 
@@ -27,14 +24,10 @@ import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 public class LuncheonBlocks {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();
 
-    static {
-        REGISTRATE.setCreativeTab(Luncheon.BASE_CREATIVE_TAB);
-    }
-
     // region Kinetics
-    public static final BlockEntry<CoolerBlock> MECHANICAL_COOLER =
-            REGISTRATE.block("mechanical_cooler", CoolerBlock::new)
-                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY).lightLevel(CoolerBlock::getLight))
+    public static final BlockEntry<MechanicalCoolerBlock> MECHANICAL_COOLER =
+            REGISTRATE.block("mechanical_cooler", MechanicalCoolerBlock::new)
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY).lightLevel(MechanicalCoolerBlock::getLight))
                     .transform(pickaxeOnly())
                     .addLayer(() -> RenderType::cutoutMipped)
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
@@ -48,13 +41,13 @@ public class LuncheonBlocks {
     // region Building Blocks
     public static final BlockEntry<GlassBlock> COBBLED_GLASS = REGISTRATE.block("cobbled_glass", GlassBlock::new)
             .initialProperties(NonNullSupplier.of(() -> Blocks.GLASS))
-            .tag(Tags.Blocks.GLASS_COLORLESS)
+            .tag(LuncheonTags.BlockTags.GLASS_COLORLESS.tag)
             .loot(RegistrateBlockLootTables::dropWhenSilkTouch)
             .addLayer(() -> RenderType::cutoutMipped)
             .blockstate(LuncheonBlockstates::cubeAll)
             .lang("Cobbled Glass")
             .item()
-            .tag(Tags.Items.GLASS_COLORLESS)
+            .tag(LuncheonTags.ItemTags.GLASS_COLORLESS.tag)
             .build()
             .register();
 

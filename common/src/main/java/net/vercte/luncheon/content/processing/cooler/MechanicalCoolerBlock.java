@@ -24,10 +24,10 @@ import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 @SuppressWarnings("deprecation")
-public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> {
+public class MechanicalCoolerBlock extends KineticBlock implements IBE<MechanicalCoolerBlockEntity> {
     public static final EnumProperty<CoolingLevel> COOL_LEVEL = EnumProperty.create("cool_level", CoolingLevel.class);
 
-    public CoolerBlock(Properties properties) {
+    public MechanicalCoolerBlock(Properties properties) {
         super(properties);
         registerDefaultState(defaultBlockState().setValue(COOL_LEVEL, CoolingLevel.NONE));
     }
@@ -54,7 +54,7 @@ public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> 
         return SpeedLevel.MEDIUM;
     }
 
-    public static boolean hasPipeTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
+    public static boolean hasPipeTowards(Direction face) {
             return face.getAxis() != Direction.Axis.Y;
     }
 
@@ -69,12 +69,12 @@ public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> 
     }
 
     @Override
-    public Class<CoolerBlockEntity> getBlockEntityClass() {
-        return CoolerBlockEntity.class;
+    public Class<MechanicalCoolerBlockEntity> getBlockEntityClass() {
+        return MechanicalCoolerBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CoolerBlockEntity> getBlockEntityType() {
+    public BlockEntityType<? extends MechanicalCoolerBlockEntity> getBlockEntityType() {
         return LuncheonBlockEntityTypes.MECHANICAL_COOLER.get();
     }
 
@@ -103,10 +103,6 @@ public class CoolerBlock extends KineticBlock implements IBE<CoolerBlockEntity> 
 
     public enum CoolingLevel implements StringRepresentable {
         NONE, COOLED;
-
-        public static CoolingLevel byIndex(int index) {
-            return values()[index];
-        }
 
         @Override
         public String getSerializedName() {

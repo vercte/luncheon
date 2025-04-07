@@ -1,86 +1,91 @@
 package net.vercte.luncheon.content.registry;
 
-import com.simibubi.create.Create;
-import net.createmod.catnip.lang.Lang;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.IForgeRegistry;
+import net.minecraft.world.level.block.Block;
 import net.vercte.luncheon.Luncheon;
-
-import java.util.Collections;
-
-import static net.vercte.luncheon.content.registry.LuncheonTags.Namespace.MOD;
+import net.vercte.luncheon.platform.Services;
 
 public class LuncheonTags {
-    @SuppressWarnings("DataFlowIssue")
-    public static <T> TagKey<T> optionalTag(IForgeRegistry<T> registry,
-                                            ResourceLocation id) {
-        return registry.tags()
-                .createOptionalTagKey(id, Collections.emptySet());
-    }
-
-
-    public enum Namespace {
-
-        MOD(Luncheon.ID, false, true),
-        CREATE(Create.ID, false, false),
-        FORGE("forge"),
-        ;
-
-        public final String id;
-        public final boolean optionalDefault;
-        public final boolean alwaysDatagenDefault;
-
-        Namespace(String id) {
-            this(id, true, false);
-        }
-
-        Namespace(String id, boolean optionalDefault, boolean alwaysDatagenDefault) {
-            this.id = id;
-            this.optionalDefault = optionalDefault;
-            this.alwaysDatagenDefault = alwaysDatagenDefault;
-        }
-    }
-
-    @SuppressWarnings("unused")
     public enum ItemTags {
-        ICE_CREAM_CONES(MOD, "ice_cream/cones"),
-        ICE_CREAM_BLOCKS_PLAIN(MOD, "ice_cream/plain"),
-        ICE_CREAM_BLOCKS_CHOCOLATE(MOD, "ice_cream/chocolate"),
-        ICE_CREAM_BLOCKS_BERRY(MOD, "ice_cream/berry"),
-        BUILDING_BLOCKS(MOD,"building"),
-        WAFER_BLOCKS(MOD, "wafer_blocks"),
-        GLASS_SHARD_INCOMPATIBLE(MOD, "glass_shard_incompatible");
+        ICE_CREAM_CONES("ice_cream/cones"),
+        ICE_CREAM_BLOCKS_PLAIN("ice_cream/plain"),
+        ICE_CREAM_BLOCKS_CHOCOLATE("ice_cream/chocolate"),
+        ICE_CREAM_BLOCKS_BERRY("ice_cream/berry"),
+        BUILDING_BLOCKS("building"),
+        WAFER_BLOCKS("wafer_blocks"),
+        GLASS_SHARD_INCOMPATIBLE("glass_shard_incompatible"),
+
+        // COMMON TAGS
+        GLASS("glass_blocks", "glass"),
+        GLASS_COLORLESS("colorless_glass", "glass/colorless");
 
         public final TagKey<Item> tag;
-        public final boolean alwaysDatagen;
 
-        ItemTags() {
-            this(MOD);
+        // luncheon tag
+        ItemTags(String luncheonID) {
+            tag = TagKey.create(BuiltInRegistries.ITEM.key(), Luncheon.asResource(luncheonID));
         }
 
-        ItemTags(Namespace namespace) {
-            this(namespace, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-        }
-
-        ItemTags(Namespace namespace, String path) {
-            this(namespace, path, namespace.optionalDefault, namespace.alwaysDatagenDefault);
-        }
-
-        ItemTags(Namespace namespace, boolean optional, boolean alwaysDatagen) {
-            this(namespace, null, optional, alwaysDatagen);
-        }
-
-        ItemTags(Namespace namespace, String path, boolean optional, boolean alwaysDatagen) {
-            ResourceLocation id = new ResourceLocation(namespace.id, path == null ? Lang.asId(name()) : path);
-            if (optional) {
-                tag = optionalTag(ForgeRegistries.ITEMS, id);
-            } else {
-                tag = net.minecraft.tags.ItemTags.create(id);
+        // common tag (same path)
+        ItemTags(String commonID, boolean common) {
+            if(common) {
+                tag = TagKey.create(BuiltInRegistries.ITEM.key(), this.makeCommonTag(commonID, commonID));
+                return;
             }
-            this.alwaysDatagen = alwaysDatagen;
+            tag = TagKey.create(BuiltInRegistries.ITEM.key(), Luncheon.asResource(commonID));
+        }
+
+        // common tag (different paths)
+        ItemTags(String fabricID, String forgeID) {
+            tag = TagKey.create(BuiltInRegistries.ITEM.key(), this.makeCommonTag(fabricID, forgeID));
+        }
+
+        private ResourceLocation makeCommonTag(String fabricID, String forgeID) {
+            String platform = Services.PLATFORM.getPlatformName();
+            if(platform.equals("Forge")) {
+                return Luncheon.at("forge", forgeID);
+            } else {
+                return Luncheon.at("c", fabricID);
+            }
+        }
+
+        public static void init() {}
+    }
+
+    public enum BlockTags {
+        GLASS_COLORLESS("colorless_glass", "glass/colorless");
+
+        public final TagKey<Block> tag;
+
+        // luncheon tag
+        BlockTags(String luncheonID) {
+            tag = TagKey.create(BuiltInRegistries.BLOCK.key(), Luncheon.asResource(luncheonID));
+        }
+
+        // common tag (same path)
+        BlockTags(String commonID, boolean common) {
+            if(common) {
+                tag = TagKey.create(BuiltInRegistries.BLOCK.key(), this.makeCommonTag(commonID, commonID));
+                return;
+            }
+            tag = TagKey.create(BuiltInRegistries.BLOCK.key(), Luncheon.asResource(commonID));
+        }
+
+        // common tag (different paths)
+        BlockTags(String fabricID, String forgeID) {
+            tag = TagKey.create(BuiltInRegistries.BLOCK.key(), this.makeCommonTag(fabricID, forgeID));
+        }
+
+        private ResourceLocation makeCommonTag(String fabricID, String forgeID) {
+            String platform = Services.PLATFORM.getPlatformName();
+            if(platform.equals("Forge")) {
+                return Luncheon.at("forge", forgeID);
+            } else {
+                return Luncheon.at("c", fabricID);
+            }
         }
 
         public static void init() {}
@@ -88,5 +93,6 @@ public class LuncheonTags {
 
     public static void init() {
         ItemTags.init();
+        BlockTags.init();
     }
 }

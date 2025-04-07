@@ -8,17 +8,12 @@ import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.Direction.Axis;
+import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.vercte.luncheon.Luncheon;
 
 import java.util.Optional;
@@ -58,7 +53,7 @@ public class IceCreamPaletteBlockPattern {
 	static final String TEXTURE_LOCATION = "block/palettes/ice_cream/%s/%s";
 
 	private PatternNameType nameType;
-	private String[] textures;
+	protected String[] textures;
 	private String id;
 	private boolean isTranslucent;
 	private TagKey<Block>[] blockTags;
@@ -70,9 +65,6 @@ public class IceCreamPaletteBlockPattern {
 	private NonNullFunction<NonNullSupplier<Block>, NonNullBiConsumer<DataGenContext<Block, ? extends Block>, RegistrateRecipeProvider>> additionalRecipes;
 	private IceCreamPaletteBlockPartial<? extends Block>[] partials;
 
-	@OnlyIn(Dist.CLIENT)
-	private RenderType renderType;
-
 	private static IceCreamPaletteBlockPattern create(String name, PatternNameType nameType,
 													  IceCreamPaletteBlockPartial<?>[] partials) {
 		IceCreamPaletteBlockPattern pattern = new IceCreamPaletteBlockPattern();
@@ -81,7 +73,6 @@ public class IceCreamPaletteBlockPattern {
 		pattern.nameType = nameType;
 		pattern.partials = partials;
 		pattern.additionalRecipes = $ -> NonNullBiConsumer.noop();
-		pattern.isTranslucent = false;
 		pattern.blockFactory = Block::new;
 		pattern.textures = new String[] { name };
 		pattern.blockStateGenerator = p -> p::cubeAll;
@@ -90,10 +81,6 @@ public class IceCreamPaletteBlockPattern {
 
 	public IPatternBlockStateGenerator getBlockStateGenerator() {
 		return blockStateGenerator;
-	}
-
-	public boolean isTranslucent() {
-		return isTranslucent;
 	}
 
 	public TagKey<Block>[] getBlockTags() {
@@ -164,28 +151,9 @@ public class IceCreamPaletteBlockPattern {
 				.cubeBottomTop(createName(variant), side, bottom, top));
 	}
 
+	@ExpectPlatform
 	public IBlockStateProvider pillar(String variant) {
-		ResourceLocation side = toLocation(variant, textures[0]);
-		ResourceLocation end = toLocation(variant, textures[1]);
-
-		return (ctx, prov) -> prov.getVariantBuilder(ctx.getEntry())
-				.forAllStatesExcept(state -> {
-							Axis axis = state.getValue(BlockStateProperties.AXIS);
-							if (axis == Axis.Y)
-								return ConfiguredModel.builder()
-										.modelFile(prov.models()
-												.cubeColumn(createName(variant), side, end))
-										.uvLock(false)
-										.build();
-							return ConfiguredModel.builder()
-									.modelFile(prov.models()
-											.cubeColumnHorizontal(createName(variant) + "_horizontal", side, end))
-									.uvLock(false)
-									.rotationX(90)
-									.rotationY(axis == Axis.X ? 90 : 0)
-									.build();
-						}, BlockStateProperties.WATERLOGGED, ConnectedPillarBlock.NORTH, ConnectedPillarBlock.SOUTH,
-						ConnectedPillarBlock.EAST, ConnectedPillarBlock.WEST);
+		throw new AssertionError("dude, what the heck");
 	}
 
 	public IBlockStateProvider cubeColumn(String variant) {
@@ -197,7 +165,7 @@ public class IceCreamPaletteBlockPattern {
 
 	// Utility
 
-	protected String createName(String variant) {
+	public String createName(String variant) {
 		if (nameType == PatternNameType.WRAP) {
 			String[] split = id.split("_");
 			if (split.length == 2) {
@@ -229,7 +197,7 @@ public class IceCreamPaletteBlockPattern {
 	}
 
 	@FunctionalInterface
-	static interface IBlockStateProvider
+	protected static interface IBlockStateProvider
 			extends NonNullBiConsumer<DataGenContext<Block, ? extends Block>, RegistrateBlockstateProvider> {
 	}
 
