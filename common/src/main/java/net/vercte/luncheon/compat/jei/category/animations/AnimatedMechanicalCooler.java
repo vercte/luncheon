@@ -7,7 +7,7 @@ import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import net.minecraft.client.gui.GuiGraphics;
 import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.content.misc.LuncheonPartialModels;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault

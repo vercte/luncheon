@@ -16,7 +16,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.content.misc.LuncheonPartialModels;
 
 public class MechanicalCoolerBlockRenderer extends KineticBlockEntityRenderer<MechanicalCoolerBlockEntity> {
     public MechanicalCoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }

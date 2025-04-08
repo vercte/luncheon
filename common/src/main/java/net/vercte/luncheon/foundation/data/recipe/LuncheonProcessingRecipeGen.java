@@ -12,7 +12,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.fluids.FluidType;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
 import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipeBuilder;

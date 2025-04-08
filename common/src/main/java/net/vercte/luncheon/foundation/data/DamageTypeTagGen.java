@@ -6,18 +6,15 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageType;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonDamageTypes;
+import net.vercte.luncheon.content.misc.LuncheonDamageTypes;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class DamageTypeTagGen extends TagsProvider<DamageType> {
-    public DamageTypeTagGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, Registries.DAMAGE_TYPE, lookupProvider, Luncheon.ID, existingFileHelper);
+    public DamageTypeTagGen(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, Registries.DAMAGE_TYPE, lookupProvider);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.UnaryOperator;
 
 import com.google.common.base.Supplier;
@@ -22,15 +20,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.common.crafting.conditions.ICondition;
-import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
-import net.minecraftforge.common.crafting.conditions.NotCondition;
 
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.registry.LuncheonBlocks;
 import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonTags;
 import org.jetbrains.annotations.NotNull;
 
 // adapted (pasted) from https://github.com/Creators-of-Create/Create/blob/mc1.20.1/dev/src/main/java/com/simibubi/create/foundation/data/recipe/StandardRecipeGen.java#L1301C2-L1502C3
@@ -59,8 +52,8 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
     GeneratedRecipe WAFER = create(() -> LuncheonItems.WAFER).viaCooking(LuncheonItems.RAW_WAFER::get)
 		.inSmoker();
 
-    GeneratedRecipe BAGUETTE = create(() -> LuncheonItems.BAGUETTE).viaCooking(LuncheonItems.BAGUETTE_DOUGH::get)
-            .inSmoker();
+//    GeneratedRecipe BAGUETTE = create(() -> LuncheonItems.BAGUETTE).viaCooking(LuncheonItems.BAGUETTE_DOUGH::get)
+//            .inSmoker();
 
     Marker enterFolder(String folder) {
         currentFolder = folder;
@@ -95,14 +88,12 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
         private String suffix;
         private Supplier<? extends ItemLike> result;
         private ResourceLocation compatDatagenOutput;
-        List<ICondition> recipeConditions;
 
         private Supplier<ItemPredicate> unlockedBy;
         private int amount;
 
         private GeneratedRecipeBuilder(String path) {
             this.path = path;
-            this.recipeConditions = new ArrayList<>();
             this.suffix = "";
             this.amount = 1;
         }
@@ -136,25 +127,11 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
             return this;
         }
 
-        GeneratedRecipeBuilder whenModLoaded(String modid) {
-            return withCondition(new ModLoadedCondition(modid));
-        }
-
-        GeneratedRecipeBuilder whenModMissing(String modid) {
-            return withCondition(new NotCondition(new ModLoadedCondition(modid)));
-        }
-
-        GeneratedRecipeBuilder withCondition(ICondition condition) {
-            recipeConditions.add(condition);
-            return this;
-        }
-
         GeneratedRecipeBuilder withSuffix(String suffix) {
             this.suffix = suffix;
             return this;
         }
 
-        // FIXME 5.1 refactor - recipe categories as markers instead of sections?
         GeneratedRecipe viaShaped(UnaryOperator<ShapedRecipeBuilder> builder) {
             return register(consumer -> {
                 ShapedRecipeBuilder b = builder.apply(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get(), amount));
@@ -170,11 +147,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
                 if (unlockedBy != null)
                     b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
 
-                b.save(result -> {
-                    consumer.accept(
-                            !recipeConditions.isEmpty() ? new ConditionSupportingShapelessRecipeResult(result, recipeConditions)
-                                    : result);
-                }, createLocation("crafting"));
+                b.save(consumer, createLocation("crafting"));
             });
         }
 
@@ -325,7 +298,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
 
                     b.save(result -> {
                         consumer.accept(
-                                isOtherMod ? new ModdedCookingRecipeResult(result, compatDatagenOutput, recipeConditions)
+                                isOtherMod ? new ModdedCookingRecipeResult(result, compatDatagenOutput)
                                         : result);
                     }, createSimpleLocation(CatnipServices.REGISTRIES.getKeyOrThrow(serializer)
                             .getPath()));
@@ -339,7 +312,7 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
     }
 
     @SuppressWarnings("NullableProblems")
-    private record ModdedCookingRecipeResult(FinishedRecipe wrapped, ResourceLocation outputOverride, List<ICondition> conditions) implements FinishedRecipe {
+    private record ModdedCookingRecipeResult(FinishedRecipe wrapped, ResourceLocation outputOverride) implements FinishedRecipe {
         @Override
         public ResourceLocation getId() {
             return wrapped.getId();
@@ -366,13 +339,12 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
             object.addProperty("result", outputOverride.toString());
 
             JsonArray conds = new JsonArray();
-            conditions.forEach(c -> conds.add(CraftingHelper.serialize(c)));
             object.add("conditions", conds);
         }
     }
 
     @SuppressWarnings("NullableProblems")
-    private record ConditionSupportingShapelessRecipeResult(FinishedRecipe wrapped, List<ICondition> conditions) implements FinishedRecipe {
+    private record ShapelessRecipeResult(FinishedRecipe wrapped) implements FinishedRecipe {
         @Override
         public ResourceLocation getId() {
             return wrapped.getId();
@@ -398,7 +370,6 @@ public class LuncheonStandardRecipeGen extends LuncheonRecipeProvider {
             wrapped.serializeRecipeData(pJson);
 
             JsonArray conds = new JsonArray();
-            conditions.forEach(c -> conds.add(CraftingHelper.serialize(c)));
             pJson.add("conditions", conds);
         }
     }

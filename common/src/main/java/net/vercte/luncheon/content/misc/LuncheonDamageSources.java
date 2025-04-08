@@ -7,7 +7,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.vercte.luncheon.content.registry.LuncheonDamageTypes;
 
 public class LuncheonDamageSources {
     public static DamageSource glass_shards(Level level) {

@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.content.misc;
 
 import com.simibubi.create.foundation.damageTypes.DamageTypeBuilder;
 import net.minecraft.core.registries.Registries;

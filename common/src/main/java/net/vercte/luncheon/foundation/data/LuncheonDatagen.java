@@ -7,8 +7,6 @@ import com.tterrag.registrate.providers.ProviderType;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.foundation.data.recipe.LuncheonProcessingRecipeGen;
 import net.vercte.luncheon.foundation.data.recipe.LuncheonStandardRecipeGen;
@@ -18,22 +16,15 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 
 public class LuncheonDatagen {
-    public static void gatherData(GatherDataEvent event) {
+    public static void gatherData(DataGenerator generator, PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         addExtraRegistrateData();
-
-        DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
         if(event.includeServer()) {
             GeneratedEntriesProvider generatedEntriesProvider = new GeneratedEntriesProvider(output, lookupProvider);
-            lookupProvider = generatedEntriesProvider.getRegistryProvider();
-            generator.addProvider(true, generatedEntriesProvider);
 
-            generator.addProvider(true, new LuncheonStandardRecipeGen(output));
-            generator.addProvider(true, new DamageTypeTagGen(output, lookupProvider, existingFileHelper));
-            generator.addProvider(true, new LuncheonAdvancements(output));
+            generator.addProvider(new LuncheonStandardRecipeGen(output));
+            generator.addProvider(new DamageTypeTagGen(output, lookupProvider));
+            generator.addProvider(new LuncheonAdvancements(output));
 
             LuncheonProcessingRecipeGen.registerAll(generator, output);
         }

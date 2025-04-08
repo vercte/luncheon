@@ -19,7 +19,7 @@ public class LuncheonRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
+    public void buildRecipes(@NotNull Consumer<FinishedRecipe> consumer) {
         all.forEach(c -> c.register(consumer));
         Luncheon.LOGGER.info("{} registered {} recipe{}", getName(), all.size(), all.size() == 1 ? "" : "s");
     }
