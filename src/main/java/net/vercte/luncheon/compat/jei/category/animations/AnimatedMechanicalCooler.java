@@ -5,19 +5,10 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import net.minecraft.client.gui.GuiGraphics;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.registry.LuncheonBlocks;
 import net.vercte.luncheon.registry.LuncheonPartialModels;
-import org.lwjgl.system.NonnullDefault;
 
-@NonnullDefault
 public class AnimatedMechanicalCooler extends AnimatedKinetics {
-    private CoolerBlock.CoolingLevel coolingLevel;
-
-    public AnimatedMechanicalCooler withCooling(CoolerBlock.CoolingLevel coolingLevel) {
-        this.coolingLevel = coolingLevel;
-        return this;
-    }
 
     @Override
     public void draw(GuiGraphics graphics, int x, int y) {

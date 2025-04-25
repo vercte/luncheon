@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
+import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
 
@@ -30,9 +30,9 @@ public class LuncheonBlocks {
     }
 
     // region Kinetics
-    public static final BlockEntry<CoolerBlock> MECHANICAL_COOLER =
-            REGISTRATE.block("mechanical_cooler", CoolerBlock::new)
-                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY).lightLevel(CoolerBlock::getLight))
+    public static final BlockEntry<MechanicalCoolerBlock> MECHANICAL_COOLER =
+            REGISTRATE.block("mechanical_cooler", MechanicalCoolerBlock::new)
+                    .properties(p -> p.mapColor(MapColor.COLOR_GRAY).lightLevel(MechanicalCoolerBlock::getLight))
                     .transform(pickaxeOnly())
                     .addLayer(() -> RenderType::cutoutMipped)
                     .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))

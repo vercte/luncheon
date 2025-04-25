@@ -6,8 +6,8 @@ import net.minecraftforge.fluids.FluidStack;
 
 import java.util.function.Consumer;
 
-public class CoolerFluidTank extends SmartFluidTank {
-    public CoolerFluidTank(Consumer<FluidStack> callback) {
+public class MechanicalCoolerFluidTank extends SmartFluidTank {
+    public MechanicalCoolerFluidTank(Consumer<FluidStack> callback) {
         super(800, callback);
         setValidator(f -> f.getFluid().isSame(Fluids.WATER));
     }

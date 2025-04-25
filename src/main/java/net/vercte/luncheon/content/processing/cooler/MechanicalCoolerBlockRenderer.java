@@ -18,18 +18,20 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.vercte.luncheon.registry.LuncheonPartialModels;
+import org.jetbrains.annotations.NotNull;
 
-public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockEntity> {
-    public CoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }
+public class MechanicalCoolerBlockRenderer extends KineticBlockEntityRenderer<MechanicalCoolerBlockEntity> {
+    public MechanicalCoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }
 
     @Override
-    public boolean shouldRenderOffScreen(CoolerBlockEntity be) {
+    public boolean shouldRenderOffScreen(@NotNull MechanicalCoolerBlockEntity be) {
         return true;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
-    protected void renderSafe(CoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
-        renderWater(be, partialTicks, ms, buffer, light, overlay);
+    protected void renderSafe(MechanicalCoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+        renderWater(be, partialTicks, ms, buffer, light);
 
         if (VisualizationManager.supportsVisualization(be.getLevel()))
             return;
@@ -52,7 +54,7 @@ public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockE
                 .renderInto(ms, vbCutout);
     }
 
-    protected void renderWater(CoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light, int overlay) {
+    protected void renderWater(MechanicalCoolerBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer, int light) {
         LerpedFloat fluidLevel = be.getFluidLevel();
         if (fluidLevel == null)
             return;

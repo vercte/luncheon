@@ -7,8 +7,9 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.foundation.item.SmartInventory;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
+import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipe;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -27,16 +28,20 @@ public abstract class BasinRecipeMixin extends ProcessingRecipe<SmartInventory> 
     private static void apply(BasinBlockEntity basin, Recipe<?> recipe, boolean test, CallbackInfoReturnable<Boolean> cir) {
         if(recipe instanceof ProcessingRecipe<?>) {
             LuncheonProcessingRecipe cRecipe = (LuncheonProcessingRecipe)recipe;
-            CoolerBlock.CoolingLevel cool = getCoolingLevelOf(basin.getLevel()
-                    .getBlockState(basin.getBlockPos().below(1)));
+
+            Level level = basin.getLevel();
+            assert level != null;
+            MechanicalCoolerBlock.CoolingLevel cool = luncheon$getCoolingLevelOf(
+                    level.getBlockState(basin.getBlockPos().below(1))
+            );
             if(!cRecipe.luncheon$getRequiredCool().testCooler(cool))
                 cir.setReturnValue(false);
         }
     }
 
     @Unique
-    private static CoolerBlock.CoolingLevel getCoolingLevelOf(BlockState state) {
-        if(state.hasProperty(CoolerBlock.COOL_LEVEL)) return state.getValue(CoolerBlock.COOL_LEVEL);
-        return CoolerBlock.CoolingLevel.NONE;
+    private static MechanicalCoolerBlock.CoolingLevel luncheon$getCoolingLevelOf(BlockState state) {
+        if(state.hasProperty(MechanicalCoolerBlock.COOL_LEVEL)) return state.getValue(MechanicalCoolerBlock.COOL_LEVEL);
+        return MechanicalCoolerBlock.CoolingLevel.NONE;
     }
 }
