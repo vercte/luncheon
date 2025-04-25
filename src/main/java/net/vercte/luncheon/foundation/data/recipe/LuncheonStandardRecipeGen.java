@@ -28,9 +28,8 @@ import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.crafting.conditions.NotCondition;
 
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonTags;
+import net.vercte.luncheon.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonItems;
 import org.jetbrains.annotations.NotNull;
 
 // adapted (pasted) from https://github.com/Creators-of-Create/Create/blob/mc1.20.1/dev/src/main/java/com/simibubi/create/foundation/data/recipe/StandardRecipeGen.java#L1301C2-L1502C3

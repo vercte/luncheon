@@ -5,9 +5,9 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonFluids;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonFluids;
+import net.vercte.luncheon.registry.LuncheonItems;
 
 @SuppressWarnings({"NullableProblems", "unused"})
 public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {

@@ -17,8 +17,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonTags;
-import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.registry.LuncheonTags;
+import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 
 import static com.simibubi.create.foundation.data.CreateRegistrate.connectedTextures;
 

@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.registry;
 
 import com.simibubi.create.Create;
 import net.createmod.catnip.lang.Lang;
@@ -11,7 +11,7 @@ import net.vercte.luncheon.Luncheon;
 
 import java.util.Collections;
 
-import static net.vercte.luncheon.content.registry.LuncheonTags.Namespace.MOD;
+import static net.vercte.luncheon.registry.LuncheonTags.Namespace.MOD;
 
 public class LuncheonTags {
     @SuppressWarnings("DataFlowIssue")

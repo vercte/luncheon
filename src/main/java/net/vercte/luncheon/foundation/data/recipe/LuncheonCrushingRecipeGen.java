@@ -5,7 +5,7 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonItems;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault

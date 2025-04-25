@@ -8,7 +8,7 @@ import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonDamageTypes;
+import net.vercte.luncheon.registry.LuncheonDamageTypes;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;

@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.registry;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -21,7 +21,7 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.DistExecutor;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 

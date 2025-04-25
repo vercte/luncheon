@@ -5,7 +5,7 @@ import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonBlocks;
 
 public class LuncheonPonderIndex {
     public static void register(PonderSceneRegistrationHelper<ResourceLocation> helper) {

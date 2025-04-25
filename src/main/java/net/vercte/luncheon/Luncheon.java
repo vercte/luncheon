@@ -16,9 +16,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.misc.LuncheonCriteriaTriggers;
-import net.vercte.luncheon.content.registry.*;
-import net.vercte.luncheon.content.registry.custom.LuncheonDisplayItemsGenerator;
-import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.registry.*;
+import net.vercte.luncheon.registry.custom.LuncheonDisplayItemsGenerator;
+import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 import net.vercte.luncheon.foundation.data.LuncheonAdvancements;
 import net.vercte.luncheon.foundation.data.LuncheonDatagen;
 import org.slf4j.Logger;
@@ -42,7 +42,6 @@ public class Luncheon {
         LuncheonTags.init();
         IceCreamTypes.register(REGISTRATE.get());
         CREATIVE_TABS.register(modEventBus);
-
 
         modEventBus.addListener(Luncheon::init);
         modEventBus.addListener(LuncheonClient::clientInit);

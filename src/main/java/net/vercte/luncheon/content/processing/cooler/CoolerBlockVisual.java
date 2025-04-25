@@ -9,7 +9,7 @@ import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
 import net.minecraft.core.Direction;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.registry.LuncheonPartialModels;
 
 import java.util.function.Consumer;
 

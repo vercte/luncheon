@@ -1,11 +1,11 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.registry;
 
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlockEntity;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlockVisual;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlockRenderer;
-import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 
 public class LuncheonBlockEntityTypes {
     private static final LuncheonRegistrate REGISTRATE = Luncheon.registrate();

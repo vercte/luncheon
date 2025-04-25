@@ -25,8 +25,8 @@ import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonTiers;
+import net.vercte.luncheon.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonTiers;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMultimap;

@@ -7,9 +7,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonFluids;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonFluids;
+import net.vercte.luncheon.registry.LuncheonItems;
 
 @SuppressWarnings({"NullableProblems", "unused"})
 public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {

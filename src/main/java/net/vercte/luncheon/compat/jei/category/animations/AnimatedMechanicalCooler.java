@@ -6,8 +6,8 @@ import com.mojang.math.Axis;
 import com.simibubi.create.compat.jei.category.animations.AnimatedKinetics;
 import net.minecraft.client.gui.GuiGraphics;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonPartialModels;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault

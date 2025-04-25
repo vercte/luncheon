@@ -4,7 +4,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonTags;
+import net.vercte.luncheon.registry.LuncheonTags;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.builders.ItemBuilder;

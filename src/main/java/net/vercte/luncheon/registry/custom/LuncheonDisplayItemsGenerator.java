@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry.custom;
+package net.vercte.luncheon.registry.custom;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
@@ -14,9 +14,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
-import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonTags;
+import net.vercte.luncheon.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonTags;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.util.LinkedList;

@@ -17,7 +17,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.registry.LuncheonPartialModels;
 
 public class CoolerBlockRenderer extends KineticBlockEntityRenderer<CoolerBlockEntity> {
     public CoolerBlockRenderer(BlockEntityRendererProvider.Context context) { super(context); }

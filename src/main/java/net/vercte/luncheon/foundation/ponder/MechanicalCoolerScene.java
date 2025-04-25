@@ -11,7 +11,7 @@ import net.createmod.ponder.api.scene.Selection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonItems;
 
 public class MechanicalCoolerScene {
     public static void scene(SceneBuilder builder, SceneBuildingUtil util) {

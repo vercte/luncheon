@@ -7,7 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
-import net.vercte.luncheon.content.registry.LuncheonFluids;
+import net.vercte.luncheon.registry.LuncheonFluids;
 
 @SuppressWarnings({"NullableProblems", "unused"})
 public class LuncheonMixingRecipeGen extends LuncheonProcessingRecipeGen {

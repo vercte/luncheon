@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry.custom;
+package net.vercte.luncheon.registry.custom;
 
 import com.tterrag.registrate.builders.AbstractBuilder;
 import com.tterrag.registrate.builders.BuilderCallback;

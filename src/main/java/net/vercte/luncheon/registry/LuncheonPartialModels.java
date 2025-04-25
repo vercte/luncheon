@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.registry;
 
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import net.vercte.luncheon.Luncheon;

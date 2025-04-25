@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.vercte.luncheon.content.registry.LuncheonBlockEntityTypes;
+import net.vercte.luncheon.registry.LuncheonBlockEntityTypes;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import org.lwjgl.system.NonnullDefault;
 

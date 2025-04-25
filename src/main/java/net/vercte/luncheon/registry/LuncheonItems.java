@@ -1,4 +1,4 @@
-package net.vercte.luncheon.content.registry;
+package net.vercte.luncheon.registry;
 
 import com.simibubi.create.AllTags.AllItemTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
@@ -12,7 +12,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.item.*;
-import net.vercte.luncheon.content.registry.custom.LuncheonRegistrate;
+import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
 
 @SuppressWarnings("SameParameterValue")
 public class LuncheonItems {

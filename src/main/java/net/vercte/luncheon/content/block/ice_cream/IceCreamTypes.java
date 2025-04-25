@@ -8,7 +8,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 
 import java.util.Locale;

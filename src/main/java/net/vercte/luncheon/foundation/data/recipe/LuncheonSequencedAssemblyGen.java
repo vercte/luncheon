@@ -8,8 +8,8 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonFluids;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonFluids;
+import net.vercte.luncheon.registry.LuncheonItems;
 
 import java.util.function.UnaryOperator;
 

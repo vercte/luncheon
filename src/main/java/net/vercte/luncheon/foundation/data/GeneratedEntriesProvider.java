@@ -6,7 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.registry.LuncheonDamageTypes;
+import net.vercte.luncheon.registry.LuncheonDamageTypes;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;

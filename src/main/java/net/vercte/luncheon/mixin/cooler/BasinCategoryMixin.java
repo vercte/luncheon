@@ -18,7 +18,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.vercte.luncheon.compat.jei.category.animations.AnimatedMechanicalCooler;
 import net.vercte.luncheon.content.processing.cooler.CoolerBlock;
 import net.vercte.luncheon.content.processing.recipe.CooledCondition;
-import net.vercte.luncheon.content.registry.LuncheonBlocks;
+import net.vercte.luncheon.registry.LuncheonBlocks;
 import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipe;
 import org.spongepowered.asm.mixin.Final;

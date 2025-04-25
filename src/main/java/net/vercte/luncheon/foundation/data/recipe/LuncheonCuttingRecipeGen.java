@@ -4,7 +4,7 @@ import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
-import net.vercte.luncheon.content.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonItems;
 
 public class LuncheonCuttingRecipeGen extends LuncheonProcessingRecipeGen {
     public LuncheonCuttingRecipeGen(PackOutput generator) {

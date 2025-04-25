@@ -4,8 +4,8 @@ import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.vercte.luncheon.content.registry.LuncheonItems;
-import net.vercte.luncheon.content.registry.LuncheonPartialModels;
+import net.vercte.luncheon.registry.LuncheonItems;
+import net.vercte.luncheon.registry.LuncheonPartialModels;
 import net.vercte.luncheon.foundation.ponder.LuncheonPonderPlugin;
 
 public class LuncheonClient {

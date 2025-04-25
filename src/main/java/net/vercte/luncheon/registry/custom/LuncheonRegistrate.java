@@ -1,13 +1,7 @@
-package net.vercte.luncheon.content.registry.custom;
+package net.vercte.luncheon.registry.custom;
 
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.tterrag.registrate.builders.BlockBuilder;
-import com.tterrag.registrate.util.nullness.NonNullFunction;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.function.Supplier;
 
