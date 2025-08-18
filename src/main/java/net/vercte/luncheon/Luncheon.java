@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 @Mod(Luncheon.ID)
 public class Luncheon {
     public static final String ID = "luncheon";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     private static final NonNullSupplier<CreateRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> CreateRegistrate.create(ID));
 

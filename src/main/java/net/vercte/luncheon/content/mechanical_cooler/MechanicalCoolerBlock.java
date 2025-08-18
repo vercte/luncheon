@@ -9,6 +9,8 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.vercte.luncheon.LuncheonBlockEntities;
@@ -16,8 +18,17 @@ import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 public class MechanicalCoolerBlock extends KineticBlock implements IBE<MechanicalCoolerBlockEntity> {
+    public static EnumProperty<CoolingCondition> COOLING = EnumProperty.create("cooling", CoolingCondition.class);
+
     public MechanicalCoolerBlock(Properties properties) {
         super(properties);
+        registerDefaultState(defaultBlockState().setValue(COOLING, CoolingCondition.NONE));
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
+        builder.add(COOLING);
     }
 
     @Override
