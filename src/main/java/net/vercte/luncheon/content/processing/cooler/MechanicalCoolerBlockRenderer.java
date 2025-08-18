@@ -3,10 +3,10 @@ package net.vercte.luncheon.content.processing.cooler;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.foundation.fluid.FluidRenderer;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.animation.LerpedFloat;
+import net.createmod.catnip.platform.ForgeCatnipServices;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -85,7 +85,7 @@ public class MechanicalCoolerBlockRenderer extends KineticBlockEntityRenderer<Me
 
         ms.pushPose();
         ms.translate(0, clampedLevel - totalHeight, 0);
-        FluidRenderer.renderFluidBox(fluidStack.getFluid(), fluidStack.getAmount(),
+        ForgeCatnipServices.FLUID_RENDERER.renderFluidBox(fluidStack,
                 xMin + clip, yMin, zMin + clip,
                 xMax - clip, yMax, zMax - clip,
                 buffer, ms, light, false, false);
