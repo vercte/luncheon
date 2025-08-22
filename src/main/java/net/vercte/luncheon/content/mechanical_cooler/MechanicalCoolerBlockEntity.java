@@ -11,10 +11,15 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import static net.minecraftforge.fluids.capability.IFluidHandler.FluidAction.EXECUTE;
 import org.jetbrains.annotations.NotNull;
 
 public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
-    private CoolingCondition state;
+    private boolean active;
+
+    private static final int SYNC_RATE = 8;
+    private int syncCooldown;
+    private boolean queuedSync;
 
     private final MechanicalCoolerFluidTank tank;
     protected LazyOptional<IFluidHandler> fluidCapability;
@@ -23,19 +28,66 @@ public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
 
     public MechanicalCoolerBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
-        this.state = state.getValue(MechanicalCoolerBlock.COOLING);
+        this.active = state.getValue(MechanicalCoolerBlock.ACTIVE);
         this.tank = new MechanicalCoolerFluidTank(this::tankUpdate);
         this.fluidCapability = LazyOptional.of(() -> tank);
     }
 
     @Override
+    public void sendData() {
+        if (syncCooldown > 0) {
+            queuedSync = true;
+            return;
+        }
+        super.sendData();
+        queuedSync = false;
+        syncCooldown = SYNC_RATE;
+    }
+
+    @Override
     public void tick() {
         super.tick();
+
+        if (fluidLevel != null) fluidLevel.tickChaser();
+
+        if (syncCooldown > 0) {
+            syncCooldown--;
+            if (syncCooldown == 0 && queuedSync)
+                sendData();
+        }
+
+        assert level != null;
+        if(level.isClientSide && !isVirtual()) return;
+
+        if(!isSpeedRequirementFulfilled() || this.tank.getFluidAmount() < 50) {
+            active = false;
+            return;
+        }
+
+        if(this.tank.getFluidAmount() >= 50) {
+            active = true;
+            this.tank.drain(50, EXECUTE);
+        }
+
+        updateActive();
     }
 
     public float getFanRotationSpeed() {
-        if(this.state == CoolingCondition.NONE) return Mth.clamp(speed / 2, -8, 8);
+        if(!isActive()) return Mth.clamp(speed / 2, -8, 8);
         return speed;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void updateActive() {
+        boolean isActive = getBlockState().getValue(MechanicalCoolerBlock.ACTIVE);
+        if (isActive == active)
+            return;
+        assert level != null;
+        level.setBlockAndUpdate(worldPosition, getBlockState().setValue(MechanicalCoolerBlock.ACTIVE, active));
+        notifyUpdate();
     }
 
     public void tankUpdate(FluidStack stack) {
@@ -52,6 +104,14 @@ public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
             if (fluidLevel == null) fluidLevel = LerpedFloat.linear().startWithValue(getFillState());
             fluidLevel.chase(getFillState(), 0.5f, LerpedFloat.Chaser.EXP);
         }
+    }
+
+    public MechanicalCoolerFluidTank getTank() {
+        return this.tank;
+    }
+
+    public LerpedFloat getFluidLevel() {
+        return this.fluidLevel;
     }
 
     public float getFillState() {

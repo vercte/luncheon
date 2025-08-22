@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 public class MechanicalCoolerFluidTank extends SmartFluidTank {
     public MechanicalCoolerFluidTank(Consumer<FluidStack> callback) {
-        super(1000, callback);
+        super(1500, callback);
         setValidator(f -> f.getFluid().isSame(Fluids.WATER));
     }
 }

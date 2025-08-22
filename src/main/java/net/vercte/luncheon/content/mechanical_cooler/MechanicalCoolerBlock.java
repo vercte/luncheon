@@ -7,28 +7,30 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.vercte.luncheon.LuncheonBlockEntities;
+import org.jetbrains.annotations.Nullable;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 public class MechanicalCoolerBlock extends KineticBlock implements IBE<MechanicalCoolerBlockEntity> {
-    public static EnumProperty<CoolingCondition> COOLING = EnumProperty.create("cooling", CoolingCondition.class);
+    public static BooleanProperty ACTIVE = BooleanProperty.create("active");
 
     public MechanicalCoolerBlock(Properties properties) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(COOLING, CoolingCondition.NONE));
+        registerDefaultState(defaultBlockState().setValue(ACTIVE, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(COOLING);
+        builder.add(ACTIVE);
     }
 
     @Override
@@ -48,10 +50,25 @@ public class MechanicalCoolerBlock extends KineticBlock implements IBE<Mechanica
     }
 
     @Override
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter getter, BlockPos pos) {
+        return true;
+    }
+
+    @Override
     public Class<MechanicalCoolerBlockEntity> getBlockEntityClass() { return MechanicalCoolerBlockEntity.class; }
 
     @Override
     public BlockEntityType<? extends MechanicalCoolerBlockEntity> getBlockEntityType() {
         return LuncheonBlockEntities.MECHANICAL_COOLER.get();
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return LuncheonBlockEntities.MECHANICAL_COOLER.create(pos, state);
+    }
+
+    @Override
+    public SpeedLevel getMinimumRequiredSpeedLevel() {
+        return SpeedLevel.MEDIUM;
     }
 }
