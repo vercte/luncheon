@@ -1,6 +1,6 @@
 {
   "type": "create:mixing",
-  "coolRequirement": "cooled",
+  "heatRequirement": "luncheon:cooled",
   "ingredients": [
     {
       "item": "minecraft:snowball"

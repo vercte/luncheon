@@ -114,6 +114,6 @@
   "luncheon.ponder.mechanical_cooler.text_1": "The Mechanical Cooler is the Blaze Burner's cooler cousin",
   "luncheon.ponder.mechanical_cooler.text_2": "To operate, it needs power from below...",
   "luncheon.ponder.mechanical_cooler.text_3": "And water from the side.",
-  "luncheon.recipe.cooling_requirement.cooled": "Cooled",
+  "luncheon.recipe.heat_requirement.cooled": "Cooled",
   "luncheon.tooltip.waterRequirement": "Water Requirement:"
 }

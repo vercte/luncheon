@@ -6,7 +6,6 @@ import com.simibubi.create.content.processing.basin.BasinBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -15,27 +14,26 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.vercte.luncheon.registry.LuncheonBlockEntityTypes;
-import net.vercte.luncheon.foundation.utility.LuncheonLang;
 import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 @SuppressWarnings("deprecation")
 public class MechanicalCoolerBlock extends KineticBlock implements IBE<MechanicalCoolerBlockEntity> {
-    public static final EnumProperty<CoolingLevel> COOL_LEVEL = EnumProperty.create("cool_level", CoolingLevel.class);
+    public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
     public MechanicalCoolerBlock(Properties properties) {
         super(properties);
-        registerDefaultState(defaultBlockState().setValue(COOL_LEVEL, CoolingLevel.NONE));
+        registerDefaultState(defaultBlockState().setValue(ACTIVE, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(COOL_LEVEL);
+        builder.add(ACTIVE);
     }
 
     @Override
@@ -79,8 +77,8 @@ public class MechanicalCoolerBlock extends KineticBlock implements IBE<Mechanica
     }
 
     public static int getLight(BlockState state) {
-        CoolingLevel level = state.getValue(COOL_LEVEL);
-        if(level == CoolingLevel.COOLED) return 8;
+        boolean active = state.getValue(ACTIVE);
+        if(active) return 8;
         return 2;
     }
 
@@ -95,22 +93,5 @@ public class MechanicalCoolerBlock extends KineticBlock implements IBE<Mechanica
         if (context == CollisionContext.empty())
             return AllShapes.HEATER_BLOCK_SPECIAL_COLLISION_SHAPE;
         return getShape(state, reader, pos, context);
-    }
-
-    public static CoolingLevel getCoolingLevelOf(BlockState blockState) {
-        return blockState.getValue(COOL_LEVEL);
-    }
-
-    public enum CoolingLevel implements StringRepresentable {
-        NONE, COOLED;
-
-        public static CoolingLevel byIndex(int index) {
-            return values()[index];
-        }
-
-        @Override
-        public String getSerializedName() {
-            return LuncheonLang.asId(name());
-        }
     }
 }

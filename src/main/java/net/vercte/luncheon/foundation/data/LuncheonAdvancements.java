@@ -34,7 +34,7 @@ public class LuncheonAdvancements implements DataProvider {
                 .after(ROOT).onIconCollected().build(),
 
         ICE_CUBE = create("ice_cube", LuncheonItems.ICE_CUBE)
-                .name("Crispy Crunchy Watery").description("Eat an ice cube... Delicious!")
+                .name("Crunchy and Watery").description("Eat an ice cube... Delicious!")
                 .after(MECHANICAL_COOLER).onIconConsumed().secret().build(),
 
         ICE_CREAM = create("ice_cream", LuncheonItems.PLAIN_ICE_CREAM)

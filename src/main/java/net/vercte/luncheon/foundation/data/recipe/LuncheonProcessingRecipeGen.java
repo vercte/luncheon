@@ -14,8 +14,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.fluids.FluidType;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.content.processing.recipe.CooledCondition;
-import net.vercte.luncheon.foundation.data.recipe.mixin.LuncheonProcessingRecipeBuilder;
 import org.lwjgl.system.NonnullDefault;
 
 import java.util.ArrayList;
@@ -110,14 +108,6 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
      */
     <T extends ProcessingRecipe<?>> GeneratedRecipe create(String name, UnaryOperator<ProcessingRecipeBuilder<T>> transform) {
         return create(Luncheon.asResource(name), transform);
-    }
-
-    <T extends ProcessingRecipe<?>> GeneratedRecipe createCooled(String name, UnaryOperator<ProcessingRecipeBuilder<ProcessingRecipe<?>>> transform, CooledCondition cool) {
-        return create(Luncheon.asResource(name), b -> {
-            LuncheonProcessingRecipeBuilder<?> lb = (LuncheonProcessingRecipeBuilder<?>) b;
-            lb.luncheon$requiresCool(cool);
-            return transform.apply(b);
-        });
     }
 
     protected abstract IRecipeTypeInfo getRecipeType();

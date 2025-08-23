@@ -6,14 +6,6 @@
   "mixins": [
     "ItemStackMixin",
     "LivingEntityInvoker",
-    "cooler.BasinCategoryMixin",
-    "cooler.BasinCategoryMixin$MixingCategoryMixin",
-    "cooler.BasinCategoryMixin$PackingCategoryMixin",
-    "cooler.BasinRecipeMixin",
-    "cooler.ProcessingRecipeBuilderMixin",
-    "cooler.ProcessingRecipeBuilderMixin$ProcessingRecipeParamsMixin",
-    "cooler.ProcessingRecipeMixin",
-    "cooler.ProcessingRecipeSerializerMixin",
     "deployer.AdvancementBehaviourAccessor",
     "deployer.BeltDeployerCallbacksMixin",
     "deployer.CountSundaesMixin"

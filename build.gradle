@@ -90,6 +90,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven { url = "https://maven.createmod.net" }
     maven {
         name = "BlameJared"
@@ -125,7 +126,7 @@ dependencies {
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
-    runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
+    //runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
 
     runtimeOnly fg.deobf("squeek.appleskin:appleskin-forge:mc1.20.1-2.5.1")
 

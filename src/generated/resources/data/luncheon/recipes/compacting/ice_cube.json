@@ -1,6 +1,6 @@
 {
   "type": "create:compacting",
-  "coolRequirement": "cooled",
+  "heatRequirement": "luncheon:cooled",
   "ingredients": [
     {
       "amount": 250,

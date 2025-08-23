@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegisterEvent;
 import net.minecraftforge.registries.RegistryObject;
 import net.vercte.luncheon.content.block.ice_cream.IceCreamTypes;
 import net.vercte.luncheon.content.misc.LuncheonCriteriaTriggers;
@@ -45,7 +46,13 @@ public class Luncheon {
 
         modEventBus.addListener(Luncheon::init);
         modEventBus.addListener(LuncheonClient::clientInit);
+        modEventBus.addListener(Luncheon::register);
         modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
+    }
+
+    public static void register(final RegisterEvent event) {
+        Luncheon.LOGGER.info("wawa");
+        LuncheonHeatConditions.register();
     }
 
     public static void init(final FMLCommonSetupEvent event) {

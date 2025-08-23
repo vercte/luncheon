@@ -160,25 +160,16 @@ public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
     }
 
     protected void setBlockState() {
-        setBlockCooling(getCoolingLevel());
-    }
-
-    protected void setBlockCooling(MechanicalCoolerBlock.CoolingLevel coolingLevel) {
-        MechanicalCoolerBlock.CoolingLevel inBlockState = getCoolingLevelFromBlock();
-        if (inBlockState == coolingLevel)
+        boolean activeInBlockstate = getBlockState().getValue(MechanicalCoolerBlock.ACTIVE);
+        if (activeInBlockstate == isActive())
             return;
         assert level != null;
-        level.setBlockAndUpdate(worldPosition, getBlockState().setValue(MechanicalCoolerBlock.COOL_LEVEL, coolingLevel));
+        level.setBlockAndUpdate(worldPosition, getBlockState().setValue(MechanicalCoolerBlock.ACTIVE, isActive()));
         notifyUpdate();
     }
 
-    protected MechanicalCoolerBlock.CoolingLevel getCoolingLevel() {
-        if(active) return MechanicalCoolerBlock.CoolingLevel.COOLED;
-        return MechanicalCoolerBlock.CoolingLevel.NONE;
-    }
-
-    public MechanicalCoolerBlock.CoolingLevel getCoolingLevelFromBlock() {
-        return MechanicalCoolerBlock.getCoolingLevelOf(getBlockState());
+    protected boolean isActive() {
+        return this.active;
     }
 
     public float getFanRotationSpeed() {
@@ -216,7 +207,10 @@ public class MechanicalCoolerBlockEntity extends KineticBlockEntity {
 
         if(r.nextInt(6) != 0) return;
 
-        if(getCoolingLevel() == MechanicalCoolerBlock.CoolingLevel.NONE) level.addParticle(ParticleTypes.SMOKE, v.x, v.y, v.z, 0, 0, 0);
-        if(getCoolingLevel() == MechanicalCoolerBlock.CoolingLevel.COOLED) level.addParticle(ParticleTypes.SNOWFLAKE, v.x, v.y + 4/16f, v.z, 0, 0, 0);
+        if(active) {
+            level.addParticle(ParticleTypes.SNOWFLAKE, v.x, v.y + 4/16f, v.z, 0, 0, 0);
+        } else {
+            level.addParticle(ParticleTypes.SMOKE, v.x, v.y, v.z, 0, 0, 0);
+        }
     }
 }
