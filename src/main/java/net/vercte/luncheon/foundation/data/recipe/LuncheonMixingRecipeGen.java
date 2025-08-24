@@ -1,17 +1,16 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.AllFluids;
-import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import com.simibubi.create.api.data.recipe.MixingRecipeGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.registry.LuncheonFluids;
 import net.vercte.luncheon.registry.LuncheonHeatConditions;
 
-@SuppressWarnings({"NullableProblems", "unused"})
-public class LuncheonMixingRecipeGen extends LuncheonProcessingRecipeGen {
-    public LuncheonMixingRecipeGen(PackOutput generator) { super(generator); }
+@SuppressWarnings("unused")
+public class LuncheonMixingRecipeGen extends MixingRecipeGen {
+    public LuncheonMixingRecipeGen(PackOutput generator) { super(generator, "luncheon"); }
 
     GeneratedRecipe PLAIN_ICE_CREAM = create("plain_ice_cream", b ->
             b.require(Tags.Fluids.MILK, 250)
@@ -37,7 +36,4 @@ public class LuncheonMixingRecipeGen extends LuncheonProcessingRecipeGen {
                             .require(Items.SNOWBALL).require(Items.SNOWBALL)
                             .requiresHeat(LuncheonHeatConditions.COOLED)
                             .output(LuncheonFluids.POWDERED_SNOW.get(), 1000));
-
-    @Override
-    protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.MIXING; }
 }

@@ -1,10 +1,9 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
-import com.simibubi.create.AllRecipeTypes;
+import com.simibubi.create.api.data.recipe.SequencedAssemblyRecipeGen;
 import com.simibubi.create.content.fluids.transfer.FillingRecipe;
 import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyRecipeBuilder;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.vercte.luncheon.Luncheon;
@@ -13,9 +12,10 @@ import net.vercte.luncheon.registry.LuncheonItems;
 
 import java.util.function.UnaryOperator;
 
-public class LuncheonSequencedAssemblyGen extends LuncheonProcessingRecipeGen {
+@SuppressWarnings("unused")
+public class LuncheonSequencedAssemblyGen extends SequencedAssemblyRecipeGen {
     public LuncheonSequencedAssemblyGen(PackOutput output) {
-        super(output);
+        super(output, "luncheon");
     }
 
     GeneratedRecipe NEAPOLITAN_SUNDAE = sequenced("neapolitan_sundae", b -> b.require(Items.GLASS_BOTTLE)
@@ -35,8 +35,4 @@ public class LuncheonSequencedAssemblyGen extends LuncheonProcessingRecipeGen {
         return generatedRecipe;
     }
 
-    @Override
-    protected IRecipeTypeInfo getRecipeType() {
-        return AllRecipeTypes.SEQUENCED_ASSEMBLY;
-    }
 }

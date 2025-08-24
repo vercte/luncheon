@@ -1,7 +1,7 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
-import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import com.simibubi.create.api.data.recipe.CrushingRecipeGen;
+import com.simibubi.create.api.data.recipe.MillingRecipeGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
@@ -10,8 +10,8 @@ import org.lwjgl.system.NonnullDefault;
 
 @NonnullDefault
 @SuppressWarnings({"unused"})
-public class LuncheonCrushingRecipeGen extends LuncheonProcessingRecipeGen {
-    public LuncheonCrushingRecipeGen(PackOutput generator) { super(generator); }
+public class LuncheonCrushingRecipeGen extends CrushingRecipeGen {
+    public LuncheonCrushingRecipeGen(PackOutput generator) { super(generator, "luncheon"); }
 
     GeneratedRecipe GLASS_SHARDS = create("glass_shards", b -> b.duration(100)
             .require(Tags.Items.GLASS)
@@ -19,18 +19,13 @@ public class LuncheonCrushingRecipeGen extends LuncheonProcessingRecipeGen {
             .duration(200)
             .output(0.5f, LuncheonItems.GLASS_SHARDS, 1));
 
-    @Override
-    protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.CRUSHING; }
-
-    public static class MillingRecipeGen extends LuncheonProcessingRecipeGen {
-        public MillingRecipeGen(PackOutput generator) { super(generator); }
+    public static class Milling extends MillingRecipeGen {
+        public Milling(PackOutput generator) { super(generator, "luncheon"); }
 
         GeneratedRecipe SNOW_FROM_ICE_CUBE = create("snow_from_ice_cube", b -> b.require(LuncheonItems.ICE_CUBE)
                 .duration(50)
                 .output(0.25f, Items.SNOWBALL, 1)
                 .output(0.50f, Items.SNOWBALL, 1));
 
-        @Override
-        protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.MILLING; }
     }
 }

@@ -5,9 +5,7 @@ import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeSerializer;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.createmod.catnip.platform.CatnipServices;
-import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -18,7 +16,6 @@ import org.lwjgl.system.NonnullDefault;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
@@ -30,29 +27,7 @@ public abstract class LuncheonProcessingRecipeGen extends LuncheonRecipeProvider
     protected static final int BOTTLE = 250;
 
     public static void registerAll(DataGenerator gen, PackOutput output) {
-        GENERATORS.add(new LuncheonPressingRecipeGen(output));
-        GENERATORS.add(new LuncheonCompactingRecipeGen(output));
-        GENERATORS.add(new LuncheonMixingRecipeGen(output));
-        GENERATORS.add(new LuncheonCrushingRecipeGen(output));
-        GENERATORS.add(new LuncheonCrushingRecipeGen.MillingRecipeGen(output));
-        GENERATORS.add(new LuncheonFillingRecipeGen(output));
-        GENERATORS.add(new LuncheonFillingRecipeGen.DrainingRecipeGen(output));
-        GENERATORS.add(new LuncheonSequencedAssemblyGen(output));
-        GENERATORS.add(new LuncheonCuttingRecipeGen(output));
 
-        gen.addProvider(true, new DataProvider() {
-            @Override
-            public CompletableFuture<?> run(CachedOutput dc) {
-                return CompletableFuture.allOf(GENERATORS.stream()
-                        .map(gen -> gen.run(dc))
-                        .toArray(CompletableFuture[]::new));
-            }
-
-            @Override
-            public String getName() {
-                return "Luncheon's Processing Recipes";
-            }
-        });
     }
 
     public LuncheonProcessingRecipeGen(PackOutput generator) {

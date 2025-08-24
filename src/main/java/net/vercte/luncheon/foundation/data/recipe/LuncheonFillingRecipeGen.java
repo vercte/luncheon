@@ -1,7 +1,7 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
-import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import com.simibubi.create.api.data.recipe.EmptyingRecipeGen;
+import com.simibubi.create.api.data.recipe.FillingRecipeGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -9,9 +9,9 @@ import net.vercte.luncheon.registry.LuncheonBlocks;
 import net.vercte.luncheon.registry.LuncheonFluids;
 import net.vercte.luncheon.registry.LuncheonItems;
 
-@SuppressWarnings({"NullableProblems", "unused"})
-public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
-    public LuncheonFillingRecipeGen(PackOutput generator) { super(generator); }
+@SuppressWarnings("unused")
+public class LuncheonFillingRecipeGen extends FillingRecipeGen {
+    public LuncheonFillingRecipeGen(PackOutput generator) { super(generator, "luncheon"); }
 
     GeneratedRecipe ICE_CREAM = create("ice_cream", b -> b.require(LuncheonFluids.PLAIN_ICE_CREAM.get(), 250)
             .require(LuncheonItems.ICE_CREAM_CONE)
@@ -57,11 +57,8 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
             .require(Items.GLASS_BOTTLE)
             .output(LuncheonItems.BERRY_EXTRACT));
 
-    @Override
-    protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.FILLING; }
-
-    public static class DrainingRecipeGen extends LuncheonProcessingRecipeGen {
-        public DrainingRecipeGen(PackOutput generator) { super(generator); }
+    public static class Emptying extends EmptyingRecipeGen {
+        public Emptying(PackOutput generator) { super(generator, "luncheon"); }
 
         GeneratedRecipe POWDERED_SNOW_FROM_BUCKET = create("emptying_powder_snow_bucket", b -> b.require(Items.POWDER_SNOW_BUCKET)
                 .output(LuncheonFluids.POWDERED_SNOW.get(), 1000)
@@ -71,7 +68,5 @@ public class LuncheonFillingRecipeGen extends LuncheonProcessingRecipeGen {
                 .output(Items.GLASS_BOTTLE)
                 .output(LuncheonFluids.BERRY_EXTRACT.get(), 250));
 
-        @Override
-        protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.EMPTYING; }
     }
 }

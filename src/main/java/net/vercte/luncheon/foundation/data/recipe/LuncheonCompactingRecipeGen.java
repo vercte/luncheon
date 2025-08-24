@@ -1,8 +1,7 @@
 package net.vercte.luncheon.foundation.data.recipe;
 
 import com.simibubi.create.AllItems;
-import com.simibubi.create.AllRecipeTypes;
-import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
+import com.simibubi.create.api.data.recipe.CompactingRecipeGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
@@ -11,9 +10,9 @@ import net.vercte.luncheon.registry.LuncheonFluids;
 import net.vercte.luncheon.registry.LuncheonHeatConditions;
 import net.vercte.luncheon.registry.LuncheonItems;
 
-@SuppressWarnings({"NullableProblems", "unused"})
-public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
-    public LuncheonCompactingRecipeGen(PackOutput generator) { super(generator); }
+@SuppressWarnings("unused")
+public class LuncheonCompactingRecipeGen extends CompactingRecipeGen {
+    public LuncheonCompactingRecipeGen(PackOutput generator) { super(generator, "luncheon"); }
 
     GeneratedRecipe ICE_CUBE = create("ice_cube", b ->
             b.require(Fluids.WATER, 250)
@@ -46,6 +45,4 @@ public class LuncheonCompactingRecipeGen extends LuncheonProcessingRecipeGen {
                     .require(LuncheonItems.WAFER)
                     .output(LuncheonBlocks.WAFER_BLOCK));
 
-    @Override
-    protected IRecipeTypeInfo getRecipeType() { return AllRecipeTypes.COMPACTING; }
 }

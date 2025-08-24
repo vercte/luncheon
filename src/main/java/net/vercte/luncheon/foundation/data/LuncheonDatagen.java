@@ -10,7 +10,8 @@ import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.vercte.luncheon.Luncheon;
-import net.vercte.luncheon.foundation.data.recipe.LuncheonProcessingRecipeGen;
+import net.vercte.luncheon.foundation.data.recipe.LuncheonRecipeProvider;
+import net.vercte.luncheon.foundation.data.recipe.LuncheonSequencedAssemblyGen;
 import net.vercte.luncheon.foundation.data.recipe.LuncheonStandardRecipeGen;
 
 import java.util.Map;
@@ -34,8 +35,9 @@ public class LuncheonDatagen {
             generator.addProvider(true, new LuncheonStandardRecipeGen(output));
             generator.addProvider(true, new DamageTypeTagGen(output, lookupProvider, existingFileHelper));
             generator.addProvider(true, new LuncheonAdvancements(output));
+            generator.addProvider(true, new LuncheonSequencedAssemblyGen(output));
 
-            LuncheonProcessingRecipeGen.registerAll(generator, output);
+            LuncheonRecipeProvider.registerAllProcessing(generator, output);
         }
     }
 
