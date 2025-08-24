@@ -3,7 +3,7 @@ package net.vercte.luncheon.compat.jei;
 import com.simibubi.create.compat.jei.CreateJEI;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
-import mezz.jei.api.registration.IRecipeRegistration;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.resources.ResourceLocation;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.compat.jei.category.animations.AnimatedMechanicalCooler;
@@ -17,7 +17,7 @@ public class LuncheonJEI implements IModPlugin {
     public LuncheonJEI() {}
 
     @Override
-    public void registerRecipes(@NotNull IRecipeRegistration registration) {
+    public void onRuntimeAvailable(@NotNull IJeiRuntime jeiRuntime) {
         CreateJEI.heatConditionDrawables.put(LuncheonHeatConditions.COOLED, COOLER);
     }
 
