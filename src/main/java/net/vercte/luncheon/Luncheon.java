@@ -1,9 +1,9 @@
 package net.vercte.luncheon;
 
 import com.mojang.logging.LogUtils;
-import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -28,20 +28,21 @@ import org.slf4j.Logger;
 @Mod(Luncheon.ID)
 public class Luncheon {
     public static final String ID = "luncheon";
-    public static final NonNullSupplier<LuncheonRegistrate> REGISTRATE = NonNullSupplier.lazy(() -> LuncheonRegistrate.create(ID));
+    private static final LuncheonRegistrate REGISTRATE = LuncheonRegistrate.create(ID);
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public Luncheon() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        REGISTRATE.get().registerEventListeners(modEventBus);
+        REGISTRATE.defaultCreativeTab((ResourceKey<CreativeModeTab>)null);
+        REGISTRATE.registerEventListeners(modEventBus);
 
         LuncheonItems.register();
         LuncheonBlocks.register();
         LuncheonFluids.register();
         LuncheonBlockEntityTypes.register();
         LuncheonTags.init();
-        IceCreamTypes.register(REGISTRATE.get());
+        IceCreamTypes.register(REGISTRATE);
         CREATIVE_TABS.register(modEventBus);
 
         modEventBus.addListener(Luncheon::init);
@@ -80,6 +81,6 @@ public class Luncheon {
         return new ResourceLocation(ID, path);
     }
     public static LuncheonRegistrate registrate() {
-        return REGISTRATE.get();
+        return REGISTRATE;
     }
 }

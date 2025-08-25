@@ -42,7 +42,7 @@ public class LuncheonDatagen {
     }
 
     private static void addExtraRegistrateData() {
-        Luncheon.REGISTRATE.get().addDataGenerator(ProviderType.LANG, provider -> {
+        Luncheon.registrate().addDataGenerator(ProviderType.LANG, provider -> {
             BiConsumer<String, String> langConsumer = provider::add;
 
             LuncheonAdvancements.provideLang(langConsumer);
