@@ -9,7 +9,9 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -38,21 +40,26 @@ public class Luncheon {
         REGISTRATE.registerEventListeners(modEventBus);
 
         LuncheonItems.register();
-        LuncheonBlocks.register();
         LuncheonFluids.register();
+
+        LuncheonBlocks.register();
         LuncheonBlockEntityTypes.register();
-        LuncheonTags.init();
         IceCreamTypes.register(REGISTRATE);
+
+        LuncheonTags.init();
+        LuncheonRecipeTypes.register(modEventBus);
+
         CREATIVE_TABS.register(modEventBus);
 
         modEventBus.addListener(Luncheon::init);
         modEventBus.addListener(LuncheonClient::clientInit);
         modEventBus.addListener(Luncheon::register);
         modEventBus.addListener(EventPriority.LOWEST, LuncheonDatagen::gatherData);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LuncheonConfig.SPEC);
     }
 
     public static void register(final RegisterEvent event) {
-        Luncheon.LOGGER.info("wawa");
         LuncheonHeatConditions.register();
     }
 

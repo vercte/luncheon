@@ -3,6 +3,7 @@ package net.vercte.luncheon.mixin;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.vercte.luncheon.LuncheonConfig;
 import net.vercte.luncheon.content.misc.LuncheonDamageSources;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -15,7 +16,7 @@ public class ItemStackMixin {
     private void finishUsingItem(Level level, LivingEntity entity, CallbackInfoReturnable<ItemStack> cir) {
         ItemStack item = entity.getUseItem();
         if(item.getOrCreateTag().getBoolean("luncheon.spiked")) {
-            entity.hurt(LuncheonDamageSources.glass_spiked(level), 3);
+            entity.hurt(LuncheonDamageSources.glass_spiked(level), LuncheonConfig.glassShardDamage);
         }
     }
 }

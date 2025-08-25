@@ -14,6 +14,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
 import net.vercte.luncheon.Luncheon;
+import net.vercte.luncheon.LuncheonConfig;
 import net.vercte.luncheon.registry.LuncheonItems;
 import net.vercte.luncheon.registry.LuncheonTags;
 
@@ -35,6 +36,7 @@ public class GlassShardApplicationRecipe implements Recipe<RecipeWrapper> {
 
     @SubscribeEvent
     public static void addDeployerRecipe(DeployerRecipeSearchEvent event) {
+        if(!LuncheonConfig.allowGlassShardSpiking) return;
         Optional<GlassShardApplicationRecipe> recipe = fromInventory(event.getInventory());
         if(recipe.isEmpty()) return;
         if(recipe.get().matches(event.getInventory(), event.getBlockEntity().getLevel()))
