@@ -1,0 +1,15 @@
+{
+  "type": "luncheon:centrifugation",
+  "ingredients": [
+    {
+      "amount": 250,
+      "fluidTag": "forge:milk"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "item": "luncheon:butter"
+    }
+  ]
+}
