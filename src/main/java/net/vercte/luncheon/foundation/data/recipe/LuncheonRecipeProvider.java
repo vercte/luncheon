@@ -33,6 +33,7 @@ public class LuncheonRecipeProvider extends RecipeProvider {
         GENERATORS.add(new LuncheonFillingRecipeGen(output));
         GENERATORS.add(new LuncheonFillingRecipeGen.Emptying(output));
         GENERATORS.add(new LuncheonCuttingRecipeGen(output));
+        GENERATORS.add(new LuncheonCentrifugationRecipeGen(output));
 
         gen.addProvider(true, new DataProvider() {
             @Override

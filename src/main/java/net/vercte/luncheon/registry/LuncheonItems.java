@@ -80,6 +80,7 @@ public class LuncheonItems {
     public static final ItemEntry<Item> WAFER = ingredient("wafer", "Wafer");
     public static final ItemEntry<Item> ICE_CREAM_CONE = taggedIngredient("ice_cream_cone", "Ice Cream Cone", AllItemTags.UPRIGHT_ON_BELT.tag);
     public static final ItemEntry<Item> BAGUETTE_DOUGH = ingredient("baguette_dough", "Baguette Dough");
+    public static final ItemEntry<Item> BUTTER = ingredient("butter", "Butter");
 
     public static final ItemEntry<NotActuallyAFoodItem> ICE_CUBE = REGISTRATE.item("ice_cube", NotActuallyAFoodItem::new)
             .lang("Ice Cube").register();
