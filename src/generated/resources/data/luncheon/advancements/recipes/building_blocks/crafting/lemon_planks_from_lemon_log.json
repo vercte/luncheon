@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_propeller": {
+    "has_lemon_log": {
       "conditions": {
         "items": [
           {
             "items": [
-              "create:propeller"
+              "luncheon:lemon_log"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "luncheon:crafting/mechanical_cooler"
+        "recipe": "luncheon:crafting/lemon_planks_from_lemon_log"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_propeller",
+      "has_lemon_log",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "luncheon:crafting/mechanical_cooler"
+      "luncheon:crafting/lemon_planks_from_lemon_log"
     ]
   },
   "sends_telemetry_event": false

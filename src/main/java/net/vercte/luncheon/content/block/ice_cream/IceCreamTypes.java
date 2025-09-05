@@ -26,8 +26,7 @@ public enum IceCreamTypes {
     public IceCreamPaletteBlockPattern[] variantTypes;
     public TagKey<Item> materialTag;
 
-    private IceCreamTypes(IceCreamPaletteBlockPattern[] variantTypes,
-                          Function<CreateRegistrate, NonNullSupplier<Block>> factory) {
+    IceCreamTypes(IceCreamPaletteBlockPattern[] variantTypes, Function<CreateRegistrate, NonNullSupplier<Block>> factory) {
         this.factory = factory;
         this.variantTypes = variantTypes;
     }

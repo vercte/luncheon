@@ -141,6 +141,29 @@ public class LuncheonBlocks {
             .build().register();
     // endregion
 
+    // region Lemon Wood
+    public static final BlockEntry<RotatedPillarBlock> LEMON_LOG = REGISTRATE.block("lemon_log", RotatedPillarBlock::new)
+            .initialProperties(() -> Blocks.BIRCH_LOG)
+            .properties(p -> p.mapColor(MapColor.STONE))
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/lemon_log")))
+            .item().build()
+            .register();
+
+    public static final BlockEntry<RotatedPillarBlock> STRIPPED_LEMON_LOG = REGISTRATE.block("stripped_lemon_log", RotatedPillarBlock::new)
+            .initialProperties(() -> Blocks.STRIPPED_BIRCH_LOG)
+            .properties(p -> p.mapColor(MapColor.SAND))
+            .blockstate((c, p) -> p.axisBlock(c.get(), Luncheon.asResource("block/stripped_lemon_log")))
+            .item().build()
+            .register();
+
+    public static final BlockEntry<Block> LEMON_PLANKS = REGISTRATE.block("lemon_planks", Block::new)
+            .initialProperties(() -> Blocks.BIRCH_PLANKS)
+            .properties(p -> p.mapColor(MapColor.SAND))
+            .item().build()
+            .register();
+
+    // endregion
+
     public static <T extends Item, P> NonNullFunction<ItemBuilder<T, P>, ItemBuilder<T, P>> buildingBlock() {
         return b -> b.tag(LuncheonTags.ItemTags.BUILDING_BLOCKS.tag);
     }

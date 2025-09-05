@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "luncheon:stripped_lemon_log"
+    }
+  ],
+  "result": {
+    "item": "luncheon:lemon_planks"
+  }
+}

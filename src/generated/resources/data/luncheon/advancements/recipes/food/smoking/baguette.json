@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "baguette": {
       "conditions": {
         "items": [
           {
             "items": [
-              "luncheon:raw_wafer"
+              "luncheon:baguette_dough"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "luncheon:campfire_cooking/wafer"
+        "recipe": "luncheon:smoking/baguette"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item",
+      "baguette",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "luncheon:campfire_cooking/wafer"
+      "luncheon:smoking/baguette"
     ]
   },
   "sends_telemetry_event": false

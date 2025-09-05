@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_dough": {
       "conditions": {
         "items": [
           {
             "items": [
-              "luncheon:baguette_dough"
+              "create:dough"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "luncheon:smoking/baguette"
+        "recipe": "luncheon:crafting/baguette_dough"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item",
+      "has_dough",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "luncheon:smoking/baguette"
+      "luncheon:crafting/baguette_dough"
     ]
   },
   "sends_telemetry_event": false
