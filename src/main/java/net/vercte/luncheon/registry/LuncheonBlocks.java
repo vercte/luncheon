@@ -16,7 +16,6 @@ import net.minecraftforge.common.Tags;
 import net.vercte.luncheon.Luncheon;
 import net.vercte.luncheon.content.processing.cooler.MechanicalCoolerBlock;
 import net.vercte.luncheon.registry.custom.LuncheonRegistrate;
-import net.vercte.luncheon.foundation.data.LuncheonBlockstates;
 
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
@@ -49,7 +48,6 @@ public class LuncheonBlocks {
             .tag(Tags.Blocks.GLASS_COLORLESS)
             .loot(RegistrateBlockLootTables::dropWhenSilkTouch)
             .addLayer(() -> RenderType::cutoutMipped)
-            .blockstate(LuncheonBlockstates::cubeAll)
             .lang("Cobbled Glass")
             .item()
             .tag(Tags.Items.GLASS_COLORLESS)

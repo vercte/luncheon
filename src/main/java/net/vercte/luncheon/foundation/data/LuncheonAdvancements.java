@@ -12,6 +12,7 @@ import net.vercte.luncheon.registry.LuncheonBlocks;
 import net.vercte.luncheon.registry.LuncheonItems;
 import net.vercte.luncheon.registry.LuncheonTags;
 import net.vercte.luncheon.foundation.data.advancement.LuncheonAdvancement;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class LuncheonAdvancements implements DataProvider {
     public static final List<LuncheonAdvancement> ENTRIES = new ArrayList<>();
 
-    public static final LuncheonAdvancement BASE = null,
-        ROOT = create("root", LuncheonItems.ICE_CUBE)
+    public static final LuncheonAdvancement ROOT = create("root", LuncheonItems.ICE_CUBE)
                 .name("A Wonderful Luncheon").description("I hope you're prepared!")
                 .free().silent().build(),
 
@@ -59,7 +60,7 @@ public class LuncheonAdvancements implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
+    public @NotNull CompletableFuture<?> run(@NotNull CachedOutput cache) {
        PackOutput.PathProvider pathProvider = output.createPathProvider(PackOutput.Target.DATA_PACK, "advancements");
         List<CompletableFuture<?>> futures = new ArrayList<>();
 
@@ -89,7 +90,7 @@ public class LuncheonAdvancements implements DataProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "Luncheon's Advancements";
     }
 

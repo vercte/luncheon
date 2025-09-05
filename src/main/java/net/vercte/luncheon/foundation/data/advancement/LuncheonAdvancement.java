@@ -18,22 +18,17 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class LuncheonAdvancement {
     static final String LANG = "advancement." + Luncheon.ID + ".";
     static final String SECRET_SUFFIX = "\n§7(Hidden Advancement)";
 
     private final String id;
-    private final ItemLike icon;
-    private final FrameType frameType;
 
     private final Advancement.Builder builder;
     private final LuncheonAdvancement parent;
 
-    private final boolean announces;
-    private final boolean toasts;
-    private final boolean hidden;
-
-    private String title;
+    private final String name;
     private String description;
 
     Advancement datagenResult;
@@ -42,23 +37,18 @@ public class LuncheonAdvancement {
         this.builder = Advancement.Builder.advancement();
 
         this.id = builder.id;
-        this.icon = builder.icon;
         this.parent = builder.parent;
-        this.frameType = FrameType.byName(builder.frame);
-        this.announces = builder.announces;
-        this.toasts = builder.toasts;
-        this.hidden = builder.hidden;
 
-        this.title = builder.name;
+        this.name = builder.name;
         this.description = builder.description;
 
-        if (this.hidden)
+        if (builder.hidden)
             description += SECRET_SUFFIX;
 
-        this.builder.display(this.icon, Component.translatable(titleKey()),
+        this.builder.display(builder.icon, Component.translatable(titleKey()),
                 Component.translatable(descriptionKey()).withStyle(s -> s.withColor(0xFFFFFF)),
                 id.equals("root") ? LuncheonAdvancements.getBackground() : null,
-                this.frameType, this.toasts, this.announces, this.hidden);
+                FrameType.byName(builder.frame), builder.toasts, builder.announces, builder.hidden);
 
         builder.criteriaTriggers.forEach(this.builder::addCriterion);
 
@@ -80,10 +70,11 @@ public class LuncheonAdvancement {
     }
 
     public void provideLang(BiConsumer<String, String> consumer) {
-        consumer.accept(titleKey(), title);
+        consumer.accept(titleKey(), name);
         consumer.accept(descriptionKey(), description);
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     public static class Builder {
         public final String id;
         public final ItemLike icon;
@@ -98,7 +89,7 @@ public class LuncheonAdvancement {
         public String name;
         public String description;
 
-        private Map<String, CriterionTriggerInstance> criteriaTriggers = Maps.newLinkedHashMap();
+        private final Map<String, CriterionTriggerInstance> criteriaTriggers = Maps.newLinkedHashMap();
 
         public Builder(String id, ItemLike icon) {
             this.id = id;
