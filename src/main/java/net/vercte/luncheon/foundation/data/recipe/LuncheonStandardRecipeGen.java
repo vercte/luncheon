@@ -46,12 +46,12 @@ public class LuncheonStandardRecipeGen extends RecipeProvider {
                 .pattern("ddd")
                 .save(consumer, Luncheon.asResource("crafting/baguette_dough"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.LEMON_PLANKS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.LEMON_PLANKS, 4)
                 .requires(LuncheonBlocks.LEMON_LOG)
                 .unlockedBy("has_lemon_log", InventoryChangeTrigger.TriggerInstance.hasItems(LuncheonBlocks.LEMON_LOG.get()))
                 .save(consumer, Luncheon.asResource("crafting/lemon_planks_from_lemon_log"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.LEMON_PLANKS)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.LEMON_PLANKS, 4)
                 .requires(LuncheonBlocks.STRIPPED_LEMON_LOG)
                 .unlockedBy("has_stripped_lemon_log", InventoryChangeTrigger.TriggerInstance.hasItems(LuncheonBlocks.STRIPPED_LEMON_LOG.get()))
                 .save(consumer, Luncheon.asResource("crafting/lemon_planks_from_stripped_lemon_log"));
