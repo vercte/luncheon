@@ -46,6 +46,13 @@ public class LuncheonStandardRecipeGen extends RecipeProvider {
                 .pattern("ddd")
                 .save(consumer, Luncheon.asResource("crafting/baguette_dough"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.COBBLED_GLASS)
+                .unlockedBy("has_glass_shard", InventoryChangeTrigger.TriggerInstance.hasItems(LuncheonItems.GLASS_SHARDS.get()))
+                .define('s', LuncheonItems.GLASS_SHARDS.get())
+                .pattern("ss")
+                .pattern("ss")
+                .save(consumer, Luncheon.asResource("crafting/cobbled_glass"));
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, LuncheonBlocks.LEMON_PLANKS, 4)
                 .requires(LuncheonBlocks.LEMON_LOG)
                 .unlockedBy("has_lemon_log", InventoryChangeTrigger.TriggerInstance.hasItems(LuncheonBlocks.LEMON_LOG.get()))
