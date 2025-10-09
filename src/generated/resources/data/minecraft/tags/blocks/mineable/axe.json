@@ -3,6 +3,13 @@
     "luncheon:wafer_block",
     "luncheon:plain_filled_wafer_block",
     "luncheon:chocolate_filled_wafer_block",
-    "luncheon:berry_filled_wafer_block"
+    "luncheon:berry_filled_wafer_block",
+    "luncheon:lemon_log",
+    "luncheon:lemon_wood",
+    "luncheon:stripped_lemon_log",
+    "luncheon:stripped_lemon_wood",
+    "luncheon:lemon_planks",
+    "luncheon:lemon_stairs",
+    "luncheon:lemon_slab"
   ]
 }

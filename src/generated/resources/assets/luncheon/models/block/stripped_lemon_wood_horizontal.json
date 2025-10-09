@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "luncheon:block/stripped_lemon_log_side",
+    "side": "luncheon:block/stripped_lemon_log_side"
+  }
+}

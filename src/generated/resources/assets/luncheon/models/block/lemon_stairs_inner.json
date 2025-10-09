@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "luncheon:block/lemon_planks",
+    "side": "luncheon:block/lemon_planks",
+    "top": "luncheon:block/lemon_planks"
+  }
+}
