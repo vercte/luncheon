@@ -1,0 +1,157 @@
+{
+	"advancement.luncheon.ice_cream": "Vous criez",
+	"advancement.luncheon.ice_cream.desc": "Manger votre première glace de toute sorte",
+	"advancement.luncheon.ice_cube": "Croquant et aqueux",
+	"advancement.luncehon.ice_cube.desc": "Manger un glaçon... Délicieux !\n§7(Progrès caché)",
+	"advancement.luncehon.mechanical_cooler": "Ils geient maintenant ?",
+	"advancement.luncheon.mechanical_cooler.desc": "Obtenir une glacière méchanique",
+	"advancement.luncheon.neapolitan_sundae": "Gel de cerveau",
+	"advancement.luncheon.neapolitan_sundae.desc": "Manger votre première coupe glacée napolitaine",
+	"advancement.luncehon.root": "Un merveilleux luncheon",
+	"advancement.luncheon.root.desc": "J'espére que vous êtes préparé !",
+	"advancement.luncheon.worlds_coolest": "Le plus fraîche du monde",
+	"advancement.luncheon.worlds_coolest.desc": "Automatiser complètement la coupe glacée napolitaine",
+
+	"block.luncheon.berry_filled_wafer_block": "Bloc de gaufrette fourrée aux baies",
+	"block.luncheon.berry_ice_cream": "Glace aux baies",
+	"block.luncheon.berry_ice_cream_block": "Bloc de glace aux baies",
+	"block.luncheon.berry_ice_cream_pillar": "Pilier de glace aux baie",
+
+	"block.luncheon.chocolate_filled_wafer_block": "Bloc de gaufrette fourrée au chocolat",
+	"block.luncheon.chocolate_ice_cream": "Glace au chocolat",
+	"block.luncheon.chocolate_ice_cream_block": "Bloc de glace au chocolat",
+	"block.luncheon.chocolate_ice_cream_pillar": "Pilier de glace au chocolat",
+
+	"block.luncheon.cobbled_glass": "Verre réparé",
+
+	"block.luncheon.cut_berry_ice_cream": "Glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_brick_slab": "Dalle en briques de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_brick_stairs": "Escaliers en briques de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_brick_wall": "Muret en briques de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_bricks": "Briques de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_slab": "Dalle de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_stairs": "Escaliers de glace coupée aux baies",
+	"block.luncheon.cut_berry_ice_cream_wall": "Muret de glace coupée aux baies",
+
+	"block.luncheon.cut_chocolate_ice_cream": "Glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_brick_slab": "Dalle en briques de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_brick_stairs": "Escaliers en briques de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_brick_wall": "Muret en briques de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_bricks": "Briques de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_slab": "Dalle de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_stairs": "Escaliers de glace coupée au chocolat",
+	"block.luncheon.cut_chocolate_ice_cream_wall": "Muret de glace coupée au chocolat",
+
+	"block.luncheon.cut_plain_ice_cream": "Glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_brick_slab": "Dalle en briques de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_brick_stairs": "Escaliers en briques de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_brick_wall": "Muret en briques de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_bricks": "Briques de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_slab": "Dalle de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_stairs": "Escaliers de glace nature coupée",
+	"block.luncheon.cut_plain_ice_cream_wall": "Muret de glace nature coupée",
+
+	"block.luncheon.layered_berry_ice_cream": "Couches de glace aux baies",
+	"block.luncheon.layered_chocolate_ice_cream": "Couches de glace au chocolat",
+	"block.luncheon.layered_plain_ice_cream": "Couches de glace nature",
+
+	"block.luncheon.lemon_log": "Bûche de citron",
+	"block.luncheon.lemon_planks": "Planches de citron",
+	"block.luncheon.lemon_slab": "Dalle de citron",
+	"block.luncheon.lemon_stairs": "Escaliers de citron",
+	"block.luncheon.lemon_wood": "Bois de citron",
+	
+	"block.luncheon.mechanical_cooler": "Glacière méchanique",
+
+	"block.luncheon.plain_filled_wafer_block": "Bloc de gaufrette nature",
+	"block.luncheon.plain_ice_cream": "Glace nature",
+	"block.luncheon.plain_ice_cream_block": "Bloc de glace nature",
+	"block.luncheon.plain_ice_cream_pillar": "Pilier de glace nature",
+
+	"block.luncheon.polished_cut_berry_ice_cream": "Glace coupée polie aux baies",
+	"block.luncheon.polished_cut_berry_ice_cream_slab": "Dalle de glace coupée polie aux baies",
+	"block.luncheon.polished_cut_berry_ice_cream_stairs": "Escaliers de glace coupée polie aux baies",
+	"block.luncheon.polished_cut_berry_ice_cream_wall": "Muret de glace coupée polie aux baies",
+
+	"block.luncheon.polished_cut_chocolate_ice_cream": "Glace coupée polie au chocolat",
+	"block.luncheon.polished_cut_chocolate_ice_cream_slab": "Dalle de glace coupée polie au chocolat",
+	"block.luncheon.polished_cut_chocolate_ice_cream_stairs": "Escaliers de glace coupée polie au chocolat",
+	"block.luncheon.polished_cut_chocolate_ice_cream_wall": "Muret de glace coupée polie au chocolat",
+
+	"block.luncheon.polished_cut_plain_ice_cream": "Glace nature coupée polie",
+	"block.luncheon.polished_cut_plain_ice_cream_slab": "Dalle de glace nature coupée polie",
+	"block.luncheon.polished_cut_plain_ice_cream_stairs": "Escaliers de glace nature coupée polie",
+	"block.luncheon.polished_cut_plain_ice_cream_wall": "Muret de glace nature coupée polie",
+
+	"block.luncheon.small_berry_ice_cream_brick_slab": "Dalle en briques petites de glace aux baies",
+	"block.luncheon.small_berry_ice_cream_brick_stairs": "Escaliers en briques petites de glace aux baies",
+	"block.luncheon.small_berry_ice_cream_brick_wall": "Muret en briques petites de glace aux baies",
+	"block.luncheon.small_berry_ice_cream_bricks": "Briques petites de glace aux baies",
+	"block.luncheon.small_chocolate_ice_cream_brick_slab": "Dalle en briques petites de glace au chocolat",
+	"block.luncheon.small_chocolate_ice_cream_brick_stairs": "Escaliers en briques petites de glace au chocolat",
+	"block.luncheon.smalL_chocolate_ice_cream_brick_wall": "Muret en briques petites de glace au chocolat",
+	"block.luncheon.small_chocolate_ice_cream_bricks": "Briques petites de glace au chocolat",
+	"block.luncheon.small_plain_ice_cream_brick_slab": "Dalle en briques petites de glace nature",
+	"block.luncheon.small_plain_ice_cream_brick_stairs": "Escaliers en briques petites de glace nature",
+	"block.luncheon.small_plain_ice_cream_brick_wall": "Muret en briques petites de glace nature",
+	"block.luncheon.small_plain_ice_cream_bricks": "Briques petites de glace nature",
+
+	"block.luncheon.stripped_lemon_log": "Bûche de citron écorcée",
+	"block.luncheon.stripped_lemon_wood": "Bois de citron écorcée",
+
+	"block.luncheon.wafer_block": "Bloc de gaufrette vide",
+
+	
+	"death.attack.luncheon.glass_shards": "%1$s a mangé des sucres candis dangereux",
+	"death.attack.luncheon.glass_spiked": "%1$s a mangé des %2$s pointu",
+	"death.attack.luncheon.too_spicy": "Le monde était trop épicé pour %2$s",
+
+
+	"fluid.luncheon.berry_extract": "Extrait de baies",
+	"fluid.luncheon.berry_ice_cream": "Glace aux baies",
+	"fluid.luncheon.chocolate_ice_cream": "Glace au chocolat",
+	"fluid.luncheon.plain_ice_cream": "Glace nature",
+
+
+	"item.luncheon.baguette": "Baguette",
+	"item.luncheon.baguette.tooltip.behaviour1": "Diminue la durabilité",
+	"item.luncheon.baguette.tooltip.condition1": "Lorsqu'il est mangé",
+	"item.luncheon.baguette.tooltip.summary": "Une baguette. Elle vous permet d'attaquer à une _plus grande distance_.",
+	"item.luncheon.baguette_dough": "Pâte de baguette",
+
+	"item.luncheon.berry_extract": "Extrait de baies",
+	"item.luncheon.berry_ice_cream": "Glace aux baies",
+	"item.luncheon.berry_ice_cream_bucket": "Seau de glace aux baies",
+
+	"item.luncheon.bread_slice": "Tranche de pain",
+	"item.luncheon.butter": "Buerre",
+
+	"item.luncheon.chocolate_ice_cream": "Glace au chocolat",
+	"item.luncheon.chocolate_ice_cream_bucket": "Seau de glace au chocolat",
+
+	"item.luncheon.glass_shards": "Éclats de verre",
+	"item.luncheon.glass_shards.tooltip.behaviour1": "_Inflige des dégâts_ au mangeur.",
+	"item.luncheon.glass_shards.tooltip.condition1": "Lorsqu'il est mangé",
+	"item.luncheon.glass_shards.tooltip.summary": "Verre cassé. Peut être _déployé_ dans la nourriture.",
+
+	"item.luncheon.ice_cream_cone": "Cornet à glace",
+	"item.luncheon.ice_cube": "Glaçon",
+
+	"item.luncheon.incomplete_neapolitan_sundae": "Coupe glacée napolitaine inachevé",
+	"item.luncheon.neapolitan_sundae": "Coupe glacée napolitaine",
+
+	"item.luncheon.plain_ice_cream": "Glace nature",
+	"item.luncheon.plain_ice_cream_bucket": "Seau de glace nature",
+
+
+	"itemGroup.luncheon.base": "Luncheon",
+
+
+	"luncheon.gui.contraptions.no_water": "Il semble que ce(t)(te) %1$s _ne reçoit pas assez de l'eau_.",
+	"luncheon.ponder.mechanical_cooler.header": "Utilisant la glacière méchanique",
+	"luncheon.ponder.mechanical_cooler.text_1": "La glacière méchanique est le cousin plus froid que le brûleur à Blaze",
+	"luncheon.ponder.mechanical_cooler.text_2": "Pour fonctionner, il a besoin d'alimentation venant d'en bas...",
+	"luncheon.ponder.mechanical_cooler.text_3": "Et d'eau de côté.",
+	"luncheon.recipe.heat_requirement.cooled": "Rafraîchi",
+	"luncheon.tooltip.waterRequirement": "Besoin en eau :"
+}
